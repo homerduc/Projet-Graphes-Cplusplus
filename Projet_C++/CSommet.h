@@ -38,6 +38,14 @@ public:
 		******************************************************************************************************************/
 		CSommet(const string& sID, const vector<CArc*>& vEntrants, const vector<CArc*>& vSortants) { sSOMid = sID; vSOM_ArcEntrants = vEntrants; vSOM_ArcSortants = vSortants; }
 	
+		/******************************************************************************************************************
+		* 	CSommet(const CSommet& SOMsommet)
+		* *****************************************************************************************************************
+		*	Entree : Un CSommet par référence
+		*	Préconditions : rien
+		*	Sortie : rien
+		*	Postconditions : les listes des arcs de SOMsommet ont bien été copiées entièrement
+		******************************************************************************************************************/
 		CSommet(const CSommet& SOMsommet);
 	
 		/******************************************************************************************************************

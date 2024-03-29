@@ -10,17 +10,31 @@ CSommet::CSommet()
 CSommet::CSommet(const CSommet& SOMsommet)
 {
 	sSOMid = SOMsommet.SOM_GetID();
-	vSOM_ArcEntrants = SOMsommet.SOM_GetEntrants(); // non 
-	vSOM_ArcSortants = SOMsommet.SOM_GetSortants(); // non 
+
+	vSOM_ArcEntrants.reserve(SOMsommet.SOM_GetEntrants().size()); // On alloue d'avance la taille voulue
+	for (CArc* iIterateurArc : SOMsommet.SOM_GetEntrants()) {
+		vSOM_ArcEntrants.push_back(new CArc(*iIterateurArc)); // On ajoute une copie de chaque arc dans la liste de notre nouveau sommet
+	}
+
+	vSOM_ArcSortants.reserve(SOMsommet.SOM_GetSortants().size());
+	for (CArc* iIterateurArc : SOMsommet.SOM_GetSortants()) {
+		vSOM_ArcSortants.push_back(new CArc(*iIterateurArc));
+	}
 }
 
 CSommet::~CSommet()
 {
 	sSOMid.clear();
+
+	for (CArc* iIterateurArc : vSOM_ArcEntrants) {
+		delete iIterateurArc;
+	}
 	vSOM_ArcEntrants.clear();
+
+	for (CArc* iIterateurArc : vSOM_ArcSortants) {
+		delete iIterateurArc;
+	}
 	vSOM_ArcSortants.clear();
-	//changer car les objets retent en mémoire
-	
 }
 
 void CSommet::Affichage_du_Sommet()
@@ -28,7 +42,6 @@ void CSommet::Affichage_du_Sommet()
 	cout << "Le sommet est <" << SOM_GetID() << ">" << endl;
 	SOM_Afficher_Entrants();
 	SOM_Afficher_Sortants();
-
 }
 
 void CSommet::SOM_Afficher_Entrants()
@@ -39,7 +52,6 @@ void CSommet::SOM_Afficher_Entrants()
 		cout << "   | l'arc " << uiPosition << " : provenant du sommet <" << vSOM_ArcEntrants[uiPosition]->ARC_GetSommetDepart()<< "> ..." << endl;
 	}
 	cout<< "   +----------------------------------------------------------------------------------------+" << endl << endl;
-
 }
 
 void  CSommet::SOM_Afficher_Sortants()
@@ -77,21 +89,3 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 		cout << " ERROR : Cet arc ne sort pas de <" << SOM_GetID() << "> donc ajout dans arc_sortant impossible" << endl << endl;
 	}
 }
-
-void CSommet::operator+(CArc* pArc)
-{
-	char choix;
-	cout << "Dans quelle liste de <"<<SOM_GetID()<<"> voulais vous ajouter l'arc"<<endl<<"Liste d arc Entrant(e) | Liste d arc Sortant(s) : ";
-	cin >> choix;
-	switch (choix)
-	{
-	case'e': SOM_Ajouter_Entrants(pArc);
-		break;
-
-	case's': SOM_Ajouter_Sortants(pArc);
-		break;
-	}
-}
-
-
-

@@ -19,7 +19,7 @@ public:
         * Entree : rien
         * Préconditions : rien
         * Sortie : rien
-        * Postconditions : les pointeurs de sommets sont initialisés à NULL
+        * Postconditions : les sommets de départ et d'arrivée sont égaux à ""
         *******************************************************************************************************************
         */
         CArc();
@@ -30,7 +30,7 @@ public:
         * Entree : un CArc par référence
         * Préconditions : rien
         * Sortie : rien
-        * Postconditions : le nouvel objet a créé une copie du graphe entier
+        * Postconditions : rien
         *******************************************************************************************************************
         */
         CArc(CArc& arcParam);
@@ -38,20 +38,19 @@ public:
         /******************************************************************************************************************
         * CArc(CSommet* pSortant, CSommet* pEntrant)
         * *****************************************************************************************************************
-        * Entree : deux pointeurs vers les objets CSommet de départ et d'arrivée de l'arc
+        * Entree : deux strings qui sont les noms des sommets d'arrivée et de départ
         * Préconditions : il n'existe pas déjà un arc avec les mêmes départ et arrivée
         * Sortie : rien
         * Postconditions : rien
         *******************************************************************************************************************
         */
-        CArc(string sSortant, string sEntrant) { sARC_SommetDepart = sSortant; sARC_SommetArrive = sEntrant; };
+        CArc(string sSommetDepart, string sSommetArrivee) { sARC_SommetDepart = sSommetDepart; sARC_SommetArrive = sSommetArrivee; };
 
-        //~CArc
 
     #pragma endregion
 
     #pragma region ACCESSEURS
-            /******************************************************************************************************************
+        /******************************************************************************************************************
         * ARC_GetSommetSortant()
         * *****************************************************************************************************************
         * Entree : rien
