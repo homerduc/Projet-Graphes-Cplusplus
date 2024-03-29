@@ -59,11 +59,18 @@ void CGrapheOriente::GRO_AjouterSommet(CSommet* pSOMsommet)
 		cout << endl << "Ajout dans le vecteur vGROsommets effectue !!!" << endl << endl;
 }
 
-void CGrapheOriente::GRO_AjouterArc(string sDepart,string sArrive) // a modifier 
+void CGrapheOriente::GRO_AjouterArc(string sDepart,string sArrive) 
 {
-	
-	vGROarcs.push_back(new CArc(sDepart,sArrive));
-	cout << endl << "Ajout dans le vecteur vGROarcs effectue !!!" << endl << endl;
+	unsigned int uiVerifDepart = GRO_RechercheSommets(sDepart);
+	unsigned int uiVerifArrive = GRO_RechercheSommets(sArrive);
+	if (uiVerifArrive !=0 && uiVerifDepart !=0)
+	{
+		CArc* pARCnewArc = new CArc(sDepart, sArrive);
+		vGROsommets[uiVerifDepart]->SOM_Ajouter_Sortants(pARCnewArc);
+		vGROsommets[uiVerifArrive]->SOM_Ajouter_Entrants(pARCnewArc);
+		vGROarcs.push_back(pARCnewArc);
+		cout << endl << "Ajout dans le vecteur vGROarcs effectue !!!" << endl << endl;
+	}
 }
 
 void CGrapheOriente::GRO_SupprimerSommet(string sRecherche)
@@ -71,7 +78,7 @@ void CGrapheOriente::GRO_SupprimerSommet(string sRecherche)
 	unsigned int uiPosition = GRO_RechercheSommets(sRecherche);
 	if (uiPosition != 0)
 	{
-		vGROsommets.erase(vGROsommets.begin() + uiPosition);
+		delete vGROsommets[uiPosition] ;
 		cout << "Le sommet <" << sRecherche << "> a ete supprimer ! " << endl << endl;
 	}
 }

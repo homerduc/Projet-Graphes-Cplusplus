@@ -37,7 +37,7 @@ public:
 	unsigned int GRO_RechercheSommets(string sID);
 
 	void GRO_AjouterSommet(CSommet* pSOMsommet);
-	void GRO_AjouterArc(CArc* pARCarc);
+	void GRO_AjouterArc(string sDepart, string sArrive);
 
 	void GRO_SupprimerSommet(string sRecherche);
 	void GRO_SupprimerArc(string sDepart, string sArrive);
