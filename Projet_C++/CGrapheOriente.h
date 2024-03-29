@@ -14,22 +14,33 @@ private:
 	vector<CSommet*> vGROsommets;
 public:
 
-	//CGrapheOriente() {};
-	CGrapheOriente(vector<CArc*> vArcs, vector<CSommet*> vSommets) { vGROarcs = vArcs; vGROsommets = vSommets; }
-	CGrapheOriente(const CGrapheOriente& GROgraphe);
-	//~CGrapheOriente();
+	#pragma region CONSTRUCTEURS & DESTRUCTEUR
 
-	vector<CArc*> GRO_GetArcs();
-	vector<CSommet*> GRO_GetSommets();
+		CGrapheOriente() {}; // jsp quoi mettre dedans 
+		CGrapheOriente(vector<CArc*> vArcs, vector<CSommet*> vSommets) { vGROarcs = vArcs; vGROsommets = vSommets; }
+		CGrapheOriente(const CGrapheOriente& GROgraphe); // pas fait 
+		//~CGrapheOriente();
 
-	GRO_SetArcs();
-	GRO_SetSommets();
+	#pragma endregion
 
+	#pragma region ACCESSEURS SET & GET
 
+		vector<CArc*> GRO_GetArcs() const { return vGROarcs; };
+		vector<CSommet*> GRO_GetSommets() const { return vGROsommets; };
 
-	GRO_RechercheArcs();
-	GRO_RechercheSommets();
+		void GRO_SetArcs(vector<CArc*> vArcs) { vGROarcs = vArcs; }
+		void GRO_SetSommets(vector<CSommet*> vSommets) { vGROsommets = vSommets; }
 
+	#pragma endregion
+
+	unsigned int GRO_RechercheArcs(string sDepart,string sArrive);
+	unsigned int GRO_RechercheSommets(string sID);
+
+	void GRO_AjouterSommet(CSommet* pSOMsommet);
+	void GRO_AjouterArc(CArc* pARCarc);
+
+	void GRO_SupprimerSommet(string sRecherche);
+	void GRO_SupprimerArc(string sDepart, string sArrive);
 
 	
 };
