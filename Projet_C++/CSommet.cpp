@@ -90,12 +90,14 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 	}
 }
 
-unsigned int  CSommet::SOM_RechercheEntrant(string sDepart, string sArrive)
+vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sArrive)
 {
-	for ()) {
-		if (itRecherche->ARC_GetSommetArrive() == sDepart && itRecherche->ARC_GetSommetDepart() == sArrive)
-			return itRecherche;
-	}
+	vector<CArc*>::iterator it;
+	CArc* parctemp = new CArc(sSOMid, sArrive);
+	it = find(vSOM_ArcEntrants.begin(), vSOM_ArcEntrants.end(), parctemp);
+	if (it != vSOM_ArcEntrants.end())
+		return it;
+
 }
 
 

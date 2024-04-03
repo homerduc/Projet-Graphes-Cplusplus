@@ -37,6 +37,8 @@ public:
 		*	Postconditions : objet initialiser avec les paramètres 
 		******************************************************************************************************************/
 		CSommet(const string& sID, const vector<CArc*>& vEntrants, const vector<CArc*>& vSortants) { sSOMid = sID; vSOM_ArcEntrants = vEntrants; vSOM_ArcSortants = vSortants; }
+
+		CSommet(const string& sID) { sSOMid = sID; }
 	
 		/******************************************************************************************************************
 		* 	CSommet(const CSommet& SOMsommet)
@@ -150,7 +152,8 @@ public:
 	
 	#pragma endregion
 	
-		CArc* SOM_RechercheEntrant(string sDepart, string SArrive);
+
+	vector<CArc*>::iterator SOM_RechercheEntrant(string sArrive);
 
 };
 
