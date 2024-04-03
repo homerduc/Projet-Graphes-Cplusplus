@@ -4,7 +4,7 @@
 
 CSommet::CSommet()
 {
-	sSOMid = "Bonjour";
+	sSOMid = "";
 }
 
 CSommet::CSommet(const CSommet& SOMsommet)
@@ -99,5 +99,3 @@ vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sArrive)
 		return it;
 
 }
-
-
