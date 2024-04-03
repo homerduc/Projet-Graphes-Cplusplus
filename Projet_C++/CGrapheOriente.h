@@ -33,15 +33,22 @@ public:
 
 	#pragma endregion
 
-	vector<CArc*>::iterator GRO_RechercheArcs(string sDepart,string sArrive);
-	vector<CSommet*>::iterator GRO_RechercheSommets(string sID);
+	#pragma region RECHERCHE SOMMET & ARC 
+		vector<CArc*>::iterator GRO_RechercheArcs(string sDepart, string sArrive);
+		vector<CSommet*>::iterator GRO_RechercheSommets(string sID);
+	#pragma endregion
 
-	void GRO_AjouterSommet(CSommet* pSOMsommet);
-	void GRO_AjouterArc(string sDepart, string sArrive);
+	#pragma region AJOUT SOMMET & ARC
+		void GRO_AjouterSommet(CSommet* pSOMsommet);
+		void GRO_AjouterArc(string sDepart, string sArrive);
+	#pragma endregion
 
-	void GRO_SupprimerSommet(string sRecherche);
-	void GRO_SupprimerArc(string sDepart, string sArrive);
+	#pragma region SUPPRIMER SOMMET & ARC
+		void GRO_SupprimerSommet(string sRecherche);
+		void GRO_SupprimerArc(string sDepart, string sArrive);
+	#pragma endregion
 
+	void Afficher_();
 	
 };
 
