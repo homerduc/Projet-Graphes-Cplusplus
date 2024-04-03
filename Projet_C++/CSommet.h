@@ -152,19 +152,18 @@ public:
 	
 	#pragma endregion
 		
-		/******************************************************************************************************************
-		*   SOM_Ajouter_arc_Sortant(CArc* pARCarc)
-		* *****************************************************************************************************************
-		*	Entree : 
-		*	Préconditions : 
-		*	Sortie : 
-		*	Postconditions : 
-		******************************************************************************************************************/
-		vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart, string SArrive);
-	
+	/******************************************************************************************************************
+	*   SOM_Ajouter_arc_Sortant(CArc* pARCarc)
+	* *****************************************************************************************************************
+	*	Entree : 
+	*	Préconditions : 
+	*	Sortie : 
+	*	Postconditions : 
+	******************************************************************************************************************/
+	vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart);
+	vector<CArc*>::iterator SOM_RechercheSortant(string sArrive);
 
-	vector<CArc*>::iterator SOM_RechercheEntrant(string sArrive);
-
+	void SOM_SupprimerArc(string sDepart, string sArrive);
 };
 
 

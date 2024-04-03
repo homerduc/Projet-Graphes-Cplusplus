@@ -90,12 +90,40 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 	}
 }
 
-vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sArrive)
+vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sDepart)
 {
 	vector<CArc*>::iterator it;
-	CArc* parctemp = new CArc(sSOMid, sArrive);
+	CArc* parctemp = new CArc(sDepart, sSOMid);
 	it = find(vSOM_ArcEntrants.begin(), vSOM_ArcEntrants.end(), parctemp);
 	if (it != vSOM_ArcEntrants.end())
 		return it;
-
+	return it;
 }
+
+vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
+{
+	vector<CArc*>::iterator it;
+	CArc* parctemp = new CArc(sSOMid,sArrive);
+	it = find(vSOM_ArcEntrants.begin(), vSOM_ArcEntrants.end(), parctemp);
+	if (it != vSOM_ArcEntrants.end())
+		return it;
+	return it;
+}
+
+void CSommet::SOM_SupprimerArc(string sDepart, string sArrive)
+{
+	vector<CArc*>::iterator itSupprimerArc = SOM_RechercheEntrant(sDepart);
+	if (itSupprimerArc != vSOM_ArcEntrants.end())
+	{
+		delete (*itSupprimerArc);
+		vSOM_ArcEntrants.erase(itSupprimerArc);
+	}
+
+	itSupprimerArc = SOM_RechercheSortant(sDepart);
+	if (itSupprimerArc != vSOM_ArcSortants.end())
+	{
+		delete (*itSupprimerArc);
+		vSOM_ArcEntrants.erase(itSupprimerArc);
+	}
+}
+
