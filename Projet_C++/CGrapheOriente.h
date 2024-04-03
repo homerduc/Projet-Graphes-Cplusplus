@@ -39,7 +39,7 @@ public:
 	#pragma endregion
 
 	#pragma region AJOUT SOMMET & ARC
-		void GRO_AjouterSommet(CSommet* pSOMsommet);
+		void GRO_AjouterSommet(string sID);
 		void GRO_AjouterArc(string sDepart, string sArrive);
 	#pragma endregion
 
@@ -48,7 +48,7 @@ public:
 		void GRO_SupprimerArc(string sDepart, string sArrive);
 	#pragma endregion
 
-	void Afficher_();
+	void Afficher_Graph();
 	
 };
 

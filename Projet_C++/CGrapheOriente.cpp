@@ -47,9 +47,9 @@ vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(string sID)
 		return itRechercheSommet;
 }
 
-void CGrapheOriente::GRO_AjouterSommet(CSommet* pSOMsommet) 
+void CGrapheOriente::GRO_AjouterSommet(string sID) 
 {
-		vGROsommets.push_back(pSOMsommet);
+		vGROsommets.push_back(new CSommet(sID));
 		cout << endl << "Ajout dans le vecteur vGROsommets effectué !!!" << endl << endl;
 }
 
@@ -93,5 +93,12 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 
 	delete (*itSupprimerArc);
 	vGROarcs.erase(itSupprimerArc);
+}
+
+void CGrapheOriente::Afficher_Graph()
+{
+	for (vector<CSommet*>::iterator itSommets = vGROsommets.begin(); itSommets < vGROsommets.end(); itSommets++) {
+		cout << (*itSommets);
+	}
 }
 

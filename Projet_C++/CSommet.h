@@ -152,7 +152,7 @@ public:
 	
 	#pragma endregion
 		
-	#pragma region RECHERCHE ARCS ENTRANT ET SORTANT DE L'ARC
+	#pragma region RECHERCHE ARCS ENTRANT ET SORTANT Du sommet
 
 			vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart);
 			vector<CArc*>::iterator SOM_RechercheSortant(string sArrive);

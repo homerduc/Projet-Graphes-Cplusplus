@@ -23,9 +23,9 @@ int main()
 
     sommet1.Affichage_du_Sommet();*/
 
-
-
     CGrapheOriente Graphe;
-    Graphe.GRO_AjouterSommet(&sommet1);
+    Graphe.GRO_AjouterSommet("Bonjour");
+    Graphe.Afficher_Graph();
+
 }
 
