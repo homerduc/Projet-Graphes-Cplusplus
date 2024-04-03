@@ -55,7 +55,17 @@ void CGrapheOriente::GRO_AjouterSommet(CSommet* pSOMsommet)
 
 void CGrapheOriente::GRO_AjouterArc(string sDepart,string sArrive) 
 {
-	
+	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sDepart);
+	vector<CSommet*>::iterator itRechercheArrive = GRO_RechercheSommets(sArrive);
+
+	if (itRechercheDepart != vGROsommets.end() && itRechercheArrive!=vGROsommets.end())
+	{
+		CArc* pNEWarc = new CArc(sDepart, sArrive);
+		(*itRechercheDepart)->SOM_Ajouter_Entrants(pNEWarc);
+		(*itRechercheArrive)->SOM_Ajouter_Sortants(pNEWarc);
+		vGROarcs.push_back(pNEWarc);
+		cout << endl << "Ajout dans le vecteur vGROarcs et les vecteurs des sommets concerné par l'arc!!!" << endl << endl;
+	}
 }
 
 void CGrapheOriente::GRO_SupprimerSommet(string sID)
