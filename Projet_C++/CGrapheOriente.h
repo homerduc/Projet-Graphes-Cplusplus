@@ -33,8 +33,8 @@ public:
 
 	#pragma endregion
 
-	unsigned int GRO_RechercheArcs(string sDepart,string sArrive);
-	unsigned int GRO_RechercheSommets(string sID);
+	vector<CArc*>::iterator GRO_RechercheArcs(string sDepart,string sArrive);
+	vector<CSommet*>::iterator GRO_RechercheSommets(string sID);
 
 	void GRO_AjouterSommet(CSommet* pSOMsommet);
 	void GRO_AjouterArc(string sDepart, string sArrive);
