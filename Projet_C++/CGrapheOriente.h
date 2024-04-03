@@ -18,18 +18,18 @@ public:
 
 	CGrapheOriente() {}
 	CGrapheOriente(vector<CArc*> vArcs, vector<CSommet*> vSommets) { vGROarcs = vArcs; vGROsommets = vSommets; }
-	CGrapheOriente(const CGrapheOriente& GROgraphe); // pas fait 
+	CGrapheOriente(const CGrapheOriente& GROgraphe);
 	~CGrapheOriente();
 
 	#pragma endregion
 
 	#pragma region ACCESSEURS SET & GET
 
-		vector<CArc*> GRO_GetArcs() const { return vGROarcs; };
-		vector<CSommet*> GRO_GetSommets() const { return vGROsommets; };
+	vector<CArc*> GRO_GetArcs() const { return vGROarcs; };
+	vector<CSommet*> GRO_GetSommets() const { return vGROsommets; };
 
-		void GRO_SetArcs(vector<CArc*> vArcs) { vGROarcs = vArcs; }
-		void GRO_SetSommets(vector<CSommet*> vSommets) { vGROsommets = vSommets; }
+	void GRO_SetArcs(vector<CArc*> vArcs) { vGROarcs = vArcs; }
+	void GRO_SetSommets(vector<CSommet*> vSommets) { vGROsommets = vSommets; }
 
 	#pragma endregion
 

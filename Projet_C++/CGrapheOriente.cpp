@@ -3,11 +3,13 @@
 
 CGrapheOriente::CGrapheOriente(const CGrapheOriente& GROgraphe)
 {
+	// Copie de la liste des arcs
 	vGROarcs.reserve(GROgraphe.GRO_GetArcs().size()); // On alloue d'avance la taille voulue
 	for (CArc* iIterateurArc : GROgraphe.GRO_GetArcs()) {
 		vGROarcs.push_back(new CArc(*iIterateurArc)); // On ajoute une copie de chaque arc dans la liste de notre nouveau sommet
 	}
 
+	// Copie de la liste des sommets
 	vGROsommets.reserve(GROgraphe.GRO_GetSommets().size());
 	for (CSommet* iIterateurSommet : GROgraphe.GRO_GetSommets()) {
 		vGROsommets.push_back(new CSommet(*iIterateurSommet));
@@ -16,11 +18,13 @@ CGrapheOriente::CGrapheOriente(const CGrapheOriente& GROgraphe)
 
 CGrapheOriente::~CGrapheOriente()
 {
+	// Suppression de la liste des arcs
 	for (CArc* iIterateurArc : vGROarcs) {
 		delete iIterateurArc;
 	}
 	vGROarcs.clear();
 
+	// Suppression de la liste des sommets
 	for (CSommet* iIterateurSommet : vGROsommets) {
 		delete iIterateurSommet;
 	}
@@ -46,7 +50,7 @@ vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(string sID)
 void CGrapheOriente::GRO_AjouterSommet(CSommet* pSOMsommet) 
 {
 		vGROsommets.push_back(pSOMsommet);
-		cout << endl << "Ajout dans le vecteur vGROsommets effectue !!!" << endl << endl;
+		cout << endl << "Ajout dans le vecteur vGROsommets effectué !!!" << endl << endl;
 }
 
 void CGrapheOriente::GRO_AjouterArc(string sDepart,string sArrive) 
