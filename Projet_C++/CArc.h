@@ -30,7 +30,7 @@ public:
         * Entree : un CArc par référence
         * Préconditions : rien
         * Sortie : rien
-        * Postconditions : rien
+        * Postconditions : les sommets (string) de arcParam sont copiés dans l'objet
         *******************************************************************************************************************
         */
         CArc(CArc& arcParam);
@@ -41,7 +41,7 @@ public:
         * Entree : deux strings qui sont les noms des sommets d'arrivée et de départ
         * Préconditions : il n'existe pas déjà un arc avec les mêmes départ et arrivée
         * Sortie : rien
-        * Postconditions : rien
+        * Postconditions : l'objet prend les paramètres pour sommets de départ et d'arrivée
         *******************************************************************************************************************
         */
         CArc(string sSommetDepart, string sSommetArrivee) { sARC_SommetDepart = sSommetDepart; sARC_SommetArrive = sSommetArrivee; };
@@ -51,47 +51,48 @@ public:
 
     #pragma region ACCESSEURS
         /******************************************************************************************************************
-        * ARC_GetSommetSortant()
+        * ARC_GetSommetDepart()
         * *****************************************************************************************************************
         * Entree : rien
         * Préconditions : rien
-        * Sortie : CSommet*, pointeur vers le sommet de départ de l'arc
+        * Sortie : le nom du sommet de départ de l'arc
         * Postconditions : rien
         *******************************************************************************************************************
         */
-            string ARC_GetSommetDepart() const { return sARC_SommetDepart; }
-            /******************************************************************************************************************
-           * ARC_GetSommetEntrant()
-           * *****************************************************************************************************************
-           * Entree : rien
-           * Préconditions : rien
-           * Sortie : CSommet*, pointeur vers le sommet d'Entrant de l'arc
-           * Postconditions : rien
-           *******************************************************************************************************************
-           */
+        string ARC_GetSommetDepart() const { return sARC_SommetDepart; }
 
-            string ARC_GetSommetArrive() const { return sARC_SommetArrive; }
-            /******************************************************************************************************************
-            * ARC_SetSommetSortant(CSommet* pNewSommet)
-            * *****************************************************************************************************************
-            * Entree : un CSommet* qui va devenir le sommet de départ de l'arc
-            * Préconditions : rien
-            * Sortie : rien
-            * Postconditions : rien
-            *******************************************************************************************************************
-            */
-            void ARC_SetSommetDepart(string sNewSommet) { sARC_SommetDepart = sNewSommet; }
+        /******************************************************************************************************************
+        * ARC_GetSommetArrivee()
+        * *****************************************************************************************************************
+        * Entree : rien
+        * Préconditions : rien
+        * Sortie : le nom du sommet d'arrivée de l'arc
+        * Postconditions : rien
+        *******************************************************************************************************************
+        */
+        string ARC_GetSommetArrive() const { return sARC_SommetArrive; }
 
-            /******************************************************************************************************************
-            * ARC_SetSommetEntrant(CSommet* pNewSommet)
-            * *****************************************************************************************************************
-            * Entree : un CSommet* qui va devenir le sommet d'Entrant de l'arc
-            * Préconditions : rien
-            * Sortie : rien
-            * Postconditions : rien
-            *******************************************************************************************************************
-            */
-            void ARC_SetSommetArrive(string sNewSommet) { sARC_SommetArrive = sNewSommet; }
+        /******************************************************************************************************************
+        * ARC_SetSommetDepart(string sNewSommet)
+        * *****************************************************************************************************************
+        * Entree : une string qui va devenir le sommet de départ de l'arc
+        * Préconditions : le sommet existe
+        * Sortie : rien
+        * Postconditions : le sommet de départ de l'arc est maintenant sNewSommet
+        *******************************************************************************************************************
+        */
+        void ARC_SetSommetDepart(string sNewSommet) { sARC_SommetDepart = sNewSommet; }
+
+        /******************************************************************************************************************
+        * ARC_SetSommetArrivee(string sNewSommet)
+        * *****************************************************************************************************************
+        * Entree : une string qui va devenir le sommet entrant de l'arc
+        * Préconditions : le sommet existe
+        * Sortie : rien
+        * Postconditions : le sommet d'arrivée de l'arc est maintenant sNewSommet
+        *******************************************************************************************************************
+        */
+        void ARC_SetSommetArrive(string sNewSommet) { sARC_SommetArrive = sNewSommet; }
     #pragma endregion
    
 };

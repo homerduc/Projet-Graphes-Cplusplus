@@ -4,7 +4,7 @@
 
 CSommet::CSommet()
 {
-	sSOMid = "Bonjour";
+	sSOMid = "";
 }
 
 CSommet::CSommet(const CSommet& SOMsommet)
@@ -97,5 +97,3 @@ unsigned int  CSommet::SOM_RechercheEntrant(string sDepart, string sArrive)
 			return itRecherche;
 	}
 }
-
-

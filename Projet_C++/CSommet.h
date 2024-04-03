@@ -24,17 +24,17 @@ public:
 		*	Entree : rien 
 		*	Préconditions : rien
 		*	Sortie : rien
-		*	Postconditions : objet initialiser avec le nom est mis par défaut à "" les vecteur sont vide de bases
+		*	Postconditions : le nom est mis par défaut à "" et les vecteurs sont vides de base
 		******************************************************************************************************************/
 		CSommet();
 
 		/******************************************************************************************************************
-		*   	CSommet(const string& sID, const vector<CArc>& vEntrants, const vector<CArc>& vSortants)
+		*   CSommet(const string& sID, const vector<CArc>& vEntrants, const vector<CArc>& vSortants)
 		* *****************************************************************************************************************
-		*	Entree :reférence d'un string sID, reférence d'un vector d'arc d'Entrants, reférence d'un vector d'arcs de Sortants
+		*	Entree :reférence d'un string sID, reférence d'un vector d'arcs vEntrants, reférence d'un vector d'arcs vSortants
 		*	Préconditions : rien 
 		*	Sortie : rien
-		*	Postconditions : objet initialiser avec les paramètres 
+		*	Postconditions : objet initialisé avec les paramètres recopiés
 		******************************************************************************************************************/
 		CSommet(const string& sID, const vector<CArc*>& vEntrants, const vector<CArc*>& vSortants) { sSOMid = sID; vSOM_ArcEntrants = vEntrants; vSOM_ArcSortants = vSortants; }
 	
@@ -85,7 +85,7 @@ public:
 		* *****************************************************************************************************************
 		*	Entree : rien
 		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : un vecteur des arc de Sortant
+		*	Sortie : un vecteur des arc sortants
 		*	Postconditions : rien
 		******************************************************************************************************************/
 		vector<CArc*> const& SOM_GetSortants()const { return vSOM_ArcSortants; }
@@ -127,31 +127,38 @@ public:
 
 	#pragma region AJOUTER
 		/******************************************************************************************************************
-		*   SOM_Ajouter_arc_arricee(CArc* pARCarc)
+		*   SOM_Ajouter_Entrants(CArc* pARCarc)
 		* *****************************************************************************************************************
-		*	Entree : pointeur sur un objet arc
+		*	Entree : pointeur sur un objet CArc
 		*	Préconditions : appel sur un objet existant de la classe
 		*	Sortie : rien
-		*	Postconditions : Ajoute le l'arc en paramètre à la liste des arc d'arrive du sommet seulement
-		*					 si le nom du sommet d'arrive de l'arc est le nom du sommet actuel 
+		*	Postconditions : Ajoute l'arc en paramètre à la liste des arc d'arrivée du sommet seulement
+		*					 si le nom du sommet d'arrivée de l'arc est le nom du sommet actuel 
 		******************************************************************************************************************/
 		void SOM_Ajouter_Entrants(CArc* pARCarc);
 
 		/******************************************************************************************************************
 		*   SOM_Ajouter_arc_Sortant(CArc* pARCarc)
 		* *****************************************************************************************************************
-		*	Entree : pointeur sur un objet arc
+		*	Entree : pointeur sur un objet CArc
 		*	Préconditions : appel sur un objet existant de la classe
 		*	Sortie : rien
-		*	Postconditions : Ajoute le l'arc en paramètre à la liste des arc de départ du sommet seulement
+		*	Postconditions : Ajoute l'arc en paramètre à la liste des arcs de départ du sommet seulement
 		*					 si le nom du sommet de départ de l'arc est le nom du sommet actuel 
 		******************************************************************************************************************/
 		void SOM_Ajouter_Sortants(CArc* pARCarc);
 	
 	#pragma endregion
-	
-		CArc* SOM_RechercheEntrant(string sDepart, string SArrive);
-
+		
+		/******************************************************************************************************************
+		*   SOM_Ajouter_arc_Sortant(CArc* pARCarc)
+		* *****************************************************************************************************************
+		*	Entree : 
+		*	Préconditions : 
+		*	Sortie : 
+		*	Postconditions : 
+		******************************************************************************************************************/
+		vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart, string SArrive);
 };
 
 
