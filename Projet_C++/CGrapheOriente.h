@@ -3,8 +3,8 @@
 
 #include "CArc.h"
 #include "CSommet.h"
-
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 class CGrapheOriente

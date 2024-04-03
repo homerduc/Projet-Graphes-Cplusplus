@@ -89,3 +89,13 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 		cout << " ERROR : Cet arc ne sort pas de <" << SOM_GetID() << "> donc ajout dans arc_sortant impossible" << endl << endl;
 	}
 }
+
+unsigned int  CSommet::SOM_RechercheEntrant(string sDepart, string sArrive)
+{
+	for ()) {
+		if (itRecherche->ARC_GetSommetArrive() == sDepart && itRecherche->ARC_GetSommetDepart() == sArrive)
+			return itRecherche;
+	}
+}
+
+

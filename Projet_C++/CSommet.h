@@ -123,15 +123,6 @@ public:
 		******************************************************************************************************************/
 		void SOM_Afficher_Sortants();
 	
-		/******************************************************************************************************************
-		*   operator+(CArc* pArc)
-		* *****************************************************************************************************************
-		*	Entree : pointeur sur un objet arc
-		*	Préconditions : appel sur un objet existant de la classe et un ARC
-		*	Sortie : rien
-		*	Postconditions : simplification d'ajout dans les listes 
-		******************************************************************************************************************/
-		void operator+(CArc* pArc);
 	#pragma endregion
 
 	#pragma region AJOUTER
@@ -159,6 +150,8 @@ public:
 	
 	#pragma endregion
 	
+		CArc* SOM_RechercheEntrant(string sDepart, string SArrive);
+
 };
 
 
