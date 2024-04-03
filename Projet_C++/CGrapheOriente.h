@@ -16,10 +16,10 @@ public:
 
 	#pragma region CONSTRUCTEURS & DESTRUCTEUR
 
-		CGrapheOriente() {}; // jsp quoi mettre dedans 
-		CGrapheOriente(vector<CArc*> vArcs, vector<CSommet*> vSommets) { vGROarcs = vArcs; vGROsommets = vSommets; }
-		CGrapheOriente(const CGrapheOriente& GROgraphe); // pas fait 
-		//~CGrapheOriente();
+	CGrapheOriente() {}
+	CGrapheOriente(vector<CArc*> vArcs, vector<CSommet*> vSommets) { vGROarcs = vArcs; vGROsommets = vSommets; }
+	CGrapheOriente(const CGrapheOriente& GROgraphe); // pas fait 
+	~CGrapheOriente();
 
 	#pragma endregion
 
