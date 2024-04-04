@@ -55,8 +55,8 @@ void CGrapheOriente::GRO_AjouterSommet(string sID)
 {
 	vGROsommets.push_back(new CSommet(sID));
 	cout << "+------------------------------------------------------------+" << endl;
-	cout << "| " << CColor::COL_turquoise() << " Cr\202ation du sommet <" << sID << ">" << CColor::COL_Reset() << endl;
-	cout << "| " << CColor::COL_turquoise() << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << CColor::COL_Reset() << endl;
+	cout << "| " << CColor::COL_Creation() << " Cr\202ation du sommet <" << sID << ">" << CColor::COL_Reset() << endl;
+	cout << "| " << CColor::COL_Ajout() << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << CColor::COL_Reset() << endl;
 	cout << "+-------------------------------------------------------------+" << endl << endl;
 
 
@@ -69,13 +69,29 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 
 	if (itRechercheDepart != vGROsommets.end() && itRechercheArrive != vGROsommets.end())
 	{
-		cout << "\033[31m cr\202ation de l arc : <" << sDepart << ">  -->  <" << sArrive << ">\033[0m " << endl << endl;
+		cout << "+----------------------------------------------------------------+" << endl;
+		cout << "| "<<CColor::COL_Creation()<<" cr\202ation de l arc : <" << sDepart << "> ---> <" << sArrive << "> "<<CColor::COL_Reset()<< endl;
 		CArc* pNEWarc = new CArc(sDepart, sArrive);
 		vGROarcs.push_back(pNEWarc);
 		(*itRechercheDepart)->SOM_Ajouter_Sortants(pNEWarc);
 		(*itRechercheArrive)->SOM_Ajouter_Entrants(pNEWarc);
+		cout <<CColor::COL_Reset()<< "+----------------------------------------------------------------+" << endl << endl;
 		return;
 	}
+	else if(itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end())
+	{
+		cout << CColor::COL_Error() << " ERROR : le sommet <"<<sDepart<<"> n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " <<CColor::COL_Reset() << endl<< endl;
+	}
+	else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end())
+	{
+		cout << CColor::COL_Error() << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << CColor::COL_Reset() << endl<< endl;
+	}
+	else {
+		cout << CColor::COL_Error() << " ERROR : les sommets <" << sDepart << "> et <"<<sArrive<<" n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << CColor::COL_Reset() << endl<< endl;
+
+	}
+	
+
 }
 
 void CGrapheOriente::GRO_SupprimerSommet(string sID)
