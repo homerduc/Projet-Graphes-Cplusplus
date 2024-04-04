@@ -24,7 +24,12 @@ int main()
     sommet1.Affichage_du_Sommet();*/
 
     CGrapheOriente Graphe;
-    Graphe.GRO_AjouterSommet("Bonjour");
+
+    Graphe.GRO_AjouterSommet("lilian");
+    Graphe.GRO_AjouterSommet("ghesquiere");
+
+    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
+    Graphe.GRO_AjouterArc("null", "ghesquiere");
     Graphe.Afficher_Graph();
 
 }

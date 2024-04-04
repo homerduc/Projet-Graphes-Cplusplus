@@ -44,7 +44,10 @@ public:
         * Postconditions : l'objet prend les paramètres pour sommets de départ et d'arrivée
         *******************************************************************************************************************
         */
-        CArc(string sSommetDepart, string sSommetArrivee) { sARC_SommetDepart = sSommetDepart; sARC_SommetArrive = sSommetArrivee; };
+        CArc(string sSommetDepart, string sSommetArrivee) { 
+            sARC_SommetDepart = sSommetDepart; 
+            sARC_SommetArrive = sSommetArrivee; 
+        };
 
 
     #pragma endregion

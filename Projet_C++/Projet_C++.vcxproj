@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
+    <ClCompile Include="CColor.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="Projet_C++.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CArc.h" />
+    <ClInclude Include="CColor.h" />
     <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CSommet.h" />
   </ItemGroup>

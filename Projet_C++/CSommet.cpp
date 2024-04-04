@@ -49,14 +49,14 @@ void CSommet::SOM_Afficher_Entrants()
 	cout << " Les arcs Entrants de <" << SOM_GetID() << "> sont : " << endl;
 	cout << "   +----------------------------------------------------------------------------------------+" << endl;
 	for (unsigned int uiPosition = 0; uiPosition < vSOM_ArcEntrants.size(); uiPosition++) {
-		cout << "   | l'arc " << uiPosition << " : provenant du sommet <" << vSOM_ArcEntrants[uiPosition]->ARC_GetSommetDepart()<< "> ..." << endl;
+		cout << "   | l'arc " << uiPosition << " : provenant du sommet <" << vSOM_ArcEntrants[uiPosition]->ARC_GetSommetDepart() << "> ..." << endl;
 	}
-	cout<< "   +----------------------------------------------------------------------------------------+" << endl << endl;
+	cout << "   +----------------------------------------------------------------------------------------+" << endl << endl;
 }
 
 void  CSommet::SOM_Afficher_Sortants()
 {
-	cout << " Les arcs Sortants de <"<<SOM_GetID()<<"> sont : " << endl;
+	cout << " Les arcs Sortants de <" << SOM_GetID() << "> sont : " << endl;
 	cout << "   +----------------------------------------------------------------------------------------+" << endl;
 	for (unsigned int uiPosition = 0; uiPosition < vSOM_ArcSortants.size(); uiPosition++) {
 		cout << "   | l'arc " << uiPosition << " : allant vers le sommet <" << vSOM_ArcSortants[uiPosition]->ARC_GetSommetArrive() << "> ... " << endl;
@@ -103,7 +103,7 @@ vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sDepart)
 vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
 {
 	vector<CArc*>::iterator it;
-	CArc* parctemp = new CArc(sSOMid,sArrive);
+	CArc* parctemp = new CArc(sSOMid, sArrive);
 	it = find(vSOM_ArcEntrants.begin(), vSOM_ArcEntrants.end(), parctemp);
 	if (it != vSOM_ArcEntrants.end())
 		return it;

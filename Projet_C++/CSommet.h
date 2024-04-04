@@ -38,7 +38,9 @@ public:
 		******************************************************************************************************************/
 		CSommet(const string& sID, const vector<CArc*>& vEntrants, const vector<CArc*>& vSortants) { sSOMid = sID; vSOM_ArcEntrants = vEntrants; vSOM_ArcSortants = vSortants; }
 
-		CSommet(const string& sID) { sSOMid = sID; }
+		CSommet(const string& sID) {
+			sSOMid = sID; 
+		}
 	
 		/******************************************************************************************************************
 		* 	CSommet(const CSommet& SOMsommet)
@@ -163,8 +165,9 @@ public:
 				void SOM_SupprimerArc(string sDepart, string sArrive);
 	#pragma endregion
 
-};
+	
 
+};
 
 
 #endif // !CSOMMET_H
