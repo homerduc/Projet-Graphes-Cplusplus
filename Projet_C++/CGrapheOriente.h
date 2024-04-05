@@ -5,7 +5,7 @@
 #include "CSommet.h"
 #include <iostream>
 #include <algorithm>
-#include "CColor.h"
+#include "CAffichage.h"
 using namespace std;
 
 

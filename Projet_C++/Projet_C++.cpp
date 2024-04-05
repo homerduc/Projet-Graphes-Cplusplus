@@ -7,30 +7,21 @@ using namespace std;
 
 int main()
 {
-    /*vector<CArc*> arc_arrive;
-    vector<CArc*> arc_Sortant;
+    //CGrapheOriente Graphe;
 
-    CSommet sommet2("12", arc_arrive, arc_Sortant);
-    CSommet sommet1("11",arc_arrive,arc_Sortant);
+    ////Graphe.GRO_AjouterSommet(sId);
+    //Graphe.GRO_AjouterSommet("lilian");
+    //Graphe.GRO_AjouterSommet("ghesquiere");
 
-    CArc arc("11", "12");  // sortant de sommet 1 et allant vers sommet 2
-    //arc.affichage_arc();
-    CArc arc2("12", "11"); // sortant de sommet 2 et allant vers sommet 1 
-    //arc2.affichage_arc();
-   
-    sommet1.SOM_Ajouter_Sortants(&arc);
-    sommet1.SOM_Ajouter_Entrants(&arc2);
+    ////Graphe.GRO_AjouterArc(sDepart, sArrive);
+    //Graphe.GRO_AjouterArc("lilian", "ghesquiere");
+    //Graphe.Afficher_Graph();
+    //Graphe.GRO_SupprimerArc("lilian", "ghesquiere");
+    //Graphe.Afficher_Graph();
 
-    sommet1.Affichage_du_Sommet();*/
-
-    CGrapheOriente Graphe;
-
-    Graphe.GRO_AjouterSommet("lilian");
-    Graphe.GRO_AjouterSommet("ghesquiere");
-
-    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("null", "ghesquiere");
-    Graphe.Afficher_Graph();
-
+    CAffichage::AFC_AffichageAjout("bonzerzerzerzjour");
+    CAffichage::AFC_AffichageAjout("hi");
+    CAffichage::AFC_AffichageAjout("tamere");
+    
 }
 
