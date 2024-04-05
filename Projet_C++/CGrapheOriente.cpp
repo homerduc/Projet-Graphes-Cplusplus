@@ -1,5 +1,5 @@
 #include "CGrapheOriente.h"
-
+#include "CAffichage.h"
 
 CGrapheOriente::CGrapheOriente(const CGrapheOriente& GROgraphe)
 {
@@ -53,8 +53,14 @@ vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(string sID)
 
 void CGrapheOriente::GRO_AjouterSommet(string sID)
 {
-	vGROsommets.push_back(new CSommet(sID));
-	CAffichage::AFC_AffichageAjout(sID);
+	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sID);
+	if (itRechercheDepart==vGROsommets.end()) {
+		vGROsommets.push_back(new CSommet(sID));
+		CAffichage::AFC_AffichageAjoutSommet(sID);
+	}
+	else {
+		CAffichage::AFC_Erreur_ajoutSommet(sID);
+	}
 }
 
 void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
@@ -64,26 +70,24 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 
 	if (itRechercheDepart != vGROsommets.end() && itRechercheArrive != vGROsommets.end())
 	{
-		cout << "+----------------------------------------------------------------+" << endl;
-		cout << "| "<<CAffichage::COL_Creation()<<" cr\202ation de l arc : <" << sDepart << "> ---> <" << sArrive << "> "<<CAffichage::COL_Reset()<< endl;
 		CArc* pNEWarc = new CArc(sDepart, sArrive);
 		vGROarcs.push_back(pNEWarc);
 		(*itRechercheDepart)->SOM_Ajouter_Sortants(pNEWarc);
 		(*itRechercheArrive)->SOM_Ajouter_Entrants(pNEWarc);
-		cout <<CAffichage::COL_Reset()<< "+----------------------------------------------------------------+" << endl << endl;
+
+		CAffichage::AFC_AffichageAjoutArc(sDepart, sArrive);
 		return;
 	}
 	else if(itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end())
 	{
-		cout << CAffichage::COL_Error() << " ERROR : le sommet <"<<sDepart<<"> n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " <<CAffichage::COL_Reset() << endl<< endl;
+		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_inconnu);
 	}
 	else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end())
 	{
-		cout << CAffichage::COL_Error() << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << CAffichage::COL_Reset() << endl<< endl;
+		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, ARRIVE_inconnu);
 	}
 	else {
-		cout << CAffichage::COL_Error() << " ERROR : les sommets <" << sDepart << "> et <"<<sArrive<<" n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << CAffichage::COL_Reset() << endl<< endl;
-
+		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_ARRIVE_inconnu);
 	}
 	
 
@@ -119,13 +123,14 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 	}
 	else
 	{
-		cout << CAffichage::COL_Error() << "L arc reliant <" << sDepart << "> et <" << sArrive << " n existe pas, impossible de le supprimer" << endl<< endl;
+		cout << ERREUR_couleur << "ERROR : L arc reliant <" << sDepart << "> et <" << sArrive << " n existe pas, impossible de le supprimer" <<RESAURER_couleur<< endl<< endl;
 	}
 }
 
 void CGrapheOriente::Afficher_Graph()
 {
-	for (vector<CSommet*>::iterator itSommets = vGROsommets.begin(); itSommets < vGROsommets.end(); itSommets++) {
+	CAffichage::AFC_Afficher_Graph(this);
+	/*for (vector<CSommet*>::iterator itSommets = vGROsommets.begin(); itSommets < vGROsommets.end(); itSommets++) {
 		(*itSommets)->Affichage_du_Sommet();
-	}
+	}*/
 }

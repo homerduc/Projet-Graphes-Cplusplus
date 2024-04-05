@@ -3,9 +3,7 @@
 
 #include "CArc.h"
 #include "CSommet.h"
-#include <iostream>
-#include <algorithm>
-#include "CAffichage.h"
+
 using namespace std;
 
 

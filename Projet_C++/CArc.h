@@ -1,7 +1,8 @@
 #ifndef CARC_H
 #define CARC_H
 #include <string>
-#include "CAffichage.h"
+#include<iostream>
+
 using namespace std;
 
 class CArc

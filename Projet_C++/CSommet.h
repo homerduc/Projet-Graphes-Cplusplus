@@ -5,6 +5,7 @@
 	#include <string>
 	#include <Vector>
 	#include "CArc.h"
+
 	using namespace std;
 
 class CSommet
@@ -96,38 +97,38 @@ public:
 
 	#pragma endregion
 
-	#pragma region AFFICHAGE
-		/******************************************************************************************************************
-		*   Affichage_du_Sommet()
-		* *****************************************************************************************************************
-		*	Entree : rien
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : rien
-		*	Postconditions : Affiche dans la console l'ensemble de l'objet sommet
-		******************************************************************************************************************/
-		void Affichage_du_Sommet();
+	//#pragma region AFFICHAGE
+	//	/******************************************************************************************************************
+	//	*   Affichage_du_Sommet()
+	//	* *****************************************************************************************************************
+	//	*	Entree : rien
+	//	*	Préconditions : appel sur un objet existant de la classe
+	//	*	Sortie : rien
+	//	*	Postconditions : Affiche dans la console l'ensemble de l'objet sommet
+	//	******************************************************************************************************************/
+	//	void Affichage_du_Sommet();
 
-		/******************************************************************************************************************
-		*   SOM_Afficher_Arrive()
-		* *****************************************************************************************************************
-		*	Entree : rien
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : rien
-		*	Postconditions : Affiche dans la console le contenu du vecteur des arcs d'arrivés
-		******************************************************************************************************************/
-		void SOM_Afficher_Entrants();
+	//	/******************************************************************************************************************
+	//	*   SOM_Afficher_Arrive()
+	//	* *****************************************************************************************************************
+	//	*	Entree : rien
+	//	*	Préconditions : appel sur un objet existant de la classe
+	//	*	Sortie : rien
+	//	*	Postconditions : Affiche dans la console le contenu du vecteur des arcs d'arrivés
+	//	******************************************************************************************************************/
+	//	void SOM_Afficher_Entrants();
 
-		/******************************************************************************************************************
-		*   SOM_Afficher_Sortant()
-		* *****************************************************************************************************************
-		*	Entree : rien
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : rien
-		*	Postconditions : Affiche dans la console le contenu du vecteur des arcs de départs
-		******************************************************************************************************************/
-		void SOM_Afficher_Sortants();
-	
-	#pragma endregion
+	//	/******************************************************************************************************************
+	//	*   SOM_Afficher_Sortant()
+	//	* *****************************************************************************************************************
+	//	*	Entree : rien
+	//	*	Préconditions : appel sur un objet existant de la classe
+	//	*	Sortie : rien
+	//	*	Postconditions : Affiche dans la console le contenu du vecteur des arcs de départs
+	//	******************************************************************************************************************/
+	//	void SOM_Afficher_Sortants();
+	//
+	//#pragma endregion
 
 	#pragma region AJOUTER
 		/******************************************************************************************************************

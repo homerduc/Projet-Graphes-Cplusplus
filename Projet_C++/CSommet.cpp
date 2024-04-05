@@ -37,7 +37,7 @@ CSommet::~CSommet()
 	vSOM_ArcSortants.clear();
 }
 
-void CSommet::Affichage_du_Sommet()
+/*void CSommet::Affichage_du_Sommet()
 {
 	cout << " <" << SOM_GetID() << "> est un sommet contenant \27" << endl;
 	SOM_Afficher_Entrants();
@@ -47,34 +47,34 @@ void CSommet::Affichage_du_Sommet()
 void CSommet::SOM_Afficher_Entrants()
 {
 	cout << "           Les arcs Entrants de <" << SOM_GetID() << "> sont : " << endl;
-	cout << CAffichage::COL_Arcs() << "           +---------------------------------------------------------+" << endl;
+	cout << ARC_couleur << "           +---------------------------------------------------------+" << endl;
 	for (unsigned int uiPosition = 0; uiPosition < vSOM_ArcEntrants.size(); uiPosition++) {
 		cout << "           | l'arc " << uiPosition << " : provenant du sommet <" << vSOM_ArcEntrants[uiPosition]->ARC_GetSommetDepart() << "> ..." << endl;
 	}
-	cout << "           +---------------------------------------------------------+" << CAffichage::COL_Reset() << endl;
+	cout << "           +---------------------------------------------------------+" << RESAURER_couleur << endl;
 }
 
 void  CSommet::SOM_Afficher_Sortants()
 {
 	cout << "           Les arcs Sortants de <" << SOM_GetID() << "> sont : " << endl;
-	cout << CAffichage::COL_Arcs() << "           +---------------------------------------------------------+" << endl;
+	cout << ARC_couleur << "           +---------------------------------------------------------+" << endl;
 	for (unsigned int uiPosition = 0; uiPosition < vSOM_ArcSortants.size(); uiPosition++) {
 		cout << "           | l'arc " << uiPosition << " : allant vers le sommet <" << vSOM_ArcSortants[uiPosition]->ARC_GetSommetArrive() << "> ... " << endl;
 	}
-	cout << "           +---------------------------------------------------------+" << CAffichage::COL_Reset() << endl<< endl;
+	cout << "           +---------------------------------------------------------+" << RESAURER_couleur << endl<< endl;
 
-}
+}*/
 
 void CSommet::SOM_Ajouter_Entrants(CArc* pARCarc)
 {
 	if (pARCarc->ARC_GetSommetArrive() == SOM_GetID())
 	{
 		vSOM_ArcEntrants.push_back(pARCarc);
-		cout << "| " << CAffichage::COL_Ajout() << " Ajout dans le vecteur arcs Entrant de " << SOM_GetID() << CAffichage::COL_Reset() << endl;
+		//cout << "| " <<AJOUT_couleur << " Ajout dans le vecteur arcs Entrant de " << SOM_GetID() << RESAURER_couleur << endl;
 	}
 	else
 	{
-		cout << CAffichage::COL_Error() << " ERROR : Cet arc n'arrive pas jusque <" << SOM_GetID() << "> donc ajout dans arc entrant impossible" << CAffichage::COL_Reset() << endl;
+		cout << " ERROR : Cet arc n'arrive pas jusque <" << SOM_GetID() << "> donc ajout dans arc entrant impossible" << endl;
 	}
 }
 
@@ -83,10 +83,10 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 	if (pARCarc->ARC_GetSommetDepart() == SOM_GetID())
 	{
 		vSOM_ArcSortants.push_back(pARCarc);
-		cout << "| " << CAffichage::COL_Ajout() << " Ajout dans le vecteur arcs sortants de " << SOM_GetID() << CAffichage::COL_Reset() << endl;
+		//cout << "| " <<AJOUT_couleur << " Ajout dans le vecteur arcs sortants de " << SOM_GetID() << RESAURER_couleur << endl;
 	}
 	else {
-		cout << CAffichage::COL_Error() << " ERROR : Cet arc ne sort pas de <" << SOM_GetID() << "> donc ajout dans arc_sortant impossible" << CAffichage::COL_Reset() << endl;
+		cout << " ERROR : Cet arc ne sort pas de <" << SOM_GetID() << "> donc ajout dans arc_sortant impossible" << endl;
 	}
 }
 
