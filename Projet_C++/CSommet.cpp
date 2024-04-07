@@ -112,6 +112,7 @@ void CSommet::SOM_SupprimerArc(string sDepart, string sArrive)
 {
 	vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sDepart);
 	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
+
 	if (itSupprimerArcEntrant != vSOM_ArcEntrants.end())
 	{
 		//delete (*itSupprimerArcEntrant);

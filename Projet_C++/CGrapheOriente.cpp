@@ -102,31 +102,12 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 
 			sDepart = vGROarcs[uiPosition]->ARC_GetSommetDepart();
 			sArrive = vGROarcs[uiPosition]->ARC_GetSommetArrive();
-			GRO_SupprimerArc(sDepart, sArrive);
+
+			GRO_SupprimerArc(sDepart,sArrive);
 		}
 		CAffichage::AFC_AffichageSupprSommet(sID);
 		vGROsommets.erase(itSupprimerSommet);
-		
 	}
-
-	/*for (vector<CArc*>::iterator itRecherche = vGROarcs.end() - 1; itRecherche != vGROarcs.begin(); itRecherche--) {
-
-		if (itRecherche != vGROarcs.begin())
-		{
-			if ((*itRecherche)->ARC_GetSommetArrive() == sID )
-			{
-				CAffichage::AFC_AffichageSuppr((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
-				GRO_SupprimerArc((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
-				vGROsommets.erase(itSupprimerSommet);
-			}
-			if ((*itRecherche)->ARC_GetSommetDepart() == sID) {
-				CAffichage::AFC_AffichageSuppr((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
-				GRO_SupprimerArc((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
-				vGROsommets.erase(itSupprimerSommet);
-			}
-		}
-
-	}*/
 }
 
 void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)

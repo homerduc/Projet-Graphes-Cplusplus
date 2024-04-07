@@ -43,8 +43,13 @@ int main()
 
     //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
     Graphe.GRO_AjouterArc("lilian", "ghesquiere");
+    Graphe.GRO_AjouterArc("lilian", "mathieu");
+
     Graphe.GRO_AjouterArc("ghesquiere", "lilian");
+    Graphe.GRO_AjouterArc("ghesquiere", "mathieu");
+
     Graphe.GRO_AjouterArc("mathieu", "lilian");
+    Graphe.GRO_AjouterArc("mathieu", "ghesquiere");
 
     Graphe.Afficher_Graph();
 
