@@ -54,7 +54,7 @@ vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(string sID)
 void CGrapheOriente::GRO_AjouterSommet(string sID)
 {
 	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sID);
-	if (itRechercheDepart==vGROsommets.end()) {
+	if (itRechercheDepart == vGROsommets.end()) {
 		vGROsommets.push_back(new CSommet(sID));
 		CAffichage::AFC_AffichageAjoutSommet(sID);
 	}
@@ -78,7 +78,7 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 		CAffichage::AFC_AffichageAjoutArc(sDepart, sArrive);
 		return;
 	}
-	else if(itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end())
+	else if (itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end())
 	{
 		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_inconnu);
 	}
@@ -89,21 +89,50 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 	else {
 		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_ARRIVE_inconnu);
 	}
-	
+
 
 }
 
 void CGrapheOriente::GRO_SupprimerSommet(string sID)
 {
 	vector<CSommet*>::iterator itSupprimerSommet = GRO_RechercheSommets(sID);
+	if (itSupprimerSommet != vGROsommets.end()) {
+		for (unsigned int uiPosition = 0; uiPosition < vGROarcs.size(); uiPosition++) {
 
-	for (vector<CArc*>::iterator itRecherche = vGROarcs.end(); itRecherche != vGROarcs.begin(); itRecherche--) {
-		if ((*itRecherche)->ARC_GetSommetArrive() == sID || (*itRecherche)->ARC_GetSommetDepart() == sID)
-		{
-			GRO_SupprimerArc((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
+			if (vGROarcs[uiPosition]->ARC_GetSommetDepart() == sID)
+			{
+				GRO_SupprimerArc(vGROarcs[uiPosition]->ARC_GetSommetDepart(), vGROarcs[uiPosition]->ARC_GetSommetArrive());
+				uiPosition = 0;
+			}
+			else if (vGROarcs[uiPosition]->ARC_GetSommetArrive() == sID) 
+			{
+				GRO_SupprimerArc(vGROarcs[uiPosition]->ARC_GetSommetArrive(),vGROarcs[uiPosition]->ARC_GetSommetDepart());
+				uiPosition = 0;
+			}
 		}
+		CAffichage::AFC_AffichageSupprSommet(sID);
+		vGROsommets.erase(itSupprimerSommet);
+		
 	}
-	vGROsommets.erase(itSupprimerSommet);
+
+	/*for (vector<CArc*>::iterator itRecherche = vGROarcs.end() - 1; itRecherche != vGROarcs.begin(); itRecherche--) {
+
+		if (itRecherche != vGROarcs.begin())
+		{
+			if ((*itRecherche)->ARC_GetSommetArrive() == sID )
+			{
+				CAffichage::AFC_AffichageSuppr((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
+				GRO_SupprimerArc((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
+				vGROsommets.erase(itSupprimerSommet);
+			}
+			if ((*itRecherche)->ARC_GetSommetDepart() == sID) {
+				CAffichage::AFC_AffichageSuppr((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
+				GRO_SupprimerArc((*itRecherche)->ARC_GetSommetDepart(), (*itRecherche)->ARC_GetSommetArrive());
+				vGROsommets.erase(itSupprimerSommet);
+			}
+		}
+
+	}*/
 }
 
 void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
@@ -114,16 +143,16 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 		vector<CSommet*>::iterator itRechercheSommeDepart = GRO_RechercheSommets(sDepart);
 		vector<CSommet*>::iterator itRechercheSommeArrive = GRO_RechercheSommets(sArrive);
 
-		(*itRechercheSommeDepart)->SOM_SupprimerArc(sDepart,sArrive);
-		(*itRechercheSommeArrive)->SOM_SupprimerArc(sDepart,sArrive);
+		(*itRechercheSommeDepart)->SOM_SupprimerArc(sDepart, sArrive);
+		(*itRechercheSommeArrive)->SOM_SupprimerArc(sDepart, sArrive);
 
-		delete (*itSupprimerArc);
+		//delete (*itSupprimerArc);
 		vGROarcs.erase(itSupprimerArc);
-		CAffichage::AFC_AffichageSuppr(sDepart, sArrive);
+		CAffichage::AFC_AffichageSupprArc(sDepart, sArrive);
 	}
 	else
 	{
-		cout << ERREUR_couleur << "ERROR : L arc reliant <" << sDepart << "> et <" << sArrive << " n existe pas, impossible de le supprimer" <<RESAURER_couleur<< endl<< endl;
+		cout << ERREUR_couleur << "ERROR : L arc reliant <" << sDepart << "> et <" << sArrive << " n existe pas, impossible de le supprimer" << RESAURER_couleur << endl << endl;
 	}
 }
 

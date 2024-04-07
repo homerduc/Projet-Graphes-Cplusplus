@@ -90,19 +90,19 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 	}
 }
 
-vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sArrive)
+vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sDepart)
 {
 	for (vector<CArc*>::iterator itEntrant = vSOM_ArcEntrants.begin(); itEntrant != vSOM_ArcEntrants.end(); itEntrant++) {
-		if ((*itEntrant)->ARC_GetSommetArrive() == SOM_GetID())
+		if ((*itEntrant)->ARC_GetSommetArrive() == SOM_GetID() && (*itEntrant)->ARC_GetSommetDepart() == sDepart)
 			return itEntrant;
 	}
 	return vSOM_ArcEntrants.end();
 }
 
-vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sDepart)
+vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
 {
 	for (vector<CArc*>::iterator itSortant = vSOM_ArcSortants.begin(); itSortant != vSOM_ArcSortants.end(); itSortant++) {
-		if ((*itSortant)->ARC_GetSommetDepart() == SOM_GetID())
+		if ((*itSortant)->ARC_GetSommetDepart() == SOM_GetID() && (*itSortant)->ARC_GetSommetArrive()== sArrive)
 			return itSortant;
 	}
 	return vSOM_ArcSortants.end();
@@ -110,14 +110,14 @@ vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sDepart)
 
 void CSommet::SOM_SupprimerArc(string sDepart, string sArrive)
 {
-	vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sArrive);
-	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sDepart);
+	vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sDepart);
+	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
 	if (itSupprimerArcEntrant != vSOM_ArcEntrants.end())
 	{
 		//delete (*itSupprimerArcEntrant);
 		vSOM_ArcEntrants.erase(itSupprimerArcEntrant);
 	}
-	if (itSupprimerArcSortantant != vSOM_ArcSortants.end())
+	if (itSupprimerArcSortantant != vSOM_ArcSortants.end() )
 	{
 		//delete (*itSupprimerArcSortantant);
 		vSOM_ArcSortants.erase(itSupprimerArcSortantant);

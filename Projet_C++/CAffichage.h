@@ -8,7 +8,8 @@
 
 	#pragma region TAILLES AFFICHAGE
 		#define TAILLE_CREATION_AJOUT 41
-		#define TAILLE_SUPPR 32  
+		#define TAILLE_SUPPR_ARC 32  
+		#define TAILLE_SUPPR_SOMMET 26
 		#define TAILLE_AFFICHA_GEGRAPH 38  
 		#define TAILLE_Encadre_arcs "latailleestde16 "  
 
@@ -40,7 +41,9 @@ class CAffichage
 {
 public:
 
-	static void AFC_AffichageSuppr(string sDepart, string sArrive);
+	static void AFC_AffichageSupprArc(string sDepart, string sArrive);
+	static void AFC_AffichageSupprSommet(string sID);
+
 	static void AFC_AffichageAjoutSommet(string sID);
 	static void AFC_AffichageAjoutArc(string sDepart,string sArrive);
 	static void AFC_Affichage_Sommets(CSommet* SOMsommet);

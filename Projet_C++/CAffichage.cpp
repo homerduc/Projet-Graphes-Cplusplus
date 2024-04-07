@@ -1,11 +1,18 @@
 ﻿#include "CAffichage.h"
 #include "CGrapheOriente.h"
 
-void CAffichage::AFC_AffichageSuppr(string sDepart, string sArrive)
+void CAffichage::AFC_AffichageSupprArc(string sDepart, string sArrive)
 {
-	cout << "+"<<CAffichage::AFC_Calcul_tirets(sDepart+sArrive,'-',TAILLE_SUPPR)<<"+" << endl;
+	cout << "+"<<CAffichage::AFC_Calcul_tirets(sDepart+sArrive,'-',TAILLE_SUPPR_ARC)<<"+" << endl;
 	cout << "| " << ERREUR_couleur << " Suppression de l arc <" << sDepart << "> --> <" << sArrive << ">" << RESAURER_couleur <<CAffichage::AFC_Calcul_vide_Ajout(sDepart+sArrive,' ') <<"|" << endl;
-	cout << "+" << CAffichage::AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR) << "+" << endl<< endl;
+	cout << "+" << CAffichage::AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR_ARC) << "+" << endl<< endl;
+}
+
+void CAffichage::AFC_AffichageSupprSommet(string sID)
+{
+	cout << "+" << CAffichage::AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET) << "+" << endl;
+	cout << "| " << ERREUR_couleur << " Suppression du sommet <" <<sID<<">" << RESAURER_couleur << CAffichage::AFC_Calcul_vide_Ajout(sID, ' ') << "|" << endl;
+	cout << "+" << CAffichage::AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET) << "+" << endl << endl;
 }
 
 void CAffichage::AFC_AffichageAjoutSommet(string sID)
@@ -23,7 +30,7 @@ void CAffichage::AFC_AffichageAjoutArc(string sDepart, string sArrive)
 	cout << "| " << CREATION_couleur << " cr\202ation arc : <" << sDepart << "> ---> <" << sArrive << "> " << RESAURER_couleur << endl;
 	cout << "| " << AJOUT_couleur << " Ajout dans le vecteur arcs sortants de " << sDepart << RESAURER_couleur << endl;
 	cout << "| " << AJOUT_couleur << " Ajout dans le vecteur arcs Entrant de " << sArrive << RESAURER_couleur << endl;
-	cout << "+" << CAffichage::AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_CREATION_AJOUT) << "+" << endl;
+	cout << "+" << CAffichage::AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_CREATION_AJOUT) << "+" << endl<< endl;
 }
 
 void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)

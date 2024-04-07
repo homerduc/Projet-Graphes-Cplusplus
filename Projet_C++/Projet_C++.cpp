@@ -3,35 +3,47 @@
 
 #include <iostream>
 #include "CGrapheOriente.h"
+#include "CAffichage.h"
 
 using namespace std;
 
 int main()
 {
-    CGrapheOriente Graphe;
+
+    #pragma region TEST SUPPRESSION
+        //CGrapheOriente Graphe;
+
+        ////  Graphe.GRO_AjouterSommet(sId);
+        //Graphe.GRO_AjouterSommet("lilian");
+        //Graphe.GRO_AjouterSommet("ghesquiere");
+        //Graphe.GRO_AjouterSommet("mathieu");
+
+        ////  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
+        //Graphe.GRO_AjouterArc("lilian", "ghesquiere");
+        //Graphe.GRO_AjouterArc("ghesquiere", "lilian");
+        //Graphe.GRO_AjouterArc("mathieu", "lilian");
+
+        ////  AFC_Affichage_Sommets(Csommet* pSOMsommet);
+        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("lilian"));
+        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("mathieu"));
+
+        ////  GRO_SupprimerArc(string sDepart, string sArrive);
+        //Graphe.GRO_SupprimerArc("mathieu", "lilian");
+
+        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("lilian"));
+        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("mathieu"));
+    #pragma endregion
+
+     CGrapheOriente Graphe;
 
     //  Graphe.GRO_AjouterSommet(sId);
     Graphe.GRO_AjouterSommet("lilian");
     Graphe.GRO_AjouterSommet("ghesquiere");
-    Graphe.GRO_AjouterSommet("lilian1");
-    Graphe.GRO_AjouterSommet("ghesquiere1");
+    Graphe.GRO_AjouterSommet("mathieu");
 
-    //  Graphe.GRO_AjouterArc(sDepart, sArrive);
+    //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
     Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("ghesquiere1", "lilian1");
-    
-    Graphe.Afficher_Graph();
-
-    Graphe.GRO_SupprimerSommet("lilian");
-
-    Graphe.Afficher_Graph();
-
-    
-
-
-  
-
- 
-    
+    Graphe.GRO_AjouterArc("ghesquiere", "lilian");
+    Graphe.GRO_AjouterArc("mathieu", "lilian");
 }
 
