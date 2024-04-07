@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
 
-    #pragma region TEST SUPPRESSION
+    #pragma region TEST SUPPRESSION ARC
         //CGrapheOriente Graphe;
 
         ////  Graphe.GRO_AjouterSommet(sId);
@@ -45,5 +45,15 @@ int main()
     Graphe.GRO_AjouterArc("lilian", "ghesquiere");
     Graphe.GRO_AjouterArc("ghesquiere", "lilian");
     Graphe.GRO_AjouterArc("mathieu", "lilian");
+
+    Graphe.Afficher_Graph();
+
+    //Graphe.GRO_SupprimerSommet("mathieu");
+    Graphe.GRO_SupprimerSommet("lilian");
+
+    Graphe.Afficher_Graph();
+
+
+
 }
 

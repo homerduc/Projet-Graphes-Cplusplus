@@ -95,20 +95,14 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 
 void CGrapheOriente::GRO_SupprimerSommet(string sID)
 {
+	string sArrive, sDepart;
 	vector<CSommet*>::iterator itSupprimerSommet = GRO_RechercheSommets(sID);
 	if (itSupprimerSommet != vGROsommets.end()) {
 		for (unsigned int uiPosition = 0; uiPosition < vGROarcs.size(); uiPosition++) {
 
-			if (vGROarcs[uiPosition]->ARC_GetSommetDepart() == sID)
-			{
-				GRO_SupprimerArc(vGROarcs[uiPosition]->ARC_GetSommetDepart(), vGROarcs[uiPosition]->ARC_GetSommetArrive());
-				uiPosition = 0;
-			}
-			else if (vGROarcs[uiPosition]->ARC_GetSommetArrive() == sID) 
-			{
-				GRO_SupprimerArc(vGROarcs[uiPosition]->ARC_GetSommetArrive(),vGROarcs[uiPosition]->ARC_GetSommetDepart());
-				uiPosition = 0;
-			}
+			sDepart = vGROarcs[uiPosition]->ARC_GetSommetDepart();
+			sArrive = vGROarcs[uiPosition]->ARC_GetSommetArrive();
+			GRO_SupprimerArc(sDepart, sArrive);
 		}
 		CAffichage::AFC_AffichageSupprSommet(sID);
 		vGROsommets.erase(itSupprimerSommet);
