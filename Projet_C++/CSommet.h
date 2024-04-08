@@ -1,177 +1,147 @@
+/**
+ * @file CSommet.h
+ * @brief Définition de la classe CSommet.
+ */
+
 #ifndef CSOMMET_H
 #define CSOMMET_H
 
-	#include <iostream>
-	#include <string>
-	#include <Vector>
-	#include "CArc.h"
+#include <iostream>
+#include <string>
+#include <Vector>
+#include "CArc.h"
 
-	using namespace std;
+using namespace std;
 
+/**
+ * @class CSommet
+ * @brief Classe représentant un sommet dans un graphe orienté.
+ *
+ * Un sommet est un point dans un graphe qui peut être connecté à d'autres sommets par des arcs.
+ */
 class CSommet
 {
 private:
 
-	string sSOMid;
-	vector<CArc*> vSOM_ArcEntrants;
-	vector<CArc*> vSOM_ArcSortants;
+	string sSOMid; ///< Identifiant du sommet.
+	vector<CArc*> vSOM_ArcEntrants; ///< Vecteur des arcs entrants du sommet.
+	vector<CArc*> vSOM_ArcSortants; ///< Vecteur des arcs sortants du sommet.
 
 public:
 
-	#pragma region CONSTRUCTEURS & DESTRUCTEURS 
-		/******************************************************************************************************************
-		* 	CSommet()
-		* *****************************************************************************************************************
-		*	Entree : rien 
-		*	Préconditions : rien
-		*	Sortie : rien
-		*	Postconditions : le nom est mis par défaut à "" et les vecteurs sont vides de base
-		******************************************************************************************************************/
-		CSommet();
+	/**
+	 * @brief Constructeur par défaut.
+	 *
+	 * Initialise l'identifiant du sommet à "" et les vecteurs d'arcs entrants et sortants à vide.
+	 */
+	CSommet();
 
-		/******************************************************************************************************************
-		*   CSommet(const string& sID, const vector<CArc>& vEntrants, const vector<CArc>& vSortants)
-		* *****************************************************************************************************************
-		*	Entree :reférence d'un string sID, reférence d'un vector d'arcs vEntrants, reférence d'un vector d'arcs vSortants
-		*	Préconditions : rien 
-		*	Sortie : rien
-		*	Postconditions : objet initialisé avec les paramètres recopiés
-		******************************************************************************************************************/
-		CSommet(const string& sID, const vector<CArc*>& vEntrants, const vector<CArc*>& vSortants) { sSOMid = sID; vSOM_ArcEntrants = vEntrants; vSOM_ArcSortants = vSortants; }
+	/**
+	 * @brief Constructeur avec paramètres.
+	 *
+	 * Initialise l'identifiant du sommet et les vecteurs d'arcs entrants et sortants avec les valeurs données.
+	 *
+	 * @param sID Identifiant du sommet.
+	 * @param vEntrants Vecteur des arcs entrants du sommet.
+	 * @param vSortants Vecteur des arcs sortants du sommet.
+	 */
+	CSommet(const string& sID, const vector<CArc*>& vEntrants, const vector<CArc*>& vSortants) { sSOMid = sID; vSOM_ArcEntrants = vEntrants; vSOM_ArcSortants = vSortants; }
 
-		CSommet(const string& sID) {
-			sSOMid = sID; 
-		}
-	
-		/******************************************************************************************************************
-		* 	CSommet(const CSommet& SOMsommet)
-		* *****************************************************************************************************************
-		*	Entree : Un CSommet par référence
-		*	Préconditions : rien
-		*	Sortie : rien
-		*	Postconditions : les listes des arcs de SOMsommet ont bien été copiées entièrement
-		******************************************************************************************************************/
-		CSommet(const CSommet& SOMsommet);
-	
-		/******************************************************************************************************************
-		*   ~CSommet()
-		* *****************************************************************************************************************
-		*	Entree :rien
-		*	Préconditions : rien
-		*	Sortie : rien
-		*	Postconditions : les attriuts sont nétoyés
-		******************************************************************************************************************/
-		~CSommet();
-	#pragma endregion
+	/**
+	 * @brief Constructeur avec un seul paramètre.
+	 *
+	 * Initialise l'identifiant du sommet avec la valeur donnée et les vecteurs d'arcs entrants et sortants à vide.
+	 *
+	 * @param sID Identifiant du sommet.
+	 */
+	CSommet(const string& sID) {
+		sSOMid = sID;
+	}
 
-	#pragma region ACCESSEURS
-		/******************************************************************************************************************
-		*   SOM_GetID()
-		* *****************************************************************************************************************
-		*	Entree : rien
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : un string correspondant à l'identifiant du sommet
-		*	Postconditions : rien
-		******************************************************************************************************************/
-		string const& SOM_GetID()const { return sSOMid; }
-	
-		/******************************************************************************************************************
-		*   SOM_GetEntrants()
-		* *****************************************************************************************************************
-		*	Entree : rien
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : un vecteur correspondant à l'identifiant du sommet
-		*	Postconditions : rien
-		******************************************************************************************************************/
-		vector<CArc*> const& SOM_GetEntrants()const { return vSOM_ArcEntrants; }
+	/**
+	 * @brief Constructeur de copie.
+	 *
+	 * Copie l'identifiant du sommet et les vecteurs d'arcs entrants et sortants du sommet donné.
+	 *
+	 * @param SOMsommet Le sommet à copier.
+	 */
+	CSommet(const CSommet& SOMsommet);
 
-		/******************************************************************************************************************
-		*   SOM_GetSortants()
-		* *****************************************************************************************************************
-		*	Entree : rien
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : un vecteur des arc sortants
-		*	Postconditions : rien
-		******************************************************************************************************************/
-		vector<CArc*> const& SOM_GetSortants()const { return vSOM_ArcSortants; }
+	/**
+	 * @brief Destructeur.
+	 *
+	 * Nettoie les attributs du sommet.
+	 */
+	~CSommet();
 
-	#pragma endregion
+	/**
+	 * @brief Accesseur pour l'identifiant du sommet.
+	 *
+	 * @return L'identifiant du sommet.
+	 */
+	string const& SOM_GetID()const { return sSOMid; }
 
-	//#pragma region AFFICHAGE
-	//	/******************************************************************************************************************
-	//	*   Affichage_du_Sommet()
-	//	* *****************************************************************************************************************
-	//	*	Entree : rien
-	//	*	Préconditions : appel sur un objet existant de la classe
-	//	*	Sortie : rien
-	//	*	Postconditions : Affiche dans la console l'ensemble de l'objet sommet
-	//	******************************************************************************************************************/
-	//	void Affichage_du_Sommet();
+	/**
+	 * @brief Accesseur pour les arcs entrants du sommet.
+	 *
+	 * @return Le vecteur des arcs entrants du sommet.
+	 */
+	vector<CArc*> const& SOM_GetEntrants()const { return vSOM_ArcEntrants; }
 
-	//	/******************************************************************************************************************
-	//	*   SOM_Afficher_Arrive()
-	//	* *****************************************************************************************************************
-	//	*	Entree : rien
-	//	*	Préconditions : appel sur un objet existant de la classe
-	//	*	Sortie : rien
-	//	*	Postconditions : Affiche dans la console le contenu du vecteur des arcs d'arrivés
-	//	******************************************************************************************************************/
-	//	void SOM_Afficher_Entrants();
+	/**
+	 * @brief Accesseur pour les arcs sortants du sommet.
+	 *
+	 * @return Le vecteur des arcs sortants du sommet.
+	 */
+	vector<CArc*> const& SOM_GetSortants()const { return vSOM_ArcSortants; }
 
-	//	/******************************************************************************************************************
-	//	*   SOM_Afficher_Sortant()
-	//	* *****************************************************************************************************************
-	//	*	Entree : rien
-	//	*	Préconditions : appel sur un objet existant de la classe
-	//	*	Sortie : rien
-	//	*	Postconditions : Affiche dans la console le contenu du vecteur des arcs de départs
-	//	******************************************************************************************************************/
-	//	void SOM_Afficher_Sortants();
-	//
-	//#pragma endregion
+	/**
+	 * @brief Ajoute un arc entrant au sommet.
+	 *
+	 * Ajoute l'arc donné à la liste des arcs entrants du sommet, seulement si l'identifiant du sommet d'arrivée de l'arc est le même que l'identifiant du sommet actuel.
+	 *
+	 * @param pARCarc Pointeur sur l'arc à ajouter.
+	 */
+	void SOM_Ajouter_Entrants(CArc* pARCarc);
 
-	#pragma region AJOUTER
-		/******************************************************************************************************************
-		*   SOM_Ajouter_Entrants(CArc* pARCarc)
-		* *****************************************************************************************************************
-		*	Entree : pointeur sur un objet CArc
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : rien
-		*	Postconditions : Ajoute l'arc en paramètre à la liste des arc d'arrivée du sommet seulement
-		*					 si le nom du sommet d'arrivée de l'arc est le nom du sommet actuel 
-		******************************************************************************************************************/
-		void SOM_Ajouter_Entrants(CArc* pARCarc);
+	/**
+	 * @brief Ajoute un arc sortant au sommet.
+	 *
+	 * Ajoute l'arc donné à la liste des arcs sortants du sommet, seulement si l'identifiant du sommet de départ de l'arc est le même que l'identifiant du sommet actuel.
+	 *
+	 * @param pARCarc Pointeur sur l'arc à ajouter.
+	 */
+	void SOM_Ajouter_Sortants(CArc* pARCarc);
 
-		/******************************************************************************************************************
-		*   SOM_Ajouter_arc_Sortant(CArc* pARCarc)
-		* *****************************************************************************************************************
-		*	Entree : pointeur sur un objet CArc
-		*	Préconditions : appel sur un objet existant de la classe
-		*	Sortie : rien
-		*	Postconditions : Ajoute l'arc en paramètre à la liste des arcs de départ du sommet seulement
-		*					 si le nom du sommet de départ de l'arc est le nom du sommet actuel 
-		******************************************************************************************************************/
-		void SOM_Ajouter_Sortants(CArc* pARCarc);
-	
-	#pragma endregion
-		
-	#pragma region RECHERCHE ARCS ENTRANT ET SORTANT Du sommet
+	/**
+	 * @brief Recherche un arc entrant dans le sommet.
+	 *
+	 * @param sDepart Identifiant du sommet de départ de l'arc à rechercher.
+	 * @return Un itérateur vers l'arc recherché, ou vSOM_ArcEntrants.end() si l'arc n'est pas trouvé.
+	 */
+	vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart);
 
-			vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart);
-			vector<CArc*>::iterator SOM_RechercheSortant(string sArrive);
+	/**
+	 * @brief Recherche un arc sortant dans le sommet.
+	 *
+	 * @param sArrive Identifiant du sommet d'arrivée de l'arc à rechercher.
+	 * @return Un itérateur vers l'arc recherché, ou vSOM_ArcSortants.end() si l'arc n'est pas trouvé.
+	 */
+	vector<CArc*>::iterator SOM_RechercheSortant(string sArrive);
 
-	#pragma endregion
+	/**
+	 * @brief Supprime un arc entrant du sommet.
+	 *
+	 * @param sDepart Identifiant du sommet de départ de l'arc à supprimer.
+	 */
+	void SOM_SupprimerArcEntrant(string sDepart);
 
-	#pragma region SUPPRIMER ARC ENTRANT ET SORTANT
-				void SOM_SupprimerArcEntrant(string sDepart);
-				void SOM_SupprimerArcSortant(string sArrive);
-	#pragma endregion
-
-	
-
+	/**
+	 * @brief Supprime un arc sortant du sommet.
+	 *
+	 * @param sArrive Identifiant du sommet d'arrivée de l'arc à supprimer.
+	 */
+	void SOM_SupprimerArcSortant(string sArrive);
 };
 
-
 #endif // !CSOMMET_H
-
-

@@ -168,7 +168,7 @@ void CSommet::SOM_SupprimerArcSortant(string sArrive)
 	//}
 
 #pragma endregion
-	
+
 	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
 	if (itSupprimerArcSortantant != vSOM_ArcSortants.end())
 	{

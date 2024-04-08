@@ -67,62 +67,49 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 {
 	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sDepart);
 	vector<CSommet*>::iterator itRechercheArrive = GRO_RechercheSommets(sArrive);
+	//vector<CArc*>::iterator itRechercherAce = GRO_RechercheArcs(sDepart, sArrive);
 
-	if (itRechercheDepart != vGROsommets.end() && itRechercheArrive != vGROsommets.end())
-	{
-		CArc* pNEWarc = new CArc(sDepart, sArrive);
-		vGROarcs.push_back(pNEWarc);
-		(*itRechercheDepart)->SOM_Ajouter_Sortants(pNEWarc);
-		(*itRechercheArrive)->SOM_Ajouter_Entrants(pNEWarc);
+		if (itRechercheDepart != vGROsommets.end() && itRechercheArrive != vGROsommets.end())
+		{
+#pragma region LES DEUX SOMMETS EXISTENT
+			CArc* pNEWarc = new CArc(sDepart, sArrive);
+			vGROarcs.push_back(pNEWarc);
+			(*itRechercheDepart)->SOM_Ajouter_Sortants(pNEWarc);
+			(*itRechercheArrive)->SOM_Ajouter_Entrants(pNEWarc);
 
-		CAffichage::AFC_AffichageAjoutArc(sDepart, sArrive);
-		return;
-	}
-	else if (itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end())
-	{
-		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_inconnu);
-	}
-	else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end())
-	{
-		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, ARRIVE_inconnu);
-	}
-	else {
-		CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_ARRIVE_inconnu);
-	}
-
-
+			CAffichage::AFC_AffichageAjoutArc(sDepart, sArrive);
+			return;
+#pragma endregion
+		}
+		else if (itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end())
+		{
+#pragma region DEPART INEXISTANT 
+			CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_inconnu);
+#pragma endregion
+		}
+		else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end())
+		{
+#pragma region ARRIVEE INEXISTANTE
+			CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, ARRIVE_inconnu);
+#pragma endregion
+		}
+		else 
+		{
+#pragma region LES DEUX INEXISTANT
+			CAffichage::AFC_Erreur_ajoutArc(sDepart, sArrive, DEPART_ARRIVE_inconnu);
+#pragma endregion
+		}
 }
 
 void CGrapheOriente::GRO_SupprimerSommet(string sID)
 {
+
 	string sArrive, sDepart;
 	vector<CSommet*>::iterator itSupprimerSommet = GRO_RechercheSommets(sID);
 	if (itSupprimerSommet != vGROsommets.end()) {
 
-#pragma region TEST en passant dabord par les autres sommets (échec)
-		/*
 		string sArrive, sDepart;
-		for (unsigned int uiPosition = vGROarcs.size() - 1; uiPosition > 0; uiPosition--) {
-
-		sDepart = vGROarcs[uiPosition]->ARC_GetSommetDepart();
-		sArrive = vGROarcs[uiPosition]->ARC_GetSommetArrive();
-
-		if (sDepart != sID && sArrive == sID) {
-			GRO_SupprimerArc(sDepart, sID);
-		}
-		if (sDepart == sID && sArrive != sID) {
-			GRO_SupprimerArc(sID, sArrive);
-		}
-		if (sDepart == sID && sArrive == sID) {
-			(*itSupprimerSommet)->SOM_SupprimerArc(sID, sID);
-		}
-	}*/
-#pragma endregion
-
-#pragma region NOUVEAU TEST FONCTIONNEL !!!! 
-		unsigned int uiPositionArc = 0;
-		string sArrive, sDepart;
-		for (uiPositionArc; uiPositionArc < vGROarcs.size(); )
+		for (unsigned int uiPositionArc = 0; uiPositionArc < vGROarcs.size(); )
 		{
 
 			sDepart = vGROarcs[uiPositionArc]->ARC_GetSommetDepart();
@@ -135,16 +122,17 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 				uiPositionArc++;
 			}
 		}
-#pragma endregion
 
 		CAffichage::AFC_AffichageSupprSommet(sID);
 		//delete (*itSupprimerSommet);
 		vGROsommets.erase(itSupprimerSommet);
 	}
+
 }
 
 void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 {
+#pragma region CA FONCTIONNE !!!!!!!
 	vector<CArc*>::iterator itSupprimerArc = GRO_RechercheArcs(sDepart, sArrive);
 	if (itSupprimerArc != vGROarcs.end()) {
 
@@ -163,6 +151,7 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 	{
 		cout << ERREUR_couleur << "ERROR : L arc reliant <" << sDepart << "> et <" << sArrive << " n existe pas, impossible de le supprimer" << RESAURER_couleur << endl << endl;
 	}
+#pragma endregion
 }
 
 void CGrapheOriente::Afficher_Graph()

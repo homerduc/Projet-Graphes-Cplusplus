@@ -43,10 +43,6 @@ int main()
 
     //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
     Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
     Graphe.GRO_AjouterArc("lilian", "mathieu"); // il ne supprime pas celui la !!!!!!!!!!!!
 
     Graphe.GRO_AjouterArc("ghesquiere", "lilian");
