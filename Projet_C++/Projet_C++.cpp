@@ -55,9 +55,10 @@ int main()
 
     Graphe.Afficher_Graph();
 
-    //Graphe.GRO_SupprimerSommet("mathieu");
+   // Graphe.GRO_SupprimerSommet("mathieu");
     Graphe.GRO_SupprimerSommet("lilian");
-   
+    //(*Graphe.GRO_RechercheSommets("mathieu"))->SOM_SupprimerArcEntrant("lilian"); ca marche quand on supprime maniellement 
+    
 
     Graphe.Afficher_Graph();
 

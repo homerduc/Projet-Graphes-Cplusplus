@@ -98,39 +98,40 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 	string sArrive, sDepart;
 	vector<CSommet*>::iterator itSupprimerSommet = GRO_RechercheSommets(sID);
 	if (itSupprimerSommet != vGROsommets.end()) {
-		#pragma region TEST en passant dabord par les autres sommets (échec)
-			/*
-			string sArrive, sDepart;
-			for (unsigned int uiPosition = vGROarcs.size() - 1; uiPosition > 0; uiPosition--) {
 
-			sDepart = vGROarcs[uiPosition]->ARC_GetSommetDepart();
-			sArrive = vGROarcs[uiPosition]->ARC_GetSommetArrive();
+#pragma region TEST en passant dabord par les autres sommets (échec)
+		/*
+		string sArrive, sDepart;
+		for (unsigned int uiPosition = vGROarcs.size() - 1; uiPosition > 0; uiPosition--) {
 
-			if (sDepart != sID && sArrive == sID) {
-				GRO_SupprimerArc(sDepart, sID);
-			}
-			if (sDepart == sID && sArrive != sID) {
-				GRO_SupprimerArc(sID, sArrive);
-			}
-			if (sDepart == sID && sArrive == sID) {
-				(*itSupprimerSommet)->SOM_SupprimerArc(sID, sID);
-			}
-		}*/
-		#pragma endregion
+		sDepart = vGROarcs[uiPosition]->ARC_GetSommetDepart();
+		sArrive = vGROarcs[uiPosition]->ARC_GetSommetArrive();
 
-		#pragma region NOUVEAU TEST FONCTIONNEL !!!! 
-		unsigned int uiPositionArc=0;
+		if (sDepart != sID && sArrive == sID) {
+			GRO_SupprimerArc(sDepart, sID);
+		}
+		if (sDepart == sID && sArrive != sID) {
+			GRO_SupprimerArc(sID, sArrive);
+		}
+		if (sDepart == sID && sArrive == sID) {
+			(*itSupprimerSommet)->SOM_SupprimerArc(sID, sID);
+		}
+	}*/
+#pragma endregion
+
+#pragma region NOUVEAU TEST FONCTIONNEL !!!! 
+		unsigned int uiPositionArc = 0;
 		string sArrive, sDepart;
 		for (uiPositionArc; uiPositionArc < vGROarcs.size(); uiPositionArc++)
 		{
-			
-				sDepart = vGROarcs[uiPositionArc]->ARC_GetSommetDepart();
-				sArrive = vGROarcs[uiPositionArc]->ARC_GetSommetArrive();
-				if (sDepart == sID || sArrive == sID) {
-					GRO_SupprimerArc(sDepart, sArrive);
-				}
+
+			sDepart = vGROarcs[uiPositionArc]->ARC_GetSommetDepart();
+			sArrive = vGROarcs[uiPositionArc]->ARC_GetSommetArrive();
+			if (sDepart == sID || sArrive == sID) {
+				GRO_SupprimerArc(sDepart, sArrive);
+			}
 		}
-		#pragma endregion
+#pragma endregion
 
 		CAffichage::AFC_AffichageSupprSommet(sID);
 		//delete (*itSupprimerSommet);
@@ -148,11 +149,11 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 
 		(*itRechercheSommeDepart)->SOM_SupprimerArcSortant(sArrive);
 		(*itRechercheSommeArrive)->SOM_SupprimerArcEntrant(sDepart);
-	
+
 		//delete (*itSupprimerArc);
 		CAffichage::AFC_AffichageSupprArc(sDepart, sArrive);
 		vGROarcs.erase(itSupprimerArc);
-		
+
 	}
 	else
 	{
@@ -163,7 +164,4 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 void CGrapheOriente::Afficher_Graph()
 {
 	CAffichage::AFC_Afficher_Graph(this);
-	/*for (vector<CSommet*>::iterator itSommets = vGROsommets.begin(); itSommets < vGROsommets.end(); itSommets++) {
-		(*itSommets)->Affichage_du_Sommet();
-	}*/
 }

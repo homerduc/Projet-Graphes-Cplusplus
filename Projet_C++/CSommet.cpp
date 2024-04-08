@@ -1,6 +1,7 @@
 #include "CSommet.h"
 #include "CArc.h"
 #include <iostream>
+#include "CAffichage.h"
 
 CSommet::CSommet()
 {
@@ -102,7 +103,7 @@ vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sDepart)
 vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
 {
 	for (vector<CArc*>::iterator itSortant = vSOM_ArcSortants.begin(); itSortant != vSOM_ArcSortants.end(); itSortant++) {
-		if ((*itSortant)->ARC_GetSommetDepart() == SOM_GetID() && (*itSortant)->ARC_GetSommetArrive()== sArrive)
+		if ((*itSortant)->ARC_GetSommetDepart() == SOM_GetID() && (*itSortant)->ARC_GetSommetArrive() == sArrive)
 			return itSortant;
 	}
 	return vSOM_ArcSortants.end();
@@ -110,6 +111,29 @@ vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
 
 void CSommet::SOM_SupprimerArcEntrant(string sDepart)
 {
+#pragma region ORIGINE
+	//vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sDepart);
+
+	//if (itSupprimerArcEntrant != vSOM_ArcEntrants.end())
+	//{
+	//	//delete (*itSupprimerArcEntrant);
+	//	CAffichage::AFC_AffichageSupprArc(sDepart, (*itSupprimerArcEntrant)->ARC_GetSommetArrive());
+	//	vSOM_ArcEntrants.erase(itSupprimerArcEntrant);
+	//}
+#pragma endregion
+#pragma region TEST 1 
+	//unsigned int uiPositionArcEntrant = 0;
+	//for (uiPositionArcEntrant; uiPositionArcEntrant < vSOM_ArcEntrants.size(); uiPositionArcEntrant++)
+	//{
+	//	if (vSOM_ArcEntrants[uiPositionArcEntrant]->ARC_GetSommetDepart() == sDepart)
+	//	{
+	//		//delete vSOM_ArcEntrants[uiPositionArcEntrant];
+	//		CAffichage::AFC_AffichageSupprArc(sDepart, vSOM_ArcEntrants[uiPositionArcEntrant]->ARC_GetSommetArrive());
+	//		vSOM_ArcEntrants.erase(vSOM_ArcEntrants.begin() + uiPositionArcEntrant);
+	//	}
+	//}
+#pragma endregion
+
 	vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sDepart);
 
 	if (itSupprimerArcEntrant != vSOM_ArcEntrants.end())
@@ -117,11 +141,34 @@ void CSommet::SOM_SupprimerArcEntrant(string sDepart)
 		//delete (*itSupprimerArcEntrant);
 		vSOM_ArcEntrants.erase(itSupprimerArcEntrant);
 	}
-	
 }
 
 void CSommet::SOM_SupprimerArcSortant(string sArrive)
 {
+#pragma region ORIGINE
+	//vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
+	//if (itSupprimerArcSortantant != vSOM_ArcSortants.end())
+	//{
+	//	//delete (*itSupprimerArcSortantant);
+	//	CAffichage::AFC_AffichageSupprArc((*itSupprimerArcSortantant)->ARC_GetSommetDepart(), (*itSupprimerArcSortantant)->ARC_GetSommetArrive());
+	//	vSOM_ArcSortants.erase(itSupprimerArcSortantant);
+
+	//}
+#pragma endregion
+#pragma region TEST 1
+	//unsigned int uiPositionArcSortantt = 0;
+	//for (uiPositionArcSortantt; uiPositionArcSortantt < vSOM_ArcSortants.size(); uiPositionArcSortantt++)
+	//{
+	//	if (vSOM_ArcSortants[uiPositionArcSortantt]->ARC_GetSommetArrive() == sArrive)
+	//	{
+	//		//delete vSOM_ArcSortants[uiPositionArcSortantt];
+	//		CAffichage::AFC_AffichageSupprArc(sArrive, vSOM_ArcSortants[uiPositionArcSortantt]->ARC_GetSommetDepart());
+	//		vSOM_ArcSortants.erase(vSOM_ArcSortants.begin() + uiPositionArcSortantt);
+	//	}
+	//}
+
+#pragma endregion
+	
 	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
 	if (itSupprimerArcSortantant != vSOM_ArcSortants.end())
 	{
@@ -129,4 +176,8 @@ void CSommet::SOM_SupprimerArcSortant(string sArrive)
 		vSOM_ArcSortants.erase(itSupprimerArcSortantant);
 	}
 }
+
+
+
+
 
