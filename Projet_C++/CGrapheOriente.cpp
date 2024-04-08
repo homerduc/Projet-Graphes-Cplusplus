@@ -122,13 +122,17 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 #pragma region NOUVEAU TEST FONCTIONNEL !!!! 
 		unsigned int uiPositionArc = 0;
 		string sArrive, sDepart;
-		for (uiPositionArc; uiPositionArc < vGROarcs.size(); uiPositionArc++)
+		for (uiPositionArc; uiPositionArc < vGROarcs.size(); )
 		{
 
 			sDepart = vGROarcs[uiPositionArc]->ARC_GetSommetDepart();
 			sArrive = vGROarcs[uiPositionArc]->ARC_GetSommetArrive();
 			if (sDepart == sID || sArrive == sID) {
 				GRO_SupprimerArc(sDepart, sArrive);
+			}
+			else
+			{
+				uiPositionArc++;
 			}
 		}
 #pragma endregion
