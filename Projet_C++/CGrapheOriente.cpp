@@ -98,14 +98,42 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 	string sArrive, sDepart;
 	vector<CSommet*>::iterator itSupprimerSommet = GRO_RechercheSommets(sID);
 	if (itSupprimerSommet != vGROsommets.end()) {
-		for (unsigned int uiPosition = 0; uiPosition < vGROarcs.size(); uiPosition++) {
+		#pragma region TEST en passant dabord par les autres sommets (échec)
+			/*
+			string sArrive, sDepart;
+			for (unsigned int uiPosition = vGROarcs.size() - 1; uiPosition > 0; uiPosition--) {
 
 			sDepart = vGROarcs[uiPosition]->ARC_GetSommetDepart();
 			sArrive = vGROarcs[uiPosition]->ARC_GetSommetArrive();
 
-			GRO_SupprimerArc(sDepart,sArrive);
+			if (sDepart != sID && sArrive == sID) {
+				GRO_SupprimerArc(sDepart, sID);
+			}
+			if (sDepart == sID && sArrive != sID) {
+				GRO_SupprimerArc(sID, sArrive);
+			}
+			if (sDepart == sID && sArrive == sID) {
+				(*itSupprimerSommet)->SOM_SupprimerArc(sID, sID);
+			}
+		}*/
+		#pragma endregion
+
+		#pragma region NOUVEAU TEST FONCTIONNEL !!!! 
+		unsigned int uiPositionArc=0;
+		string sArrive, sDepart;
+		for (uiPositionArc; uiPositionArc < vGROarcs.size(); uiPositionArc++)
+		{
+			
+				sDepart = vGROarcs[uiPositionArc]->ARC_GetSommetDepart();
+				sArrive = vGROarcs[uiPositionArc]->ARC_GetSommetArrive();
+				if (sDepart == sID || sArrive == sID) {
+					GRO_SupprimerArc(sDepart, sArrive);
+				}
 		}
+		#pragma endregion
+
 		CAffichage::AFC_AffichageSupprSommet(sID);
+		//delete (*itSupprimerSommet);
 		vGROsommets.erase(itSupprimerSommet);
 	}
 }
@@ -118,12 +146,13 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 		vector<CSommet*>::iterator itRechercheSommeDepart = GRO_RechercheSommets(sDepart);
 		vector<CSommet*>::iterator itRechercheSommeArrive = GRO_RechercheSommets(sArrive);
 
-		(*itRechercheSommeDepart)->SOM_SupprimerArc(sDepart, sArrive);
-		(*itRechercheSommeArrive)->SOM_SupprimerArc(sDepart, sArrive);
-
+		(*itRechercheSommeDepart)->SOM_SupprimerArcSortant(sArrive);
+		(*itRechercheSommeArrive)->SOM_SupprimerArcEntrant(sDepart);
+	
 		//delete (*itSupprimerArc);
-		vGROarcs.erase(itSupprimerArc);
 		CAffichage::AFC_AffichageSupprArc(sDepart, sArrive);
+		vGROarcs.erase(itSupprimerArc);
+		
 	}
 	else
 	{

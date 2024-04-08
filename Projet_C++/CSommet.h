@@ -163,7 +163,8 @@ public:
 	#pragma endregion
 
 	#pragma region SUPPRIMER ARC ENTRANT ET SORTANT
-				void SOM_SupprimerArc(string sDepart, string sArrive);
+				void SOM_SupprimerArcEntrant(string sDepart);
+				void SOM_SupprimerArcSortant(string sArrive);
 	#pragma endregion
 
 	

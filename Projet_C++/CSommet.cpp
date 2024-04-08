@@ -108,17 +108,22 @@ vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
 	return vSOM_ArcSortants.end();
 }
 
-void CSommet::SOM_SupprimerArc(string sDepart, string sArrive)
+void CSommet::SOM_SupprimerArcEntrant(string sDepart)
 {
 	vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sDepart);
-	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
 
 	if (itSupprimerArcEntrant != vSOM_ArcEntrants.end())
 	{
 		//delete (*itSupprimerArcEntrant);
 		vSOM_ArcEntrants.erase(itSupprimerArcEntrant);
 	}
-	if (itSupprimerArcSortantant != vSOM_ArcSortants.end() )
+	
+}
+
+void CSommet::SOM_SupprimerArcSortant(string sArrive)
+{
+	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
+	if (itSupprimerArcSortantant != vSOM_ArcSortants.end())
 	{
 		//delete (*itSupprimerArcSortantant);
 		vSOM_ArcSortants.erase(itSupprimerArcSortantant);

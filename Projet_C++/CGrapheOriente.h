@@ -46,6 +46,16 @@ public:
 
 	#pragma region SUPPRIMER SOMMET & ARC
 		void GRO_SupprimerSommet(string sRecherche);
+
+		/**
+		 * @brief Supprime un arc du graphe orienté.
+		 *
+		 * Cette fonction recherche un arc spécifique dans le graphe orienté en utilisant les identifiants de départ et d'arrivée fournis.
+		 * Si l'arc est trouvé, il est supprimé du graphe. Si l'arc n'est pas trouvé, un message d'erreur est affiché.
+		 *
+		 * @param sDepart L'identifiant du sommet de départ de l'arc à supprimer.
+		 * @param sArrive L'identifiant du sommet d'arrivée de l'arc à supprimer.
+		 */
 		void GRO_SupprimerArc(string sDepart, string sArrive);
 	#pragma endregion
 
