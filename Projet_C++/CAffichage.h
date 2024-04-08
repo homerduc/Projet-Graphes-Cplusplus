@@ -29,7 +29,7 @@
 #define AJOUT_couleur "\033[38;5;27m"
 #define ERREUR_couleur "\033[48;5;52m"
 #define SUPPR_couleur "\033[38;5;2m"
-#define RESAURER_couleur "\033[0m"
+#define RESTAURER_couleur "\033[0m"
 #define ARC_couleur "\033[38;5;166m"  
 #define ARC_Tabultation "		"
 #define TEXT_Tabultation "	"
@@ -89,7 +89,7 @@ public:
      *
      * @param GROgraph Pointeur vers le graphe à afficher.
      */
-    static void AFC_Afficher_Graph(CGrapheOriente* GROgraph);
+    static void AFC_Afficher_Graphe(CGrapheOriente* GROgraph);
 
     /**
      * @brief Affiche l'erreur d'ajout d'un sommet.

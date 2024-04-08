@@ -52,7 +52,7 @@ void CSommet::SOM_Afficher_Entrants()
 	for (unsigned int uiPosition = 0; uiPosition < vSOM_ArcEntrants.size(); uiPosition++) {
 		cout << "           | l'arc " << uiPosition << " : provenant du sommet <" << vSOM_ArcEntrants[uiPosition]->ARC_GetSommetDepart() << "> ..." << endl;
 	}
-	cout << "           +---------------------------------------------------------+" << RESAURER_couleur << endl;
+	cout << "           +---------------------------------------------------------+" << RESTAURER_couleur << endl;
 }
 
 void  CSommet::SOM_Afficher_Sortants()
@@ -62,7 +62,7 @@ void  CSommet::SOM_Afficher_Sortants()
 	for (unsigned int uiPosition = 0; uiPosition < vSOM_ArcSortants.size(); uiPosition++) {
 		cout << "           | l'arc " << uiPosition << " : allant vers le sommet <" << vSOM_ArcSortants[uiPosition]->ARC_GetSommetArrive() << "> ... " << endl;
 	}
-	cout << "           +---------------------------------------------------------+" << RESAURER_couleur << endl<< endl;
+	cout << "           +---------------------------------------------------------+" << RESTAURER_couleur << endl<< endl;
 
 }*/
 
@@ -71,7 +71,7 @@ void CSommet::SOM_Ajouter_Entrants(CArc* pARCarc)
 	if (pARCarc->ARC_GetSommetArrive() == SOM_GetID())
 	{
 		vSOM_ArcEntrants.push_back(pARCarc);
-		//cout << "| " <<AJOUT_couleur << " Ajout dans le vecteur arcs Entrant de " << SOM_GetID() << RESAURER_couleur << endl;
+		//cout << "| " <<AJOUT_couleur << " Ajout dans le vecteur arcs Entrant de " << SOM_GetID() << RESTAURER_couleur << endl;
 	}
 	else
 	{
@@ -84,7 +84,7 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 	if (pARCarc->ARC_GetSommetDepart() == SOM_GetID())
 	{
 		vSOM_ArcSortants.push_back(pARCarc);
-		//cout << "| " <<AJOUT_couleur << " Ajout dans le vecteur arcs sortants de " << SOM_GetID() << RESAURER_couleur << endl;
+		//cout << "| " <<AJOUT_couleur << " Ajout dans le vecteur arcs sortants de " << SOM_GetID() << RESTAURER_couleur << endl;
 	}
 	else {
 		cout << " ERROR : Cet arc ne sort pas de <" << SOM_GetID() << "> donc ajout dans arc_sortant impossible" << endl;
