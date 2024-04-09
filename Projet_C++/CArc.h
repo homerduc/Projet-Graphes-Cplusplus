@@ -46,7 +46,8 @@ public:
         * Postconditions : l'objet prend les paramètres pour sommets de départ et d'arrivée
         *******************************************************************************************************************
         */
-        CArc(const string& sSommetDepart, const string& sSommetArrivee) {
+        CArc(const string& sSommetDepart, const string& sSommetArrivee) 
+        {
             sARC_SommetDepart = sSommetDepart; 
             sARC_SommetArrive = sSommetArrivee; 
         };

@@ -35,23 +35,25 @@ int main()
     #pragma endregion
 
      CGrapheOriente Graphe;
-     CGrapheOriente Graphe2;
+     CGrapheOriente * pGraphe2;
 
     //  Graphe.GRO_AjouterSommet(sId);
-    Graphe.GRO_AjouterSommet("lilian");
-    Graphe.GRO_AjouterSommet("mathieu");
+    Graphe.GRO_AjouterSommet("Lilian");
+    Graphe.GRO_AjouterSommet("Alexandre");
+    Graphe.GRO_AjouterSommet("Simon");
    
     //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
-    Graphe.GRO_AjouterArc("lilian", "mathieu");
-
-    Graphe.GRO_SupprimerArc("lilian", "mathieu");
+    Graphe.GRO_AjouterArc("Lilian", "Alexandre");
+    Graphe.GRO_AjouterArc("Simon", "Lilian");
+    Graphe.GRO_AjouterArc("Alexandre", "Simon");
     
    // Graphe.GRO_SupprimerSommet("mathieu");    
     Graphe.Afficher_Graphe();
   
  
-    Graphe2 = Graphe.GRO_Inverse();
+    pGraphe2 = Graphe.GRO_Inverse();
    
+    pGraphe2->Afficher_Graphe();
 
 
 
