@@ -35,6 +35,7 @@ int main()
     #pragma endregion
 
      CGrapheOriente Graphe;
+     CGrapheOriente Graphe2;
 
     //  Graphe.GRO_AjouterSommet(sId);
     Graphe.GRO_AjouterSommet("lilian");
@@ -47,6 +48,9 @@ int main()
     
    // Graphe.GRO_SupprimerSommet("mathieu");    
     Graphe.Afficher_Graphe();
+  
+ 
+    Graphe2 = Graphe.GRO_Inverse();
    
 
 

@@ -77,7 +77,7 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sDepart);
 	vector<CSommet*>::iterator itRechercheArrive = GRO_RechercheSommets(sArrive);
 	
-	try
+	try // Les else if ici servent à rendre l'exception plus précise pour l'utilisateur
 	{
 		if (itRechercheArc == vGROarcs.end())
 		{
@@ -149,7 +149,6 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 	{
 		cout << Message_Erreur.what() << endl << endl;
 	}
-
 }
 
 void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
@@ -182,20 +181,14 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 #pragma endregion
 }
 
-void CGrapheOriente::GRO_Inverse()
+CGrapheOriente* CGrapheOriente::GRO_Inverse()
 {
-	string sDepart, sArrive, sTemp;
-	for (CSommet* pSommet : vGROsommets)
-	{
-		//supprimer le contenu des vecteurs des sommets 
-	}
-	for (CArc* pArc : vGROarcs)
-	{
-		
-	}
+	CGrapheOriente *nouveauGraphe = new CGrapheOriente();
 
-	// reajouter tous les vecteurs dans les sommets 9
-		
+
+
+
+	return nouveauGraphe;
 }
 
 void CGrapheOriente::Afficher_Graphe()
