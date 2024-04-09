@@ -35,7 +35,7 @@ public:
         * Postconditions : les sommets (string) de arcParam sont copiés dans l'objet
         *******************************************************************************************************************
         */
-        CArc(CArc& arcParam);
+        CArc(CArc const& arcParam);
 
         /******************************************************************************************************************
         * CArc(CSommet* pSortant, CSommet* pEntrant)
@@ -46,7 +46,7 @@ public:
         * Postconditions : l'objet prend les paramètres pour sommets de départ et d'arrivée
         *******************************************************************************************************************
         */
-        CArc(string sSommetDepart, string sSommetArrivee) { 
+        CArc(const string& sSommetDepart, const string& sSommetArrivee) {
             sARC_SommetDepart = sSommetDepart; 
             sARC_SommetArrive = sSommetArrivee; 
         };
@@ -64,7 +64,7 @@ public:
         * Postconditions : rien
         *******************************************************************************************************************
         */
-        string ARC_GetSommetDepart() const { return sARC_SommetDepart; }
+        string const& ARC_GetSommetDepart() const { return sARC_SommetDepart; }
 
         /******************************************************************************************************************
         * ARC_GetSommetArrivee()
@@ -75,7 +75,7 @@ public:
         * Postconditions : rien
         *******************************************************************************************************************
         */
-        string ARC_GetSommetArrive() const { return sARC_SommetArrive; }
+        string const& ARC_GetSommetArrive() const { return sARC_SommetArrive; }
 
         /******************************************************************************************************************
         * ARC_SetSommetDepart(string sNewSommet)
@@ -86,7 +86,7 @@ public:
         * Postconditions : le sommet de départ de l'arc est maintenant sNewSommet
         *******************************************************************************************************************
         */
-        void ARC_SetSommetDepart(string sNewSommet) { sARC_SommetDepart = sNewSommet; }
+        void ARC_SetSommetDepart(const string& sNewSommet) { sARC_SommetDepart = sNewSommet; }
 
         /******************************************************************************************************************
         * ARC_SetSommetArrivee(string sNewSommet)
@@ -97,7 +97,7 @@ public:
         * Postconditions : le sommet d'arrivée de l'arc est maintenant sNewSommet
         *******************************************************************************************************************
         */
-        void ARC_SetSommetArrive(string sNewSommet) { sARC_SommetArrive = sNewSommet; }
+        void ARC_SetSommetArrive(const string& sNewSommet) { sARC_SommetArrive = sNewSommet; }
     #pragma endregion
    
 };

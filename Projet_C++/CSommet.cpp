@@ -91,7 +91,7 @@ void CSommet::SOM_Ajouter_Sortants(CArc* pARCarc)
 	}
 }
 
-vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sDepart)
+vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(const string& sDepart)
 {
 	for (vector<CArc*>::iterator itEntrant = vSOM_ArcEntrants.begin(); itEntrant != vSOM_ArcEntrants.end(); itEntrant++) {
 		if ((*itEntrant)->ARC_GetSommetArrive() == SOM_GetID() && (*itEntrant)->ARC_GetSommetDepart() == sDepart)
@@ -100,7 +100,7 @@ vector<CArc*>::iterator  CSommet::SOM_RechercheEntrant(string sDepart)
 	return vSOM_ArcEntrants.end();
 }
 
-vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
+vector<CArc*>::iterator CSommet::SOM_RechercheSortant(const string& sArrive)
 {
 	for (vector<CArc*>::iterator itSortant = vSOM_ArcSortants.begin(); itSortant != vSOM_ArcSortants.end(); itSortant++) {
 		if ((*itSortant)->ARC_GetSommetDepart() == SOM_GetID() && (*itSortant)->ARC_GetSommetArrive() == sArrive)
@@ -109,7 +109,7 @@ vector<CArc*>::iterator CSommet::SOM_RechercheSortant(string sArrive)
 	return vSOM_ArcSortants.end();
 }
 
-void CSommet::SOM_SupprimerArcEntrant(string sDepart)
+void CSommet::SOM_SupprimerArcEntrant(const string& sDepart)
 {
 #pragma region ORIGINE
 	//vector<CArc*>::iterator itSupprimerArcEntrant = SOM_RechercheEntrant(sDepart);
@@ -138,12 +138,11 @@ void CSommet::SOM_SupprimerArcEntrant(string sDepart)
 
 	if (itSupprimerArcEntrant != vSOM_ArcEntrants.end())
 	{
-		//delete (*itSupprimerArcEntrant);
 		vSOM_ArcEntrants.erase(itSupprimerArcEntrant);
 	}
 }
 
-void CSommet::SOM_SupprimerArcSortant(string sArrive)
+void CSommet::SOM_SupprimerArcSortant(const string& sArrive)
 {
 #pragma region ORIGINE
 	//vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
@@ -172,7 +171,6 @@ void CSommet::SOM_SupprimerArcSortant(string sArrive)
 	vector<CArc*>::iterator itSupprimerArcSortantant = SOM_RechercheSortant(sArrive);
 	if (itSupprimerArcSortantant != vSOM_ArcSortants.end())
 	{
-		//delete (*itSupprimerArcSortantant);
 		vSOM_ArcSortants.erase(itSupprimerArcSortantant);
 	}
 }

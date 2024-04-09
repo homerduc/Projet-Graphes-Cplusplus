@@ -73,32 +73,40 @@ void CGrapheOriente::GRO_AjouterSommet(string sID)
 
 void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 {
+	vector<CArc*>::iterator itRechercheArc = GRO_RechercheArcs(sDepart,sArrive);
 	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sDepart);
 	vector<CSommet*>::iterator itRechercheArrive = GRO_RechercheSommets(sArrive);
-	//vector<CArc*>::iterator itRechercherAce = GRO_RechercheArcs(sDepart, sArrive);
+	
 	try
 	{
-		if (itRechercheDepart != vGROsommets.end() && itRechercheArrive != vGROsommets.end())
+		if (itRechercheArc == vGROarcs.end())
 		{
-			CArc* pNEWarc = new CArc(sDepart, sArrive);
-			vGROarcs.push_back(pNEWarc);
-			(*itRechercheDepart)->SOM_Ajouter_Sortants(pNEWarc);
-			(*itRechercheArrive)->SOM_Ajouter_Entrants(pNEWarc);
+			if (itRechercheDepart != vGROsommets.end() && itRechercheArrive != vGROsommets.end())
+			{
+				CArc* pNEWarc = new CArc(sDepart, sArrive);
+				vGROarcs.push_back(pNEWarc);
+				(*itRechercheDepart)->SOM_Ajouter_Sortants(pNEWarc);
+				(*itRechercheArrive)->SOM_Ajouter_Entrants(pNEWarc);
 
-			CAffichage::AFC_AffichageAjoutArc(sDepart, sArrive);
-			return;
+				CAffichage::AFC_AffichageAjoutArc(sDepart, sArrive);
+				return;
+			}
+			else if (itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end()) //le sommet de départ inexistant
+			{
+				throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet de d\202part <") + sDepart + string("> mis en param\212tre n'existe pas. Impossible de crée l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+			}
+			else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end()) //le sommet d'arrive inexistant
+			{
+				throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet d'arriv\202e <") + sArrive + string("> mis en param\212tre n'existe pas. Impossible de cr\202er l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+			}
+			else // les deux sommets sont inexistant 
+			{
+				throw invalid_argument(ERREUR_couleur + string("ERREUR : Les sommets  <") + sDepart + string("> & <") + sArrive + string("> mis en param\212tre n'existent pas. Impossible de cr\202er l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+			}
 		}
-		else if (itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end()) //le sommet de départ inexistant
+		else
 		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet de d\202part <") + sDepart + string("> mis en param\212tre n'existe pas. Impossible de crée l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
-		}
-		else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end()) //le sommet d'arrive inexistant
-		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet d'arriv\202e <") + sArrive + string("> mis en param\212tre n'existe pas. Impossible de cr\202e l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
-		}
-		else // les deux sommets sont inexistant 
-		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : Les sommets  <") + sDepart + string("> & <") + sArrive + string("> mis en param\212tre n'existent pas. Impossible de crée l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+			throw invalid_argument(ERREUR_couleur + string("ERREUR : L'arc  <") + sDepart + string("> --> <") + sArrive + string("> existe deja. Impossible de cr\202er une deuxi\212me fois l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
 		}
 	}
 	catch (const exception& Message_Erreur)
@@ -129,7 +137,7 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 				}
 			}
 			CAffichage::AFC_AffichageSupprSommet(sID);
-			//delete (*itSupprimerSommet);
+			delete *itSupprimerSommet;
 			vGROsommets.erase(itSupprimerSommet);
 		}
 		else
@@ -158,7 +166,7 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 			(*itRechercheSommeDepart)->SOM_SupprimerArcSortant(sArrive);
 			(*itRechercheSommeArrive)->SOM_SupprimerArcEntrant(sDepart);
 
-			//delete (*itSupprimerArc);
+			delete *itSupprimerArc;
 			CAffichage::AFC_AffichageSupprArc(sDepart, sArrive);
 			vGROarcs.erase(itSupprimerArc);
 		}
@@ -172,6 +180,22 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 		cout << EXPmessage.what() << endl << endl;;
 	}
 #pragma endregion
+}
+
+void CGrapheOriente::GRO_Inverse()
+{
+	string sDepart, sArrive, sTemp;
+	for (CSommet* pSommet : vGROsommets)
+	{
+		//supprimer le contenu des vecteurs des sommets 
+	}
+	for (CArc* pArc : vGROarcs)
+	{
+		
+	}
+
+	// reajouter tous les vecteurs dans les sommets 9
+		
 }
 
 void CGrapheOriente::Afficher_Graphe()

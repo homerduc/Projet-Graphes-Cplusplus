@@ -139,6 +139,8 @@ public:
      */
     void GRO_SupprimerArc(string sDepart, string sArrive);
 
+    void GRO_Inverse();
+
     /**
      * @brief Affiche le graphe.
      */

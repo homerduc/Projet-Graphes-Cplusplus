@@ -42,7 +42,9 @@ int main()
    
     //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
     Graphe.GRO_AjouterArc("lilian", "mathieu");
-    Graphe.GRO_SupprimerSommet("lilian");
+
+    Graphe.GRO_SupprimerArc("lilian", "mathieu");
+    
    // Graphe.GRO_SupprimerSommet("mathieu");    
     Graphe.Afficher_Graphe();
    

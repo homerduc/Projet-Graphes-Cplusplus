@@ -1,21 +1,21 @@
 ﻿#include "CAffichage.h"
 #include "CGrapheOriente.h"
 
-void CAffichage::AFC_AffichageSupprArc(string sDepart, string sArrive)
+void CAffichage::AFC_AffichageSupprArc(const string& sDepart, const string& sArrive)
 {
 	cout << "+"<<CAffichage::AFC_Calcul_tirets(sDepart+sArrive,'-',TAILLE_SUPPR_ARC)<<"+" << endl;
 	cout << "| " << ERREUR_couleur << " Suppression de l arc <" << sDepart << "> --> <" << sArrive << ">" << RESTAURER_couleur <<CAffichage::AFC_Calcul_vide_Ajout(sDepart+sArrive,' ') <<"|" << endl;
 	cout << "+" << CAffichage::AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR_ARC) << "+" << endl<< endl;
 }
 
-void CAffichage::AFC_AffichageSupprSommet(string sID)
+void CAffichage::AFC_AffichageSupprSommet(const string& sID)
 {
 	cout << "+" << CAffichage::AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET) << "+" << endl;
 	cout << "| " << ERREUR_couleur << " Suppression du sommet <" <<sID<<">" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Ajout(sID, ' ') << "|" << endl;
 	cout << "+" << CAffichage::AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET) << "+" << endl << endl;
 }
 
-void CAffichage::AFC_AffichageAjoutSommet(string sID)
+void CAffichage::AFC_AffichageAjoutSommet(const string& sID)
 {
 	cout << "+" << AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT) << "+" << endl;
 	cout << "| " << CREATION_couleur << " Cr\202ation du sommet <" << sID << ">" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Creation(sID, ' ') << "|" << endl;
@@ -24,7 +24,7 @@ void CAffichage::AFC_AffichageAjoutSommet(string sID)
 
 }
 
-void CAffichage::AFC_AffichageAjoutArc(string sDepart, string sArrive)
+void CAffichage::AFC_AffichageAjoutArc(const string& sDepart, const string& sArrive)
 {
 	cout << "+"<<CAffichage::AFC_Calcul_tirets(sDepart+sArrive,'-',TAILLE_CREATION_AJOUT) << "+" << endl;
 	cout << "| " << CREATION_couleur << " cr\202ation arc : <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl;
@@ -35,24 +35,27 @@ void CAffichage::AFC_AffichageAjoutArc(string sDepart, string sArrive)
 
 void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 {
+	const char* pcLigneTirets = CAffichage::AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_AFFICHA_GEGRAPH);
+
 	//affichage arc entrant du sommet 
-	string sID = SOMsommet->SOM_GetID();
+	const string sID = SOMsommet->SOM_GetID();
 	cout << " <" << sID << "> est un sommet contenant \27" << endl;
 	cout << TEXT_Tabultation << "Les arcs Entrants de <" << sID << "> sont : " << endl;
-	cout << ARC_Tabultation << ARC_couleur << "+"<<CAffichage::AFC_Calcul_tirets(TAILLE_Encadre_arcs,'-',TAILLE_AFFICHA_GEGRAPH) << "+ " << endl;
+	cout << ARC_Tabultation << ARC_couleur << "+" << pcLigneTirets << "+ " << endl;
 	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetEntrants().size(); uiPosition++) {
 		cout << ARC_Tabultation << "|  l'arc " << uiPosition << " : provenant du sommet <" << SOMsommet->SOM_GetEntrants()[uiPosition]->ARC_GetSommetDepart() << "> ..." << endl;
 	}
-	cout << ARC_Tabultation << "+" << CAffichage::AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_AFFICHA_GEGRAPH) << "+ " <<RESTAURER_couleur<< endl;
+	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " <<RESTAURER_couleur<< endl;
 
 	//affichages arcs sortant du sommet
 	cout << TEXT_Tabultation << "Les arcs Sortants de <" << sID << "> sont : " << endl;
-	cout <<ARC_Tabultation<< ARC_couleur << "+" << CAffichage::AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_AFFICHA_GEGRAPH) << "+ " << endl;
+	cout <<ARC_Tabultation<< ARC_couleur << "+" << pcLigneTirets << "+ " << endl;
 	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetSortants().size(); uiPosition++) {
 		cout << ARC_Tabultation<< "|  l'arc " << uiPosition << " : Allant vers le sommet <" << SOMsommet->SOM_GetSortants()[uiPosition]->ARC_GetSommetArrive() << "> ..."<< endl;
 	}
-	cout << ARC_Tabultation<< "+" << CAffichage::AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_AFFICHA_GEGRAPH) << "+ " << RESTAURER_couleur << endl;
+	cout << ARC_Tabultation<< "+" << pcLigneTirets << "+ " << RESTAURER_couleur << endl;
 
+	delete pcLigneTirets;
 }
 
 void CAffichage::AFC_Afficher_Graphe(CGrapheOriente* GROgraph)
@@ -62,12 +65,12 @@ void CAffichage::AFC_Afficher_Graphe(CGrapheOriente* GROgraph)
 	}
 }
 
-void CAffichage::AFC_Erreur_ajoutSommet(string sID)
+void CAffichage::AFC_Erreur_ajoutSommet(const string& sID)
 {
 	cout << ERREUR_couleur << " ERREUR : impossible d'ajouter un sommet avec le nom de '" << sID << "' un sommet de ce nom existe deja !" << RESTAURER_couleur << endl << endl;
 }
 
-void CAffichage::AFC_Erreur_ajoutArc(string sDepart,string sArrive,int iErreur)
+void CAffichage::AFC_Erreur_ajoutArc(const string& sDepart, const string& sArrive, const int& iErreur)
 {
 	switch (iErreur)
 	{
@@ -85,7 +88,7 @@ void CAffichage::AFC_Erreur_ajoutArc(string sDepart,string sArrive,int iErreur)
 	}
 }
 
-const char* CAffichage::AFC_Calcul_tirets(string sID, const char cMotif,int iType)
+const char* CAffichage::AFC_Calcul_tirets(const string& sID, const char& cMotif,const int& iType)
 {
 	unsigned int uiTaille = iType +2 + sID.size();
 	char* cNbtirets = new char[uiTaille + 3]; // Ajoutez 1 pour le caractère de fin de chaîne
@@ -97,7 +100,7 @@ const char* CAffichage::AFC_Calcul_tirets(string sID, const char cMotif,int iTyp
 	return cNbtirets;
 }
 
-const char* CAffichage::AFC_Calcul_vide_Creation(string sID, const char cMotif)
+const char* CAffichage::AFC_Calcul_vide_Creation(const string& sID, const char& cMotif)
 {
 	unsigned int uiTaille = strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-23-sID.length();
 	char* cNbvide = new char[uiTaille];
@@ -110,9 +113,9 @@ const char* CAffichage::AFC_Calcul_vide_Creation(string sID, const char cMotif)
 	return cNbvide;
 }
 
-const char* CAffichage::AFC_Calcul_vide_Ajout(string sID, const char cMotif)
+const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif)
 {
-	unsigned int uiTaille = strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-sID.length()-41;
+	const unsigned int uiTaille = strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-sID.length()-41;
 	char* cNbvide = new char[uiTaille];
 
 	for (unsigned int uiPosition = 0; uiPosition < uiTaille; uiPosition++)

@@ -79,21 +79,21 @@ public:
 	 *
 	 * @return L'identifiant du sommet.
 	 */
-	string const& SOM_GetID()const { return sSOMid; }
+	string const& SOM_GetID() const { return sSOMid; }
 
 	/**
 	 * @brief Accesseur pour les arcs entrants du sommet.
 	 *
 	 * @return Le vecteur des arcs entrants du sommet.
 	 */
-	vector<CArc*> const& SOM_GetEntrants()const { return vSOM_ArcEntrants; }
+	vector<CArc*> const& SOM_GetEntrants() const { return vSOM_ArcEntrants; }
 
 	/**
 	 * @brief Accesseur pour les arcs sortants du sommet.
 	 *
 	 * @return Le vecteur des arcs sortants du sommet.
 	 */
-	vector<CArc*> const& SOM_GetSortants()const { return vSOM_ArcSortants; }
+	vector<CArc*> const& SOM_GetSortants() const { return vSOM_ArcSortants; }
 
 	/**
 	 * @brief Ajoute un arc entrant au sommet.
@@ -119,7 +119,7 @@ public:
 	 * @param sDepart Identifiant du sommet de départ de l'arc à rechercher.
 	 * @return Un itérateur vers l'arc recherché, ou vSOM_ArcEntrants.end() si l'arc n'est pas trouvé.
 	 */
-	vector<CArc*>::iterator SOM_RechercheEntrant(string sDepart);
+	vector<CArc*>::iterator SOM_RechercheEntrant(const string& sDepart);
 
 	/**
 	 * @brief Recherche un arc sortant dans le sommet.
@@ -127,21 +127,21 @@ public:
 	 * @param sArrive Identifiant du sommet d'arrivée de l'arc à rechercher.
 	 * @return Un itérateur vers l'arc recherché, ou vSOM_ArcSortants.end() si l'arc n'est pas trouvé.
 	 */
-	vector<CArc*>::iterator SOM_RechercheSortant(string sArrive);
+	vector<CArc*>::iterator SOM_RechercheSortant(const string& sArrive);
 
 	/**
 	 * @brief Supprime un arc entrant du sommet.
 	 *
 	 * @param sDepart Identifiant du sommet de départ de l'arc à supprimer.
 	 */
-	void SOM_SupprimerArcEntrant(string sDepart);
+	void SOM_SupprimerArcEntrant(const string& sDepart);
 
 	/**
 	 * @brief Supprime un arc sortant du sommet.
 	 *
 	 * @param sArrive Identifiant du sommet d'arrivée de l'arc à supprimer.
 	 */
-	void SOM_SupprimerArcSortant(string sArrive);
+	void SOM_SupprimerArcSortant(const string& sArrive);
 };
 
 #endif // !CSOMMET_H
