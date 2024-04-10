@@ -35,30 +35,26 @@ int main()
     #pragma endregion
 
      CGrapheOriente Graphe;
+     CGrapheOriente * pGraphe2;
 
     //  Graphe.GRO_AjouterSommet(sId);
-    Graphe.GRO_AjouterSommet("lilian");
-    Graphe.GRO_AjouterSommet("ghesquiere");
-    Graphe.GRO_AjouterSommet("mathieu");
-
+    Graphe.GRO_AjouterSommet("Lilian");
+    Graphe.GRO_AjouterSommet("Alexandre");
+    Graphe.GRO_AjouterSommet("Simon");
+   
     //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
-    Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-    Graphe.GRO_AjouterArc("lilian", "mathieu"); // il ne supprime pas celui la !!!!!!!!!!!!
-
-    Graphe.GRO_AjouterArc("ghesquiere", "lilian");
-    Graphe.GRO_AjouterArc("ghesquiere", "mathieu");
-
-    Graphe.GRO_AjouterArc("mathieu", "lilian");
-    Graphe.GRO_AjouterArc("mathieu", "ghesquiere");
-
-
-
-    Graphe.Afficher_Graph();
-
-   // Graphe.GRO_SupprimerSommet("mathieu");
-    Graphe.GRO_SupprimerSommet("ghesquiere");
-    //(*Graphe.GRO_RechercheSommets("mathieu"))->SOM_SupprimerArcEntrant("lilian"); ca marche quand on supprime maniellement 
+    Graphe.GRO_AjouterArc("Lilian", "Alexandre");
+    Graphe.GRO_AjouterArc("Simon", "Lilian");
+    Graphe.GRO_AjouterArc("Alexandre", "Simon");
     
+   // Graphe.GRO_SupprimerSommet("mathieu");    
+    Graphe.Afficher_Graphe();
+  
+ 
+    pGraphe2 = Graphe.GRO_Inverse();
+   
+    pGraphe2->Afficher_Graphe();
 
-    Graphe.Afficher_Graph();
+
+
 }

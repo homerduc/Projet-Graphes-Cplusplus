@@ -29,7 +29,7 @@
 #define AJOUT_couleur "\033[38;5;27m"
 #define ERREUR_couleur "\033[48;5;52m"
 #define SUPPR_couleur "\033[38;5;2m"
-#define RESAURER_couleur "\033[0m"
+#define RESTAURER_couleur "\033[0m"
 #define ARC_couleur "\033[38;5;166m"  
 #define ARC_Tabultation "		"
 #define TEXT_Tabultation "	"
@@ -53,21 +53,21 @@ public:
      * @param sDepart Identifiant du sommet de départ de l'arc.
      * @param sArrive Identifiant du sommet d'arrivée de l'arc.
      */
-    static void AFC_AffichageSupprArc(string sDepart, string sArrive);
+    static void AFC_AffichageSupprArc(const string& sDepart, const string& sArrive);
 
     /**
      * @brief Affiche l'information de suppression d'un sommet.
      *
      * @param sID Identifiant du sommet.
      */
-    static void AFC_AffichageSupprSommet(string sID);
+    static void AFC_AffichageSupprSommet(const string& sID);
 
     /**
      * @brief Affiche l'information d'ajout d'un sommet.
      *
      * @param sID Identifiant du sommet.
      */
-    static void AFC_AffichageAjoutSommet(string sID);
+    static void AFC_AffichageAjoutSommet(const string& sID);
 
     /**
      * @brief Affiche l'information d'ajout d'un arc.
@@ -75,7 +75,7 @@ public:
      * @param sDepart Identifiant du sommet de départ de l'arc.
      * @param sArrive Identifiant du sommet d'arrivée de l'arc.
      */
-    static void AFC_AffichageAjoutArc(string sDepart, string sArrive);
+    static void AFC_AffichageAjoutArc(const string& sDepart, const string& sArrive);
 
     /**
      * @brief Affiche les informations d'un sommet.
@@ -89,14 +89,14 @@ public:
      *
      * @param GROgraph Pointeur vers le graphe à afficher.
      */
-    static void AFC_Afficher_Graph(CGrapheOriente* GROgraph);
+    static void AFC_Afficher_Graphe(CGrapheOriente* GROgraph);
 
     /**
      * @brief Affiche l'erreur d'ajout d'un sommet.
      *
      * @param sID Identifiant du sommet.
      */
-    static void AFC_Erreur_ajoutSommet(string sID);
+    static void AFC_Erreur_ajoutSommet(const string& sID);
 
     /**
      * @brief Affiche l'erreur d'ajout d'un arc.
@@ -105,7 +105,7 @@ public:
      * @param sArrive Identifiant du sommet d'arrivée de l'arc.
      * @param iErreur Type d'erreur.
      */
-    static void AFC_Erreur_ajoutArc(string sDepart, string sArrive, int iErreur);
+    static void AFC_Erreur_ajoutArc(const string& sDepart, const string& sArrive, const int& iErreur);
 
     /**
      * @brief Calcule les tirets pour l'affichage.
@@ -115,7 +115,7 @@ public:
      * @param iType Type de l'affichage.
      * @return Une chaîne de caractères contenant les tirets calculés.
      */
-    static const char* AFC_Calcul_tirets(string sID, const char cMotif, int iType);
+    static const char* AFC_Calcul_tirets(const string& sID, const char& cMotif, const int& iType);
 
     /**
      * @brief Calcule l'espace vide pour l'affichage de la création.
@@ -124,7 +124,7 @@ public:
      * @param cMotif Caractère pour le motif de l'espace vide.
      * @return Une chaîne de caractères contenant l'espace vide calculé.
      */
-    static const char* AFC_Calcul_vide_Creation(string sID, const char cMotif);
+    static const char* AFC_Calcul_vide_Creation(const string& sID, const char& cMotif);
 
     /**
      * @brief Calcule l'espace vide pour l'affichage de l'ajout.
@@ -133,7 +133,7 @@ public:
      * @param cMotif Caractère pour le motif de l'espace vide.
      * @return Une chaîne de caractères contenant l'espace vide calculé.
      */
-    static const char* AFC_Calcul_vide_Ajout(string sID, const char cMotif);
+    static const char* AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif);
 
 };
 
