@@ -4,58 +4,28 @@
 #include <iostream>
 #include "CGrapheOriente.h"
 #include "CAffichage.h"
+#include"CGraphe.h"
 
 using namespace std;
 
 int main()
 {
+	CGraphe Graphe;
 
-    #pragma region TEST SUPPRESSION ARC
-        //CGrapheOriente Graphe;
+	//  Graphe.GRO_AjouterSommet(sId);
+	Graphe.GRO_AjouterSommet("Lilian");
+	Graphe.GRO_AjouterSommet("Alexandre");
+	Graphe.GRO_AjouterSommet("Simon");
 
-        ////  Graphe.GRO_AjouterSommet(sId);
-        //Graphe.GRO_AjouterSommet("lilian");
-        //Graphe.GRO_AjouterSommet("ghesquiere");
-        //Graphe.GRO_AjouterSommet("mathieu");
+	//  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
+	Graphe.GRO_AjouterArc("Lilian", "Alexandre");
+	Graphe.GRO_AjouterArc("Alexandre", "Alexandre");
 
-        ////  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
-        //Graphe.GRO_AjouterArc("lilian", "ghesquiere");
-        //Graphe.GRO_AjouterArc("ghesquiere", "lilian");
-        //Graphe.GRO_AjouterArc("mathieu", "lilian");
+	// Graphe.GRO_SupprimerSommet("mathieu");    
+	Graphe.Afficher_Graphe();
 
-        ////  AFC_Affichage_Sommets(Csommet* pSOMsommet);
-        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("lilian"));
-        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("mathieu"));
+	Graphe.GRO_SupprimerSommet("Alexandre");
 
-        ////  GRO_SupprimerArc(string sDepart, string sArrive);
-        //Graphe.GRO_SupprimerArc("mathieu", "lilian");
-
-        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("lilian"));
-        //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("mathieu"));
-    #pragma endregion
-
-     CGrapheOriente Graphe;
-     CGrapheOriente * pGraphe2;
-
-    //  Graphe.GRO_AjouterSommet(sId);
-    Graphe.GRO_AjouterSommet("Lilian");
-    Graphe.GRO_AjouterSommet("Alexandre");
-    Graphe.GRO_AjouterSommet("Simon");
-   
-    //  Graphe.GRO_AjouterArc(string sDepart,string sArrive);
-    Graphe.GRO_AjouterArc("Lilian", "Alexandre");
-    Graphe.GRO_AjouterArc("Simon", "Lilian");
-    Graphe.GRO_AjouterArc("Alexandre", "Simon");
-    
-   // Graphe.GRO_SupprimerSommet("mathieu");    
-    Graphe.Afficher_Graphe();
-  
- 
-    pGraphe2 = Graphe.GRO_Inverse();
-   
-    pGraphe2->Afficher_Graphe();
-
-
-
+	Graphe.Afficher_Graphe();
 }
 
