@@ -4,6 +4,7 @@
 #include <iostream>
 #include "CGrapheOriente.h"
 #include "CAffichage.h"
+#include "CParser.h"
 
 using namespace std;
 
@@ -34,8 +35,8 @@ int main()
         //CAffichage::AFC_Affichage_Sommets(*Graphe.GRO_RechercheSommets("mathieu"));
     #pragma endregion
 
-     CGrapheOriente Graphe;
-     CGrapheOriente * pGraphe2;
+    CGrapheOriente Graphe;
+    CGrapheOriente * pGraphe2;
 
     //  Graphe.GRO_AjouterSommet(sId);
     Graphe.GRO_AjouterSommet("Lilian");
@@ -49,12 +50,11 @@ int main()
     
    // Graphe.GRO_SupprimerSommet("mathieu");    
     Graphe.Afficher_Graphe();
-  
- 
+
     pGraphe2 = Graphe.GRO_Inverse();
    
     pGraphe2->Afficher_Graphe();
 
-
-
+    CParser parsetest;
+    parsetest.PAR_ItererFichier();
 }

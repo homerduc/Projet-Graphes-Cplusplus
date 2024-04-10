@@ -130,7 +130,7 @@
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CAffichage.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
-    <ClCompile Include="CParseur.cpp" />
+    <ClCompile Include="CParser.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="Projet_C++.cpp" />
   </ItemGroup>
@@ -138,7 +138,7 @@
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CAffichage.h" />
     <ClInclude Include="CGrapheOriente.h" />
-    <ClInclude Include="CParseur.h" />
+    <ClInclude Include="CParser.h" />
     <ClInclude Include="CSommet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
