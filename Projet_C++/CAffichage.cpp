@@ -93,6 +93,29 @@ void CAffichage::AFC_Afficher_Graphe(CGrapheOriente* GROgraph)
 	}
 }
 
+void CAffichage::AFC_Afficher_Graphe(CGraphe* GRAgraph)
+{
+	string sSommet1, sSommet2,sID;
+	cout << "Les sommets du graph non orient\202 :" << endl;
+	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetSommets().size(); uiPosition++)
+	{
+		sID = GRAgraph->GRO_GetSommets()[uiPosition]->SOM_GetID();
+		cout <<ARC_Tabultation<< ARC_couleur << "<" << sID << ">" << RESTAURER_couleur << endl;
+	}
+	cout << "la liste des arcs du graph non orient\202sont sont : " << endl;
+	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetArcs().size(); uiPosition++)
+	{
+		sSommet1 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetDepart();
+		sSommet2 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetArrive();
+		cout << ARC_Tabultation << ARC_couleur << "<" << sSommet1	 << "> <---> <" << sSommet2 << ">" << RESTAURER_couleur << endl;
+	}
+}
+
+void CAffichage::AFC_Afficher_Arcs(CArc* pARCarc)
+{
+	cout << ARC_couleur << "<" << pARCarc->ARC_GetSommetDepart() << "> <---> <" << pARCarc->ARC_GetSommetArrive() << ">" << RESTAURER_couleur << endl;
+}
+
 void CAffichage::AFC_Erreur_ajoutSommet(const string& sID)
 {
 	cout << ERREUR_couleur << " ERREUR : impossible d'ajouter un sommet avec le nom de '" << sID << "' un sommet de ce nom existe deja !" << RESTAURER_couleur << endl << endl;

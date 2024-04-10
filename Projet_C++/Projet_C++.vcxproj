@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CAffichage.cpp" />
+    <ClCompile Include="CGraphe.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
     <ClCompile Include="CParser.cpp" />
     <ClCompile Include="CSommet.cpp" />
@@ -137,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CAffichage.h" />
+    <ClInclude Include="CGraphe.h" />
     <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CParser.h" />
     <ClInclude Include="CSommet.h" />

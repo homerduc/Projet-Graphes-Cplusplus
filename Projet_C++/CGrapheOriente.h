@@ -97,7 +97,7 @@ public:
      */
     void GRO_AjouterArc(string sDepart, string sArrive);
 
-private:
+protected:
     /**
      * @brief Recherche un arc dans le graphe.
      * @param sDepart L'identifiant du sommet de départ de l'arc à rechercher.

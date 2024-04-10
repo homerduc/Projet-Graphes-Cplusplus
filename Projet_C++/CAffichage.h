@@ -8,7 +8,7 @@
 
 #include <string>
 #include<iostream>
-#include "CGrapheOriente.h"
+#include "CGraphe.h"
 
 #pragma region TAILLES AFFICHAGE
 #define TAILLE_CREATION_AJOUT 41
@@ -91,6 +91,7 @@ public:
      */
     static void AFC_Afficher_Graphe(CGrapheOriente* GROgraph);
 
+
     /**
      * @brief Affiche l'erreur d'ajout d'un sommet.
      *
@@ -135,6 +136,9 @@ public:
      */
     static const char* AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif);
 
+    static void AFC_Afficher_Graphe(CGraphe* GRAgraph);
+
+    static void AFC_Afficher_Arcs(CArc* pARCarc);
 };
 
 #endif // CAFFICHAGE_H
