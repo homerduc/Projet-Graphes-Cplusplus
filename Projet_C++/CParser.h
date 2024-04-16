@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
+#include <map>
 using namespace std;
 
 
@@ -31,7 +33,8 @@ public :
 	// Faire une methode qui va chercher les infos de la ligne clé/valeur
 	// Faire une methode qui va chercher les infos de la ligne dictionnaire (ex: Arcs= et Sommets=)
 
-	void PAR_ItererFichier();
+
+	vector<string> PAR_GetCleValeur();
 };
 #endif // !CPARSER_H
 
