@@ -34,7 +34,8 @@ public :
 	// Faire une methode qui va chercher les infos de la ligne dictionnaire (ex: Arcs= et Sommets=)
 
 
-	vector<string> PAR_GetCleValeur();
+	map<string, string> PAR_GetCleValeur();
+	map<string, vector<string>> PAR_GetCleListeValeur();
 };
 #endif // !CPARSER_H
 
