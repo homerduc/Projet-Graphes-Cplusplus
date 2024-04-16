@@ -4,7 +4,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "CGraphe.h"
+#include <vector>
+#include <map>
+using namespace std;
 
 
 using namespace std;
@@ -35,7 +37,8 @@ public:
 	// Faire une methode qui va chercher les infos de la ligne clé/valeur
 	// Faire une methode qui va chercher les infos de la ligne dictionnaire (ex: Arcs= et Sommets=)
 
-	void PAR_Afficher_fichier();
+
+	vector<string> PAR_GetCleValeur();
 };
 #endif // !CPARSER_H
 
