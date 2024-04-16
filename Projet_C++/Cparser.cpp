@@ -16,15 +16,16 @@ vector<string> CParser::PAR_GetCleValeur()
 		cout << "Test parser :" << endl;
 
 		while (getline(fichier, sOk)) { // Boucle principale
-			if (sOk.find("[") == string::npos) { // Si nous sommes sur une ligne de type clé/valeur
-				uiIndiceEgal = sOk.find('=');
-				while (sOk[uiIndiceEgal-1] == ' ') {
+			if (sOk.find('[') == string::npos && sOk.find('=') != string::npos) { // Si nous sommes sur une ligne de type clé/valeur
+				uiIndiceEgal = sOk.find('=')-1;
+				// TODO : vérifier si = a été trouvé. sinon, ignorer la ligne ?
+				while (uiIndiceEgal > 0 && sOk[uiIndiceEgal-1] == ' ') {
 					uiIndiceEgal--;
 				}
 				string sCle = sOk.substr(0, uiIndiceEgal);
 
 				uiIndiceEgal = sOk.find('=') + 1;
-				while (sOk[uiIndiceEgal] == ' ') {
+				while (uiIndiceEgal > 0 && sOk[uiIndiceEgal] == ' ') {
 					uiIndiceEgal++;
 				}
 				string sValeur = sOk.substr(uiIndiceEgal);
@@ -32,10 +33,13 @@ vector<string> CParser::PAR_GetCleValeur()
 				mValeurs[sCle].push_back(sValeur);
 
 			}
-			else { // On a trouvé l'entrée d'un bloc type dictionnaire
+			else if (sOk.find('[') != string::npos) { // On a trouvé l'entrée d'un bloc type dictionnaire
 				while (sOk.find("]") == string::npos) { // Tant que nous sommes toujours à l'intérieur
 					getline(fichier, sOk); // On passe à la ligne suivante
 				}
+			}
+			else { // On a trouvé une ligne inutile/parasite
+				// On fait rien
 			}
 		}
 	}
