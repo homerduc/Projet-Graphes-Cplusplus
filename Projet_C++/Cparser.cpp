@@ -17,7 +17,7 @@ vector<string> CParser::PAR_GetCleValeur()
 
 		while (getline(fichier, sOk)) { // Boucle principale
 			if (sOk.find("[") == string::npos) { // Si nous sommes sur une ligne de type clé/valeur
-				uiIndiceEgal = sOk.find('=')-1;
+				uiIndiceEgal = sOk.find('=');
 				while (sOk[uiIndiceEgal-1] == ' ') {
 					uiIndiceEgal--;
 				}
