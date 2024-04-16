@@ -5,15 +5,19 @@ CParser::CParser()
 	// Demander chemin au clavier
 }
 
-void CParser::PAR_ItererFichier()
+void CParser::Par_Recherche()
+{
+	string sRecherche;
+}
+
+void CParser::PAR_Afficher_fichier()
 {
 	ifstream fichier(sPARChemin);
-	string ok;
-	getline(fichier, ok);
-	cout << "test parser :" << ok << endl;
-
-	while (getline(fichier, ok)) {
-
+	string ligne;
+	cout << "test parser :" << ligne << endl;
+	while (getline(fichier, ligne))
+	{
+		cout <<ligne<< endl;
 	}
 	return;
 }
