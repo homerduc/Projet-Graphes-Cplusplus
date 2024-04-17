@@ -31,6 +31,5 @@ int main()
    
     pGraphe2->Afficher_Graphe();
 
-    CParser parsetest;
-    parsetest.PAR_GetCleValeur();
+    CParser::PAR_Afficher("C:\\Users\\alexa\\Desktop\\test parser.txt");
 }

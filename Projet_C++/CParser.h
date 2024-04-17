@@ -11,31 +11,15 @@ using namespace std;
 
 class CParser
 {
-private :
-	// ATTRIBUTS
-	string sPARChemin = "C:\\Users\\alexa\\Desktop\\test parser.txt";
-
-	/*
-	string sNBSommets = "NBSommets";
-	string sNBArcs = "NBArcs";
-	string sSommets = "Sommets";
-	string sNumero = "Numero";
-	string sArcs = "Arcs";
-	string sDebut = "Debut";
-	string sFin = "Fin";
-	*/
-
 public :
-	// CONSTRUCTEURS & DESTRUCTEUR
-	CParser();
+	static string PAR_TrouverCle(const string& sLigne);
+	static string PAR_TrouverValUnique(const string& sLigne);
+	static map<string, string> PAR_GetCleValeur(const string& sPARChemin);
+	static map<string, vector<map<string, string>>> PAR_GetCleListeValeur(const string& sPARChemin);
 
-	// METHODES
-	// Faire une methode qui va chercher les infos de la ligne clé/valeur
-	// Faire une methode qui va chercher les infos de la ligne dictionnaire (ex: Arcs= et Sommets=)
+	static void PAR_Afficher(const string& sPARChemin);
 
-
-	map<string, string> PAR_GetCleValeur();
-	map<string, vector<string>> PAR_GetCleListeValeur();
+	
 };
 #endif // !CPARSER_H
 
