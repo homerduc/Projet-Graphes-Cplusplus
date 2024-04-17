@@ -27,22 +27,7 @@ CSommet::CSommet(const CSommet& SOMsommet)
 	}
 }
 
-CSommet::~CSommet()
-{
-	sSOMid.clear();
 
-	for (CArc* iIterateurArc : vSOM_ArcEntrants)
-	{
-		delete iIterateurArc;
-	}
-	vSOM_ArcEntrants.clear();
-
-	for (CArc* iIterateurArc : vSOM_ArcSortants)
-	{
-		delete iIterateurArc;
-	}
-	vSOM_ArcSortants.clear();
-}
 
 void CSommet::SOM_Ajouter_Entrants(CArc* pARCarc)
 {

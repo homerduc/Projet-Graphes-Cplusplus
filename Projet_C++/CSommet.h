@@ -67,12 +67,6 @@ public:
 	 */
 	CSommet(const CSommet& SOMsommet);
 
-	/**
-	 * @brief Destructeur.
-	 *
-	 * Nettoie les attributs du sommet.
-	 */
-	~CSommet();
 
 	/**
 	 * @brief Accesseur pour l'identifiant du sommet.
