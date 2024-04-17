@@ -22,19 +22,19 @@ CGrapheOriente::CGrapheOriente(const CGrapheOriente& GROgraphe)
 
 CGrapheOriente::~CGrapheOriente()
 {
-	// Suppression de la liste des arcs
-	for (CArc* iIterateurArc : vGROarcs) 
+
+	for (CArc* pArc : vGROarcs)
 	{
-		delete iIterateurArc;
+		delete pArc;
 	}
 	vGROarcs.clear();
 
-	// Suppression de la liste des sommets
-	for (CSommet* iIterateurSommet : vGROsommets) 
+	for (CSommet* pSommet : vGROsommets)
 	{
-		delete iIterateurSommet;
+		delete pSommet;
 	}
 	vGROsommets.clear();
+
 }
 
 vector<CArc*>::iterator CGrapheOriente::GRO_RechercheArcs(string sDepart, string sArrive)
@@ -158,7 +158,7 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 		}
 		else
 		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet  <") + sDepart + string("> mis en param\212tre n'existent pas. Impossible de supprimer le sommet <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+			throw invalid_argument(ERREUR_couleur + string("ERREUR.Le sommet <") + sID + "> mis en param\212tre n'existent pas. Impossible de supprimer le sommet <" + sID + ">" + RESTAURER_couleur);
 		}
 	}
 	catch (const exception& Message_Erreur)

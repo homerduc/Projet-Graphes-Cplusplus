@@ -8,9 +8,6 @@
 #include <map>
 using namespace std;
 
-
-using namespace std;
-
 class CParser
 {
 private:
@@ -38,7 +35,7 @@ public:
 	// Faire une methode qui va chercher les infos de la ligne dictionnaire (ex: Arcs= et Sommets=)
 
 
-	vector<string> PAR_GetCleValeur();
+	map<string, vector<string>> PAR_GetCleValeur();
 };
 #endif // !CPARSER_H
 

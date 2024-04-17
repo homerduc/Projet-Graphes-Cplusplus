@@ -5,9 +5,8 @@ CParser::CParser()
 	// Demander chemin au clavier
 }
 
-vector<string> CParser::PAR_GetCleValeur()
+map<string, vector<string>> CParser::PAR_GetCleValeur()
 {
-	vector<string> valeurs;
 	ifstream fichier(sPARChemin);
 	string sOk;
 	map<string, vector<string>> mValeurs;
@@ -55,5 +54,5 @@ vector<string> CParser::PAR_GetCleValeur()
 		++it;
 	}
 
-	return valeurs;
+	return mValeurs;
 }
