@@ -106,23 +106,3 @@ map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const st
 	}
 	return mValeurs;
 }
-
-void CParser::PAR_Afficher(const string& sPARChemin)
-{
-	map<string, string> mResultat1 = PAR_GetCleValeur(sPARChemin);
-	for (const auto& pair : mResultat1) {
-		cout << "Cle unique : " << pair.first << ", Valeur : " << pair.second << endl;
-	}
-
-	map<string, vector<map<string, string>>> mResultat2 = PAR_GetCleListeValeur(sPARChemin);
-	for (const auto& pair : mResultat2) {
-		cout << "Cle groupe : " << pair.first << endl;
-		for (const auto& mTest : pair.second) {
-			cout << "bla" << endl;
-			for (const auto& element : mTest) {
-				cout << "Cle : " << element.first << ", Valeur : " << element.second << endl;
-			}
-		}
-	}
-}
-

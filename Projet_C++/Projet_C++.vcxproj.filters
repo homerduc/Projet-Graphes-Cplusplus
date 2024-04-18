@@ -36,6 +36,9 @@
     <ClCompile Include="CGraphe.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+	<ClCompile Include="CCreationGraphe.cpp">
+	 <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGrapheOriente.h">
@@ -56,5 +59,8 @@
     <ClInclude Include="CGraphe.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+	<ClInclude Include="CCreationGraphe.h">
+	  <Filter>Fichiers d%27en-tête</Filter>
+	</ClInclude>
   </ItemGroup>
 </Project>
