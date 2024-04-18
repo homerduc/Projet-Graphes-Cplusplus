@@ -2,11 +2,11 @@
 
 string CParser::PAR_TrouverCle(const string& sLigne)
 {
-	unsigned int uiIndiceEgal = sLigne.find('=') - 1;
+	unsigned int uiIndiceEgal = sLigne.find('=');
 	while (uiIndiceEgal > 0 && sLigne[uiIndiceEgal - 1] == ' ') {
 		uiIndiceEgal--;
 	}
-	return sLigne.substr(0, uiIndiceEgal+1);
+	return sLigne.substr(0, uiIndiceEgal);
 }
 
 string CParser::PAR_TrouverValUnique(const string& sLigne)
