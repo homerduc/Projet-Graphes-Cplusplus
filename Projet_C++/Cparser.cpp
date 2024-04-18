@@ -65,11 +65,7 @@ map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const st
 				string sCle = PAR_TrouverCle(sOk);
 				getline(fichier, sOk);
 
-				while (sOk.find(']') == string::npos) { // Tant que nous sommes toujours à l'intérieur
-
-					// ICI NOUS SOMMES SUR UNE LIGNE TYPE Debut=9, Fin=3
-					// JE DOIS SEPARER AVEC LES VIRGULES PUIS DANS CHAQUE BLOC OBTENU JE DOIS FAIRE EXACTEMENT PAREIL QUE DANS CLE VALEUR
-					
+				while (sOk.find(']') == string::npos) { // Tant que nous sommes toujours à l'intérieur	
 					string sBloc;
 					while (sOk != "") { // Tant qu'on a pas récupéré tous les blocs
 						uiIndiceEspace = 0;

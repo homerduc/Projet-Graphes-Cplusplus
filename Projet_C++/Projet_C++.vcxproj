@@ -134,6 +134,7 @@
     <ClCompile Include="CParser.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="Projet_C++.cpp" />
+    <ClCompile Include="CCreationGraphe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CArc.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CParser.h" />
     <ClInclude Include="CSommet.h" />
+    <ClInclude Include="CCreationGraphe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
