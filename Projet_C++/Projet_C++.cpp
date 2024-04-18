@@ -6,11 +6,13 @@
 #include "CAffichage.h"
 #include"CGraphe.h"
 #include "CParser.h"
+#include "CCreationGraphe.h"
 
 using namespace std;
 
 int main()
 {
+    /*
     CGrapheOriente Graphe;
     CGrapheOriente* pGraphe2;
 
@@ -30,6 +32,9 @@ int main()
     pGraphe2 = Graphe.GRO_Inverse();
 
     pGraphe2->Afficher_Graphe();
+    */
 
     CParser::PAR_Afficher("C:\\Users\\alexa\\Desktop\\test parser.txt");
+
+    CCreationGraphe::CRE_CreerGraphe();
 }
