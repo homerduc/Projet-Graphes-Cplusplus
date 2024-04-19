@@ -4,34 +4,42 @@
 void CAffichage::AFC_AffichageSupprArc(const string& sDepart, const string& sArrive)
 {	
 	const char* pcLigneTirets = AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR_ARC);
+	const char* cVide = CAffichage::AFC_Calcul_vide_Ajout(sDepart + sArrive, ' ');
 
 	cout << "+"<< pcLigneTirets <<"+" << endl;
-	cout << "| " << ERREUR_couleur << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << RESTAURER_couleur <<CAffichage::AFC_Calcul_vide_Ajout(sDepart+sArrive,' ') <<"|" << endl;
+	cout << "| " << ERREUR_couleur << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << RESTAURER_couleur << cVide <<"|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl<< endl;
 
+	delete cVide;
 	delete pcLigneTirets;
 }
 
 void CAffichage::AFC_AffichageSupprSommet(const string& sID)
 {
 	const char* pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET);
+	const char* cVide = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
 
 	cout << "+" << pcLigneTirets << "+" << endl;
-	cout << "| " << ERREUR_couleur << " Suppression du sommet <" <<sID<<">" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Ajout(sID, ' ') << "|" << endl;
+	cout << "| " << ERREUR_couleur << " Suppression du sommet <" <<sID<<">" << RESTAURER_couleur << cVide << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
+	delete cVide;
 	delete pcLigneTirets;
 }
 
 void CAffichage::AFC_AffichageAjoutSommet(const string& sID)
 {
 	const char* pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
+	const char* cVide1 = CAffichage::AFC_Calcul_vide_Creation(sID, ' ');
+	const char* cVide2 = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
 
 	cout << "+" << pcLigneTirets << "+" << endl;
-	cout << "| " << CREATION_couleur << " Creation du sommet <" << sID << ">" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Creation(sID, ' ') << "|" << endl;
-	cout << "| " << AJOUT_couleur << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Ajout(sID, ' ') << "|" << endl;
+	cout << "| " << CREATION_couleur << " Creation du sommet <" << sID << ">" << RESTAURER_couleur << cVide1 << "|" << endl;
+	cout << "| " << AJOUT_couleur << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << RESTAURER_couleur << cVide2 << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
+	delete cVide1;
+	delete cVide2;
 	delete pcLigneTirets;
 
 }
@@ -156,7 +164,8 @@ const char* CAffichage::AFC_Calcul_tirets(const string& sID, const char& cMotif,
 
 const char* CAffichage::AFC_Calcul_vide_Creation(const string& sID, const char& cMotif)
 {
-	unsigned int uiTaille = (unsigned int)(strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-23-sID.length());// taille que devra faire le char* retourné pour avoir une bonne distance
+	const char* cTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
+	unsigned int uiTaille = (unsigned int)(strlen(cTirets -23-sID.length()));// taille que devra faire le char* retourné pour avoir une bonne distance
 	char* cNbvide = new char[uiTaille];
 
 	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
@@ -166,12 +175,15 @@ const char* CAffichage::AFC_Calcul_vide_Creation(const string& sID, const char& 
 	}
 
 	cNbvide[uiTaille] = '\0'; // Ajoutez le caractère de fin de chaîne
+
+	delete cTirets;
 	return cNbvide;
 }
 
 const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif)
 {
-	const unsigned int uiTaille = (unsigned int)(strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-sID.length()-41);// taille que devra faire le char* retourné pour avoir une bonne distance
+	const char* cTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
+	const unsigned int uiTaille = (unsigned int)(strlen(cTirets)-sID.length()-41);// taille que devra faire le char* retourné pour avoir une bonne distance
 	char* cNbvide = new char[uiTaille];
 
 	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
@@ -181,6 +193,8 @@ const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMo
 	}
 
 	cNbvide[uiTaille] = '\0'; // Ajoutez le caractère de fin de chaîne
+
+	delete cTirets;
 	return cNbvide;
 }
 
