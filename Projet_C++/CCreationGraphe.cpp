@@ -16,13 +16,23 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
     map<string,vector<map<string,string>>> mCleListeVar = CParser::PAR_GetCleListeValeur(sChemin);
 
 
-    for (const auto& mPaire : mCleVal) {
-        if (mPaire.first == "NBSommets") {
-            uiNBSommets = (unsigned int)stoi(mPaire.second);
+    try {
+        for (const auto& mPaire : mCleVal) {
+            if (mPaire.first == "NBSommets") {
+                uiNBSommets = (unsigned int)stoi(mPaire.second);
+            }
+            else if (mPaire.first == "NBArcs") {
+                uiNBArcs = (unsigned int)stoi(mPaire.second);
+            }
         }
-        else if (mPaire.first == "NBArcs") {
-            uiNBArcs = (unsigned int)stoi(mPaire.second);
-        }
+    }
+    catch (const std::invalid_argument& e) {
+        cout << e.what() << " : Entrez une valeur correcte pour le nombre de sommets et d'arcs ! " << endl;
+        exit(EXIT_FAILURE);
+    }
+    catch (const std::out_of_range& e) {
+        cout << "Entrez une valeur correcte pour le nombre de sommets et d'arcs ! " << endl;
+        exit(EXIT_FAILURE);
     }
 
     // Nous créons les sommets d'abord
