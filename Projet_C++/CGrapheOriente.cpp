@@ -196,9 +196,3 @@ void CGrapheOriente::GRO_SupprimerArc(const string& sDepart, const string& sArri
 	}
 
 }
-
-void CGrapheOriente::Afficher_Graphe()
-{
-	CAffichage::AFC_Afficher_Graphe(this);
-}
-
