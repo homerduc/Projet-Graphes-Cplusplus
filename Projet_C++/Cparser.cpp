@@ -2,11 +2,11 @@
 
 string CParser::PAR_TrouverCle(const string& sLigne)
 {
-	unsigned int uiIndiceEgal = sLigne.find('=') - 1;
+	unsigned int uiIndiceEgal = sLigne.find('=');
 	while (uiIndiceEgal > 0 && sLigne[uiIndiceEgal - 1] == ' ') {
 		uiIndiceEgal--;
 	}
-	return sLigne.substr(0, uiIndiceEgal+1);
+	return sLigne.substr(0, uiIndiceEgal);
 }
 
 string CParser::PAR_TrouverValUnique(const string& sLigne)
@@ -65,11 +65,7 @@ map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const st
 				string sCle = PAR_TrouverCle(sOk);
 				getline(fichier, sOk);
 
-				while (sOk.find(']') == string::npos) { // Tant que nous sommes toujours à l'intérieur
-
-					// ICI NOUS SOMMES SUR UNE LIGNE TYPE Debut=9, Fin=3
-					// JE DOIS SEPARER AVEC LES VIRGULES PUIS DANS CHAQUE BLOC OBTENU JE DOIS FAIRE EXACTEMENT PAREIL QUE DANS CLE VALEUR
-					
+				while (sOk.find(']') == string::npos) { // Tant que nous sommes toujours à l'intérieur	
 					string sBloc;
 					while (sOk != "") { // Tant qu'on a pas récupéré tous les blocs
 						uiIndiceEspace = 0;
@@ -110,23 +106,3 @@ map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const st
 	}
 	return mValeurs;
 }
-
-void CParser::PAR_Afficher(const string& sPARChemin)
-{
-	map<string, string> mResultat1 = PAR_GetCleValeur(sPARChemin);
-	for (const auto& pair : mResultat1) {
-		cout << "Cle unique : " << pair.first << ", Valeur : " << pair.second << endl;
-	}
-
-	map<string, vector<map<string, string>>> mResultat2 = PAR_GetCleListeValeur(sPARChemin);
-	for (const auto& pair : mResultat2) {
-		cout << "Cle groupe : " << pair.first << endl;
-		for (const auto& mTest : pair.second) {
-			cout << "bla" << endl;
-			for (const auto& element : mTest) {
-				cout << "Cle : " << element.first << ", Valeur : " << element.second << endl;
-			}
-		}
-	}
-}
-

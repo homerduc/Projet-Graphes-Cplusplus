@@ -28,6 +28,7 @@
 #define CREATION_couleur "\033[38;5;37m"
 #define AJOUT_couleur "\033[38;5;27m"
 #define ERREUR_couleur "\033[48;5;52m"
+#define graph_couleur "\033[38;5;76m" // a changer
 #define SUPPR_couleur "\033[38;5;2m"
 #define RESTAURER_couleur "\033[0m"
 #define ARC_couleur "\033[38;5;166m"  
@@ -139,6 +140,8 @@ public:
     static void AFC_Afficher_Graphe(CGraphe* GRAgraph);
 
     static void AFC_Afficher_Arcs(CArc* pARCarc);
+
+    static void AFC_AnnoncerGraphe(const string& sNom);
 };
 
 #endif // CAFFICHAGE_H

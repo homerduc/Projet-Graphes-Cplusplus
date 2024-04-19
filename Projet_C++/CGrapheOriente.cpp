@@ -37,7 +37,7 @@ CGrapheOriente::~CGrapheOriente()
 
 }
 
-vector<CArc*>::iterator CGrapheOriente::GRO_RechercheArcs(string sDepart, string sArrive)
+vector<CArc*>::iterator CGrapheOriente::GRO_RechercheArcs(const string& sDepart, const string& sArrive)
 {
 	//vector<CArc*>::iterator itRechercheArc = find(vGROarcs.begin(), vGROarcs.end(), pSOMtemp);
 	for (vector<CArc*>::iterator itRechercheArc = vGROarcs.begin(); itRechercheArc != vGROarcs.end(); itRechercheArc++) 
@@ -51,7 +51,7 @@ vector<CArc*>::iterator CGrapheOriente::GRO_RechercheArcs(string sDepart, string
 	return vGROarcs.end();
 }
 
-vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(string sID)
+vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(const string& sID)
 {
 	//vector<CSommet*>::iterator itRechercheSommet = find(vGROsommets.begin(), vGROsommets.end(), pSOMtemp);
 	for (vector<CSommet*>::iterator itRechercheSommet = vGROsommets.begin(); itRechercheSommet != vGROsommets.end(); itRechercheSommet++) 
@@ -64,7 +64,7 @@ vector<CSommet*>::iterator CGrapheOriente::GRO_RechercheSommets(string sID)
 	return vGROsommets.end();
 }
 
-void CGrapheOriente::GRO_AjouterSommet(string sID)
+void CGrapheOriente::GRO_AjouterSommet(const string& sID)
 {
 	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sID);
 	try
@@ -86,7 +86,7 @@ void CGrapheOriente::GRO_AjouterSommet(string sID)
 
 }
 
-void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
+void CGrapheOriente::GRO_AjouterArc(const string& sDepart, const string& sArrive)
 {
 	vector<CArc*>::iterator itRechercheArc = GRO_RechercheArcs(sDepart,sArrive);
 	vector<CSommet*>::iterator itRechercheDepart = GRO_RechercheSommets(sDepart);
@@ -130,7 +130,7 @@ void CGrapheOriente::GRO_AjouterArc(string sDepart, string sArrive)
 	}
 }
 
-void CGrapheOriente::GRO_SupprimerSommet(string sID)
+void CGrapheOriente::GRO_SupprimerSommet(const string& sID)
 {
 
 	string sArrive, sDepart;
@@ -167,7 +167,7 @@ void CGrapheOriente::GRO_SupprimerSommet(string sID)
 	}
 }
 
-void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
+void CGrapheOriente::GRO_SupprimerArc(const string& sDepart, const string& sArrive)
 {
 
 	vector<CArc*>::iterator itSupprimerArc = GRO_RechercheArcs(sDepart, sArrive);
@@ -195,23 +195,6 @@ void CGrapheOriente::GRO_SupprimerArc(string sDepart, string sArrive)
 		cout << EXPmessage.what() << endl << endl;;
 	}
 
-}
-
-CGrapheOriente* CGrapheOriente::GRO_Inverse()
-{
-	CGrapheOriente *nouveauGraphe = new CGrapheOriente(); // a delete un fois l'affichage fait 
-
-	for (CSommet* SOMsommet : vGROsommets)
-	{
-		nouveauGraphe->GRO_AjouterSommet(SOMsommet->SOM_GetID());
-	}
-	for (CArc* ARCarc : vGROarcs)
-	{
-		nouveauGraphe->GRO_AjouterArc(ARCarc->ARC_GetSommetArrive(), ARCarc->ARC_GetSommetDepart());
-	}
-
-
-	return nouveauGraphe; // a ne pas oublier de delete ce qui va recevoir ce pointeur 
 }
 
 void CGrapheOriente::Afficher_Graphe()

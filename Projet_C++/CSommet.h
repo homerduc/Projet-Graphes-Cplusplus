@@ -54,9 +54,7 @@ public:
 	 *
 	 * @param sID Identifiant du sommet.
 	 */
-	CSommet(const string& sID) {
-		sSOMid = sID;
-	}
+	CSommet(const string& sID) { sSOMid = sID; }
 
 	/**
 	 * @brief Constructeur de copie.

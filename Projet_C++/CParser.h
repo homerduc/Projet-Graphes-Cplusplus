@@ -15,9 +15,6 @@ public :
 	static string PAR_TrouverValUnique(const string& sLigne);
 	static map<string, string> PAR_GetCleValeur(const string& sPARChemin);
 	static map<string, vector<map<string, string>>> PAR_GetCleListeValeur(const string& sPARChemin);
-
-	static void PAR_Afficher(const string& sPARChemin);
-
 	
 };
 #endif // !CPARSER_H

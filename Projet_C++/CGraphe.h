@@ -8,7 +8,7 @@ private:
 	//vector<CSommet*> vGROsommets; // Vecteur des sommets du graphe.
 public:
 
-	void GRA_AjouterArc(string sDepart, string sArrive);
+	void GRA_AjouterArc(const string& sDepart, const string& sArrive);
    
 	void Afficher_Graphe();
 };

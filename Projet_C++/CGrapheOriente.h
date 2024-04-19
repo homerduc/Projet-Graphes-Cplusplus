@@ -81,7 +81,7 @@ public:
      * @param sID L'identifiant du nouveau sommet.
      * @throw invalid_argument Si un sommet avec le même identifiant existe déjà.
      */
-    void GRO_AjouterSommet(string sID);
+    void GRO_AjouterSommet(const string& sID);
 
     /**
      * @brief Ajoute un arc au graphe.
@@ -95,7 +95,7 @@ public:
      * @param sArrive Identifiant du sommet d'arrivée de l'arc.
      * @throw invalid_argument Si le sommet de départ, le sommet d'arrivée, ou les deux ne sont pas trouvés dans le graphe.
      */
-    void GRO_AjouterArc(string sDepart, string sArrive);
+    void GRO_AjouterArc(const string& sDepart, const string& sArrive);
 
 protected:
     /**
@@ -104,14 +104,14 @@ protected:
      * @param sArrive L'identifiant du sommet d'arrivée de l'arc à rechercher.
      * @return Un itérateur vers l'arc recherché, ou vGROarcs.end() si l'arc n'est pas trouvé.
      */
-    vector<CArc*>::iterator GRO_RechercheArcs(string sDepart, string sArrive);
+    vector<CArc*>::iterator GRO_RechercheArcs(const string& sDepart, const string& sArrive);
 
     /**
      * @brief Recherche un sommet dans le graphe.
      * @param sID L'identifiant du sommet à rechercher.
      * @return Un itérateur vers le sommet recherché, ou vGROsommets.end() si le sommet n'est pas trouvé.
      */
-    vector<CSommet*>::iterator GRO_RechercheSommets(string sID);
+    vector<CSommet*>::iterator GRO_RechercheSommets(const string& sID);
 
 public:
 
@@ -126,7 +126,7 @@ public:
      * @param sID L'identifiant du sommet à supprimer.
      * @throw invalid_argument Si le sommet spécifié n'existe pas dans le graphe.
      */
-    void GRO_SupprimerSommet(string sRecherche);
+    void GRO_SupprimerSommet(const string& sRecherche);
 
     /**
      * @brief Supprime un arc du graphe.
@@ -137,9 +137,7 @@ public:
      * @param sDepart L'identifiant du sommet de départ de l'arc à supprimer.
      * @param sArrive L'identifiant du sommet d'arrivée de l'arc à supprimer.
      */
-    void GRO_SupprimerArc(string sDepart, string sArrive);
-
-    CGrapheOriente* GRO_Inverse();
+    void GRO_SupprimerArc(const string& sDepart, const string& sArrive);
 
     /**
      * @brief Affiche le graphe.
