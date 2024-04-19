@@ -31,5 +31,5 @@ int main()
 
     pGraphe2->Afficher_Graphe();
 
-    CParser::PAR_Afficher("C:\\Users\\alexa\\Desktop\\test parser.txt");
+    CParser::PAR_Afficher("C:\\Users\\ghesq\\Desktop\\test.txt");
 }
