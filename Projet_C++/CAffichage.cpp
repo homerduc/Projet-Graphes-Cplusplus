@@ -2,60 +2,59 @@
 #include "CGrapheOriente.h"
 
 void CAffichage::AFC_AffichageSupprArc(const string& sDepart, const string& sArrive)
-{	
-	const char* pcLigneTirets = AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR_ARC);
-	const char* cVide = CAffichage::AFC_Calcul_vide_Ajout(sDepart + sArrive, ' ');
+{
+	string pcLigneTirets = AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR_ARC);
+	string cVide = CAffichage::AFC_Calcul_vide_Ajout(sDepart + sArrive, ' ');
 
-	cout << "+"<< pcLigneTirets <<"+" << endl;
-	cout << "| " << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << cVide <<"|" << endl;
-	cout << "+" << pcLigneTirets << "+" << endl<< endl;
+	cout << "+" << pcLigneTirets << "+" << endl;
+	cout << "| " << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << cVide << "|" << endl;
+	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
-	delete pcLigneTirets;
+
 }
 
 void CAffichage::AFC_AffichageSupprSommet(const string& sID)
 {
-	const char* pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET);
-	const char* cVide = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
+	string pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_SUPPR_SOMMET);
+	string cVide = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
 
 	cout << "+" << pcLigneTirets << "+" << endl;
-	cout << "| " << " Suppression du sommet <" <<sID<<">" << cVide << "|" << endl;
+	cout << "| " << " Suppression du sommet <" << sID << ">" << cVide << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
-	delete pcLigneTirets;
+
 }
 
 void CAffichage::AFC_AffichageAjoutSommet(const string& sID)
 {
-	const char* pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
-	const char* cVide1 = CAffichage::AFC_Calcul_vide_Creation(sID, ' ');
-	const char* cVide2 = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
+	string pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
+	string cVide1 = CAffichage::AFC_Calcul_vide_Creation(sID, ' ');
+	string cVide2 = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
 
 	cout << "+" << pcLigneTirets << "+" << endl;
 	cout << "| " << " Creation du sommet <" << sID << ">" << cVide1 << "|" << endl;
 	cout << "| " << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << cVide2 << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
-	delete pcLigneTirets;
 }
 
 void CAffichage::AFC_AffichageAjoutArc(const string& sDepart, const string& sArrive)
 {
-	const char* pcLigneTirets = AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_CREATION_AJOUT);
+	string pcLigneTirets = AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_CREATION_AJOUT);
 
-	cout << "+"<< pcLigneTirets << "+" << endl;
+	cout << "+" << pcLigneTirets << "+" << endl;
 	cout << "| " << " creation arc : <" << sDepart << "> ---> <" << sArrive << "> " << endl;
 	cout << "| " << " Ajout dans le vecteur arcs sortants de " << sDepart << endl;
 	cout << "| " << " Ajout dans le vecteur arcs Entrant de " << sArrive << endl;
-	cout << "+" << pcLigneTirets << "+" << endl<< endl;
+	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
-	delete pcLigneTirets;
+	//delete pcLigneTirets;
 }
 
 void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 {
 	//fonction qui va nous servir a faire un encadrement avec la bonne dimantion
-	const char* pcLigneTirets = AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_AFFICHA_GEGRAPH);
+	string pcLigneTirets = AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_AFFICHA_GEGRAPH);
 
 	//affichage arc entrant du sommet 
 	const string sID = SOMsommet->SOM_GetID();
@@ -65,7 +64,7 @@ void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " << endl;
 
 	//boucle pour afficher les arcs entrant dans le sommet mit en paramètre
-	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetEntrants().size(); uiPosition++) 
+	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetEntrants().size(); uiPosition++)
 	{
 		cout << ARC_Tabultation << "|  l'arc " << uiPosition << " : provenant du sommet <" << SOMsommet->SOM_GetEntrants()[uiPosition]->ARC_GetSommetDepart() << "> ..." << endl;
 	}
@@ -74,23 +73,23 @@ void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 
 	//affichages arcs sortant du sommet
 	cout << TEXT_Tabultation << "Les arcs Sortants de <" << sID << "> sont : " << endl;
-	cout <<ARC_Tabultation<< "+" << pcLigneTirets << "+ " << endl;
+	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " << endl;
 
 	//boucle pour afficher les arcs sortant du  sommet mit en paramètre
-	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetSortants().size(); uiPosition++) 
+	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetSortants().size(); uiPosition++)
 	{
-		cout << ARC_Tabultation<< "|  l'arc " << uiPosition << " : Allant vers le sommet <" << SOMsommet->SOM_GetSortants()[uiPosition]->ARC_GetSommetArrive() << "> ..."<< endl;
+		cout << ARC_Tabultation << "|  l'arc " << uiPosition << " : Allant vers le sommet <" << SOMsommet->SOM_GetSortants()[uiPosition]->ARC_GetSommetArrive() << "> ..." << endl;
 	}
 
-	cout << ARC_Tabultation<< "+" << pcLigneTirets << "+ " << endl;
+	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " << endl << endl;
 
-	delete pcLigneTirets;
+	//delete pcLigneTirets;
 }
 
 void CAffichage::AFC_Afficher_Graphe(CGrapheOriente* GROgraph)
 {
 	//boucle qui sert a appeler la fonction Afficher sommet pour chaque somet se trouvant dans le graphe
-	for (unsigned int uiPosition = 0; uiPosition < GROgraph->GRO_GetSommets().size(); uiPosition++) 
+	for (unsigned int uiPosition = 0; uiPosition < GROgraph->GRO_GetSommets().size(); uiPosition++)
 	{
 		AFC_Affichage_Sommets(GROgraph->GRO_GetSommets()[uiPosition]);
 	}
@@ -98,19 +97,19 @@ void CAffichage::AFC_Afficher_Graphe(CGrapheOriente* GROgraph)
 
 void CAffichage::AFC_Afficher_Graphe(CGraphe* GRAgraph)
 {
-	string sSommet1, sSommet2,sID;
+	string sSommet1, sSommet2, sID;
 	cout << "Les sommets du graphe non oriente :" << endl;
 	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetSommets().size(); uiPosition++)
 	{
 		sID = GRAgraph->GRO_GetSommets()[uiPosition]->SOM_GetID();
-		cout <<ARC_Tabultation<< "<" << sID << ">" << endl;
+		cout << ARC_Tabultation << "<" << sID << ">" << endl;
 	}
 	cout << "la liste des arcs du graphz non oriente sont : " << endl;
 	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetArcs().size(); uiPosition++)
 	{
 		sSommet1 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetDepart();
 		sSommet2 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetArrive();
-		cout << ARC_Tabultation << "<" << sSommet1	 << "> <---> <" << sSommet2 << ">" << endl;
+		cout << ARC_Tabultation << "<" << sSommet1 << "> <---> <" << sSommet2 << ">" << endl;
 	}
 }
 
@@ -128,74 +127,49 @@ void CAffichage::AFC_Erreur_ajoutArc(const string& sDepart, const string& sArriv
 {
 	switch (iErreur) //iErreur est une constante pres defini mis en paramètre de la fonction
 	{
-		case 1 : //le sommet de départ n'existe pas 
-			cout << " ERROR : le sommet <" << sDepart << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
-			break;
+	case 1: //le sommet de départ n'existe pas 
+		cout << " ERROR : le sommet <" << sDepart << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
+		break;
 
-		case 2 : //le sommet d'arrive n'existe pas 
-			cout << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
-			break;
+	case 2: //le sommet d'arrive n'existe pas 
+		cout << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
+		break;
 
-		case 3 : //aucun des sommet n'existe
-			cout << " ERROR : les sommets <" << sDepart << "> et <" << sArrive << " n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
-			break;
+	case 3: //aucun des sommet n'existe
+		cout << " ERROR : les sommets <" << sDepart << "> et <" << sArrive << " n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
+		break;
 	}
 }
 
-const char* CAffichage::AFC_Calcul_tirets(const string& sID, const char& cMotif,const int& iType)
+string CAffichage::AFC_Calcul_tirets(const std::string& sID, const char& cMotif, const int& iType)
 {
-	unsigned int uiTaille = iType +2 + (unsigned int)sID.size(); // taille que devra faire le char* retourné pour avoir une bonne distance
-	char* cNbtirets = new char[uiTaille + 3]; // Ajoutez 1 pour le caractère de fin de chaîne
+	unsigned int uiTaille = iType + 2 + (unsigned int)sID.size(); // taille que devra faire le char* retourné pour avoir une bonne distance
+	string strTirets(uiTaille, cMotif); // Créez une std::string de la taille souhaitée, remplie avec le motif
 
-	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
-	for (unsigned int uiPosition = 0; uiPosition < uiTaille; uiPosition++)
-	{
-		cNbtirets[uiPosition] = cMotif;
-	}
-	cNbtirets[uiTaille] = '\0'; // Ajoutez le caractère de fin de chaîne
-
-	return cNbtirets;
+	return strTirets;
 }
 
-const char* CAffichage::AFC_Calcul_vide_Creation(const string& sID, const char& cMotif)
+string CAffichage::AFC_Calcul_vide_Creation(const std::string& sID, const char& cMotif)
 {
-	const char* cTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
-	unsigned int uiTaille = (unsigned int)(strlen(cTirets -23-sID.length()));// taille que devra faire le char* retourné pour avoir une bonne distance
-	char* cNbvide = new char[uiTaille];
+	string cTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
+	unsigned int uiTaille = (unsigned int)(cTirets.length() - 23 - sID.length());// taille que devra faire le char* retourné pour avoir une bonne distance
+	string strVide(uiTaille, cMotif); // Créez une std::string de la taille souhaitée, remplie avec le motif
 
-	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
-	for (unsigned int uiPosition = 0; uiPosition < uiTaille; uiPosition++)
-	{
-		cNbvide[uiPosition] = cMotif;
-	}
-
-	cNbvide[uiTaille] = '\0'; // Ajoutez le caractère de fin de chaîne
-
-	delete cTirets;
-	return cNbvide;
+	return strVide;
 }
 
-const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif)
+string CAffichage::AFC_Calcul_vide_Ajout(const std::string& sID, const char& cMotif)
 {
-	const char* cTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
-	const unsigned int uiTaille = (unsigned int)(strlen(cTirets)-sID.length()-41);// taille que devra faire le char* retourné pour avoir une bonne distance
-	char* cNbvide = new char[uiTaille];
+	string cTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
+	unsigned int uiTaille = (unsigned int)(cTirets.length()) - (unsigned int)sID.length() - (unsigned int)41; // taille que devra faire le char* retourné pour avoir une bonne distance
+	string strVide(uiTaille, cMotif); // Créez une std::string de la taille souhaitée, remplie avec le motif
 
-	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
-	for (unsigned int uiPosition = 0; uiPosition < uiTaille; uiPosition++)
-	{
-		cNbvide[uiPosition] = cMotif;
-	}
-
-	cNbvide[uiTaille] = '\0'; // Ajoutez le caractère de fin de chaîne
-
-	delete cTirets;
-	return cNbvide;
+	return strVide;
 }
 
 void CAffichage::AFC_AnnoncerGraphe(const string& sNom)
 {
 	cout << "+--------------------------------------------------------------------------------------------+" << endl;
 	cout << "|			Affichage de : " << sNom << endl;
-	cout << "+--------------------------------------------------------------------------------------------+" << endl;
+	cout << "+--------------------------------------------------------------------------------------------+" << endl << endl;
 }

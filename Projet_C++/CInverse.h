@@ -8,12 +8,12 @@
  */
 class CInverse
 {
-public :
+public:
 	/**
 	 * @brief Crée et alloue une version inversée de oGraphe et renvoie un pointeur vers cette version
 	 *
 	 * @param oGraphe un objet CGrapheoriente qu'on veut inverser
-	 * 
+	 *
 	 * @return Un pointeur vers le nouveau graphe inversé
 	 */
 	static CGrapheOriente* INV_Inverse(const CGrapheOriente& oGraphe);

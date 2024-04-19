@@ -7,11 +7,13 @@
 #include"CGraphe.h"
 #include "CParser.h"
 #include "CCreationGraphe.h"
+#include <crtdbg.h>
 
 using namespace std;
 
 int main()
 {
-    CCreationGraphe::CRE_FonctionPrincipale();
-    system("pause");
+	CCreationGraphe::CRE_FonctionPrincipale();
+	_CrtDumpMemoryLeaks();
+	system("pause");
 }

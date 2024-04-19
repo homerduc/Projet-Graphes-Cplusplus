@@ -83,10 +83,12 @@ void CCreationGraphe::CRE_FonctionPrincipale()
 {
     CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe classique");
     CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
+  
+    CAffichage::AFC_AnnoncerGraphe("Graphe classique");
+    CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
+
     CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe inverse");
     CGrapheOriente* oGrapheOrienteInverse = CInverse::INV_Inverse(oGrapheOriente); // Création du graphe orienté inversé
-    CAffichage::AFC_AnnoncerGraphe("Graphe");
-    CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
 
     CAffichage::AFC_AnnoncerGraphe("Graphe inverse");
     CAffichage::AFC_Afficher_Graphe(oGrapheOrienteInverse);

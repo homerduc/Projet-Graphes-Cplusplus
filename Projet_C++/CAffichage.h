@@ -20,10 +20,10 @@
 #pragma endregion
 
 #pragma region COULEURS
-#define CREATION_couleur "\033[38;5;37m"
+#define CREATION_couleur "\033[38;5;37m"  // les coiuleurs ne fonctionnent pas en realise donc on les a enlever des fonctions
 #define AJOUT_couleur "\033[38;5;27m"
 #define ERREUR_couleur "\033[48;5;52m"
-#define graph_couleur "\033[38;5;76m" // a changer
+#define graph_couleur "\033[38;5;76m" 
 #define SUPPR_couleur "\033[38;5;2m"
 #define RESTAURER_couleur "\033[0m"
 #define ARC_couleur "\033[38;5;166m"  
@@ -112,7 +112,7 @@ public:
      * @param iType Type de l'affichage
      * @return Une chaîne de caractères contenant les tirets calculés
      */
-    static const char* AFC_Calcul_tirets(const string& sID, const char& cMotif, const int& iType);
+    static string AFC_Calcul_tirets(const string& sID, const char& cMotif, const int& iType);
 
     /**
      * @brief Calcule l'espace vide pour l'affichage de la création
@@ -122,7 +122,7 @@ public:
      * 
      * @return Une chaîne de caractères contenant l'espace vide calculé
      */
-    static const char* AFC_Calcul_vide_Creation(const string& sID, const char& cMotif);
+    static string AFC_Calcul_vide_Creation(const string& sID, const char& cMotif);
 
     /**
      * @brief Calcule l'espace vide pour l'affichage de l'ajout
@@ -132,7 +132,7 @@ public:
      * 
      * @return Une chaîne de caractères contenant l'espace vide calculé
      */
-    static const char* AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif);
+    static string AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif);
 
 
     /**

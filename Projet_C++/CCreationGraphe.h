@@ -12,7 +12,7 @@ using namespace std;
 
 /**
  * @class CCreationGraphe
- * 
+ *
  * @brief Classe liant CParser et CGrapheOriente et contenant la fonction principale
  */
 class CCreationGraphe
@@ -20,7 +20,7 @@ class CCreationGraphe
 public:
 	/**
 	 * @class CGrapheOriente
-	 * 
+	 *
 	 * @brief Classe représentant un graphe orienté
 	 */
 	static CGrapheOriente CRE_CreerGraphe();
