@@ -2,7 +2,7 @@
 
 string CParser::PAR_TrouverCle(const string& sLigne)
 {
-	unsigned int uiIndiceEgal = sLigne.find('=');
+	unsigned int uiIndiceEgal = (unsigned int)sLigne.find('=');
 	while (uiIndiceEgal > 0 && sLigne[uiIndiceEgal - 1] == ' ') {
 		uiIndiceEgal--;
 	}
@@ -11,16 +11,16 @@ string CParser::PAR_TrouverCle(const string& sLigne)
 
 string CParser::PAR_TrouverValUnique(const string& sLigne)
 {
-	unsigned int uiIndiceEgal = sLigne.find('=') + 1;
+	unsigned int uiIndiceEgal = (unsigned int)sLigne.find('=') + 1;
 	while (uiIndiceEgal > 0 && sLigne[uiIndiceEgal] == ' ') {
 		uiIndiceEgal++;
 	}
 	return sLigne.substr(uiIndiceEgal);
 }
 
-map<string, string> CParser::PAR_GetCleValeur(const string& sPARChemin)
+map<string, string> CParser::PAR_GetCleValeur(const string& sChemin)
 {
-	ifstream fichier(sPARChemin);
+	ifstream fichier(sChemin);
 	string sOk;
 	map<string, string> mValeurs;
 	if (fichier) {
@@ -42,15 +42,15 @@ map<string, string> CParser::PAR_GetCleValeur(const string& sPARChemin)
 		}
 	}
 	else {
-		cout << "Erreur : impossible d'ouvrir " << sPARChemin << endl;
+		cout << "Erreur : impossible d'ouvrir " << sChemin << endl;
 	}
 	return mValeurs;
 }
 
 
-map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const string& sPARChemin)
+map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const string& sChemin)
 {
-	ifstream fichier(sPARChemin);
+	ifstream fichier(sChemin);
 	string sOk;
 	map<string, vector<map<string, string>>> mValeurs;
 	unsigned int uiIndiceEspace;
@@ -102,7 +102,7 @@ map<string, vector<map<string, string>>> CParser::PAR_GetCleListeValeur(const st
 		}
 	}
 	else {
-		cout << "Erreur : impossible d'ouvrir " << sPARChemin << endl;
+		cout << "Erreur : impossible d'ouvrir " << sChemin << endl;
 	}
 	return mValeurs;
 }

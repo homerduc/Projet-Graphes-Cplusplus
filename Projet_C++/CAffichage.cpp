@@ -6,7 +6,7 @@ void CAffichage::AFC_AffichageSupprArc(const string& sDepart, const string& sArr
 	const char* pcLigneTirets = AFC_Calcul_tirets(sDepart + sArrive, '-', TAILLE_SUPPR_ARC);
 
 	cout << "+"<< pcLigneTirets <<"+" << endl;
-	cout << "| " << ERREUR_couleur << " Suppression de l arc <" << sDepart << "> --> <" << sArrive << ">" << RESTAURER_couleur <<CAffichage::AFC_Calcul_vide_Ajout(sDepart+sArrive,' ') <<"|" << endl;
+	cout << "| " << ERREUR_couleur << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << RESTAURER_couleur <<CAffichage::AFC_Calcul_vide_Ajout(sDepart+sArrive,' ') <<"|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl<< endl;
 
 	delete pcLigneTirets;
@@ -28,7 +28,7 @@ void CAffichage::AFC_AffichageAjoutSommet(const string& sID)
 	const char* pcLigneTirets = AFC_Calcul_tirets(sID, '-', TAILLE_CREATION_AJOUT);
 
 	cout << "+" << pcLigneTirets << "+" << endl;
-	cout << "| " << CREATION_couleur << " Cr\202ation du sommet <" << sID << ">" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Creation(sID, ' ') << "|" << endl;
+	cout << "| " << CREATION_couleur << " Creation du sommet <" << sID << ">" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Creation(sID, ' ') << "|" << endl;
 	cout << "| " << AJOUT_couleur << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << RESTAURER_couleur << CAffichage::AFC_Calcul_vide_Ajout(sID, ' ') << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
@@ -41,7 +41,7 @@ void CAffichage::AFC_AffichageAjoutArc(const string& sDepart, const string& sArr
 	const char* pcLigneTirets = AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_CREATION_AJOUT);
 
 	cout << "+"<< pcLigneTirets << "+" << endl;
-	cout << "| " << CREATION_couleur << " cr\202ation arc : <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl;
+	cout << "| " << CREATION_couleur << " creation arc : <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl;
 	cout << "| " << AJOUT_couleur << " Ajout dans le vecteur arcs sortants de " << sDepart << RESTAURER_couleur << endl;
 	cout << "| " << AJOUT_couleur << " Ajout dans le vecteur arcs Entrant de " << sArrive << RESTAURER_couleur << endl;
 	cout << "+" << pcLigneTirets << "+" << endl<< endl;
@@ -96,13 +96,13 @@ void CAffichage::AFC_Afficher_Graphe(CGrapheOriente* GROgraph)
 void CAffichage::AFC_Afficher_Graphe(CGraphe* GRAgraph)
 {
 	string sSommet1, sSommet2,sID;
-	cout << "Les sommets du graph non orient\202 :" << endl;
+	cout << "Les sommets du graphe non oriente :" << endl;
 	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetSommets().size(); uiPosition++)
 	{
 		sID = GRAgraph->GRO_GetSommets()[uiPosition]->SOM_GetID();
 		cout <<ARC_Tabultation<< ARC_couleur << "<" << sID << ">" << RESTAURER_couleur << endl;
 	}
-	cout << "la liste des arcs du graph non orient\202sont sont : " << endl;
+	cout << "la liste des arcs du graphz non oriente sont : " << endl;
 	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetArcs().size(); uiPosition++)
 	{
 		sSommet1 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetDepart();
@@ -126,15 +126,15 @@ void CAffichage::AFC_Erreur_ajoutArc(const string& sDepart, const string& sArriv
 	switch (iErreur) //iErreur est une constante pres defini mis en paramètre de la fonction
 	{
 		case 1 : //le sommet de départ n'existe pas 
-			cout << ERREUR_couleur << " ERROR : le sommet <" << sDepart << "> n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
+			cout << ERREUR_couleur << " ERROR : le sommet <" << sDepart << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
 			break;
 
 		case 2 : //le sommet d'arrive n'existe pas 
-			cout << ERREUR_couleur << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
+			cout << ERREUR_couleur << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
 			break;
 
 		case 3 : //aucun des sommet n'existe
-			cout << ERREUR_couleur << " ERROR : les sommets <" << sDepart << "> et <" << sArrive << " n'existe pas donc on ne peut pas cree l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
+			cout << ERREUR_couleur << " ERROR : les sommets <" << sDepart << "> et <" << sArrive << " n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
 			break;
 	}
 }
