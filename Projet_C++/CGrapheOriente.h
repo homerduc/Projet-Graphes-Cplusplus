@@ -139,8 +139,6 @@ public:
      */
     void GRO_SupprimerArc(const string& sDepart, const string& sArrive);
 
-    CGrapheOriente* GRO_Inverse();
-
     /**
      * @brief Affiche le graphe.
      */

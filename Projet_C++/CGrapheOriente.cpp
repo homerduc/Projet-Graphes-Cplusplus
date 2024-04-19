@@ -197,23 +197,6 @@ void CGrapheOriente::GRO_SupprimerArc(const string& sDepart, const string& sArri
 
 }
 
-CGrapheOriente* CGrapheOriente::GRO_Inverse()
-{
-	CGrapheOriente *nouveauGraphe = new CGrapheOriente(); // a delete un fois l'affichage fait 
-
-	for (CSommet* SOMsommet : vGROsommets)
-	{
-		nouveauGraphe->GRO_AjouterSommet(SOMsommet->SOM_GetID());
-	}
-	for (CArc* ARCarc : vGROarcs)
-	{
-		nouveauGraphe->GRO_AjouterArc(ARCarc->ARC_GetSommetArrive(), ARCarc->ARC_GetSommetDepart());
-	}
-
-
-	return nouveauGraphe; // a ne pas oublier de delete ce qui va recevoir ce pointeur 
-}
-
 void CGrapheOriente::Afficher_Graphe()
 {
 	CAffichage::AFC_Afficher_Graphe(this);

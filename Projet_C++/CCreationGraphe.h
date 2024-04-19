@@ -5,6 +5,8 @@
 
 #include "CGrapheOriente.h"
 #include "CParser.h"
+#include "CAffichage.h"
+#include "CInverse.h"
 
 using namespace std;
 

@@ -131,6 +131,7 @@
     <ClCompile Include="CAffichage.cpp" />
     <ClCompile Include="CGraphe.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
+    <ClCompile Include="CInverse.cpp" />
     <ClCompile Include="CParser.cpp" />
     <ClCompile Include="CSommet.cpp" />
     <ClCompile Include="Projet_C++.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="CAffichage.h" />
     <ClInclude Include="CGraphe.h" />
     <ClInclude Include="CGrapheOriente.h" />
+    <ClInclude Include="CInverse.h" />
     <ClInclude Include="CParser.h" />
     <ClInclude Include="CSommet.h" />
     <ClInclude Include="CCreationGraphe.h" />

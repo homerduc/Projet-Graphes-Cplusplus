@@ -72,7 +72,11 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
 void CCreationGraphe::CRE_FonctionPrincipale()
 {
     CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
-    CGrapheOriente* oGrapheOrienteInverse = oGrapheOriente.GRO_Inverse(); // Création du graphe orienté inversé
+    CAffichage::AFC_AnnoncerGraphe("Graphe");
     oGrapheOriente.Afficher_Graphe();
+
+    CGrapheOriente* oGrapheOrienteInverse = CInverse::INV_Inverse(oGrapheOriente); // Création du graphe orienté inversé
+    CAffichage::AFC_AnnoncerGraphe("Graphe inversé");
     oGrapheOrienteInverse->Afficher_Graphe();
+    delete oGrapheOrienteInverse;
 }

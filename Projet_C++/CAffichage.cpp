@@ -141,7 +141,7 @@ void CAffichage::AFC_Erreur_ajoutArc(const string& sDepart, const string& sArriv
 
 const char* CAffichage::AFC_Calcul_tirets(const string& sID, const char& cMotif,const int& iType)
 {
-	unsigned int uiTaille = iType +2 + sID.size(); // taille que devra faire le char* retourné pour avoir une bonne distance
+	unsigned int uiTaille = iType +2 + (unsigned int)sID.size(); // taille que devra faire le char* retourné pour avoir une bonne distance
 	char* cNbtirets = new char[uiTaille + 3]; // Ajoutez 1 pour le caractère de fin de chaîne
 
 	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
@@ -156,7 +156,7 @@ const char* CAffichage::AFC_Calcul_tirets(const string& sID, const char& cMotif,
 
 const char* CAffichage::AFC_Calcul_vide_Creation(const string& sID, const char& cMotif)
 {
-	unsigned int uiTaille = strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-23-sID.length();// taille que devra faire le char* retourné pour avoir une bonne distance
+	unsigned int uiTaille = (unsigned int)(strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-23-sID.length());// taille que devra faire le char* retourné pour avoir une bonne distance
 	char* cNbvide = new char[uiTaille];
 
 	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
@@ -171,7 +171,7 @@ const char* CAffichage::AFC_Calcul_vide_Creation(const string& sID, const char& 
 
 const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMotif)
 {
-	const unsigned int uiTaille = strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-sID.length()-41;// taille que devra faire le char* retourné pour avoir une bonne distance
+	const unsigned int uiTaille = (unsigned int)(strlen(AFC_Calcul_tirets(sID,'-', TAILLE_CREATION_AJOUT))-sID.length()-41);// taille que devra faire le char* retourné pour avoir une bonne distance
 	char* cNbvide = new char[uiTaille];
 
 	//boucle pour remplir le char* retrourné en fonction de la taille et du motif mis en paramètre
@@ -184,4 +184,9 @@ const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMo
 	return cNbvide;
 }
 
-
+void CAffichage::AFC_AnnoncerGraphe(const string& sNom)
+{
+	cout << graph_couleur << "+--------------------------------------------------------------------------------------------+" << endl;
+	cout << "|			Affichage de : " << sNom << endl;
+	cout << "+--------------------------------------------------------------------------------------------+" <<RESTAURER_couleur<< endl;
+}
