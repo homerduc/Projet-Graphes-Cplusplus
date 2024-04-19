@@ -7,10 +7,9 @@ void CAffichage::AFC_AffichageSupprArc(const string& sDepart, const string& sArr
 	const char* cVide = CAffichage::AFC_Calcul_vide_Ajout(sDepart + sArrive, ' ');
 
 	cout << "+"<< pcLigneTirets <<"+" << endl;
-	cout << "| " << ERREUR_couleur << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << RESTAURER_couleur << cVide <<"|" << endl;
+	cout << "| " << " Suppression de l'arc <" << sDepart << "> --> <" << sArrive << ">" << cVide <<"|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl<< endl;
 
-	delete cVide;
 	delete pcLigneTirets;
 }
 
@@ -20,10 +19,9 @@ void CAffichage::AFC_AffichageSupprSommet(const string& sID)
 	const char* cVide = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
 
 	cout << "+" << pcLigneTirets << "+" << endl;
-	cout << "| " << ERREUR_couleur << " Suppression du sommet <" <<sID<<">" << RESTAURER_couleur << cVide << "|" << endl;
+	cout << "| " << " Suppression du sommet <" <<sID<<">" << cVide << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
-	delete cVide;
 	delete pcLigneTirets;
 }
 
@@ -34,14 +32,11 @@ void CAffichage::AFC_AffichageAjoutSommet(const string& sID)
 	const char* cVide2 = CAffichage::AFC_Calcul_vide_Ajout(sID, ' ');
 
 	cout << "+" << pcLigneTirets << "+" << endl;
-	cout << "| " << CREATION_couleur << " Creation du sommet <" << sID << ">" << RESTAURER_couleur << cVide1 << "|" << endl;
-	cout << "| " << AJOUT_couleur << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << RESTAURER_couleur << cVide2 << "|" << endl;
+	cout << "| " << " Creation du sommet <" << sID << ">" << cVide1 << "|" << endl;
+	cout << "| " << " Ajout de <" << sID << "> dans le vecteur vGROsommets" << cVide2 << "|" << endl;
 	cout << "+" << pcLigneTirets << "+" << endl << endl;
 
-	delete cVide1;
-	delete cVide2;
 	delete pcLigneTirets;
-
 }
 
 void CAffichage::AFC_AffichageAjoutArc(const string& sDepart, const string& sArrive)
@@ -49,9 +44,9 @@ void CAffichage::AFC_AffichageAjoutArc(const string& sDepart, const string& sArr
 	const char* pcLigneTirets = AFC_Calcul_tirets(TAILLE_Encadre_arcs, '-', TAILLE_CREATION_AJOUT);
 
 	cout << "+"<< pcLigneTirets << "+" << endl;
-	cout << "| " << CREATION_couleur << " creation arc : <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl;
-	cout << "| " << AJOUT_couleur << " Ajout dans le vecteur arcs sortants de " << sDepart << RESTAURER_couleur << endl;
-	cout << "| " << AJOUT_couleur << " Ajout dans le vecteur arcs Entrant de " << sArrive << RESTAURER_couleur << endl;
+	cout << "| " << " creation arc : <" << sDepart << "> ---> <" << sArrive << "> " << endl;
+	cout << "| " << " Ajout dans le vecteur arcs sortants de " << sDepart << endl;
+	cout << "| " << " Ajout dans le vecteur arcs Entrant de " << sArrive << endl;
 	cout << "+" << pcLigneTirets << "+" << endl<< endl;
 
 	delete pcLigneTirets;
@@ -67,7 +62,7 @@ void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 
 	cout << " <" << sID << "> est un sommet contenant \27" << endl;
 	cout << TEXT_Tabultation << "Les arcs Entrants de <" << sID << "> sont : " << endl;
-	cout << ARC_Tabultation << ARC_couleur << "+" << pcLigneTirets << "+ " << endl;
+	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " << endl;
 
 	//boucle pour afficher les arcs entrant dans le sommet mit en paramètre
 	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetEntrants().size(); uiPosition++) 
@@ -75,11 +70,11 @@ void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 		cout << ARC_Tabultation << "|  l'arc " << uiPosition << " : provenant du sommet <" << SOMsommet->SOM_GetEntrants()[uiPosition]->ARC_GetSommetDepart() << "> ..." << endl;
 	}
 
-	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " <<RESTAURER_couleur<< endl;
+	cout << ARC_Tabultation << "+" << pcLigneTirets << "+ " << endl;
 
 	//affichages arcs sortant du sommet
 	cout << TEXT_Tabultation << "Les arcs Sortants de <" << sID << "> sont : " << endl;
-	cout <<ARC_Tabultation<< ARC_couleur << "+" << pcLigneTirets << "+ " << endl;
+	cout <<ARC_Tabultation<< "+" << pcLigneTirets << "+ " << endl;
 
 	//boucle pour afficher les arcs sortant du  sommet mit en paramètre
 	for (unsigned int uiPosition = 0; uiPosition < SOMsommet->SOM_GetSortants().size(); uiPosition++) 
@@ -87,7 +82,7 @@ void CAffichage::AFC_Affichage_Sommets(CSommet* SOMsommet)
 		cout << ARC_Tabultation<< "|  l'arc " << uiPosition << " : Allant vers le sommet <" << SOMsommet->SOM_GetSortants()[uiPosition]->ARC_GetSommetArrive() << "> ..."<< endl;
 	}
 
-	cout << ARC_Tabultation<< "+" << pcLigneTirets << "+ " << RESTAURER_couleur << endl;
+	cout << ARC_Tabultation<< "+" << pcLigneTirets << "+ " << endl;
 
 	delete pcLigneTirets;
 }
@@ -108,25 +103,25 @@ void CAffichage::AFC_Afficher_Graphe(CGraphe* GRAgraph)
 	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetSommets().size(); uiPosition++)
 	{
 		sID = GRAgraph->GRO_GetSommets()[uiPosition]->SOM_GetID();
-		cout <<ARC_Tabultation<< ARC_couleur << "<" << sID << ">" << RESTAURER_couleur << endl;
+		cout <<ARC_Tabultation<< "<" << sID << ">" << endl;
 	}
 	cout << "la liste des arcs du graphz non oriente sont : " << endl;
 	for (unsigned int uiPosition = 0; uiPosition < GRAgraph->GRO_GetArcs().size(); uiPosition++)
 	{
 		sSommet1 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetDepart();
 		sSommet2 = GRAgraph->GRO_GetArcs()[uiPosition]->ARC_GetSommetArrive();
-		cout << ARC_Tabultation << ARC_couleur << "<" << sSommet1	 << "> <---> <" << sSommet2 << ">" << RESTAURER_couleur << endl;
+		cout << ARC_Tabultation << "<" << sSommet1	 << "> <---> <" << sSommet2 << ">" << endl;
 	}
 }
 
 void CAffichage::AFC_Afficher_Arcs(CArc* pARCarc)
 {
-	cout << ARC_couleur << "<" << pARCarc->ARC_GetSommetDepart() << "> <---> <" << pARCarc->ARC_GetSommetArrive() << ">" << RESTAURER_couleur << endl;
+	cout << "<" << pARCarc->ARC_GetSommetDepart() << "> <---> <" << pARCarc->ARC_GetSommetArrive() << ">" << endl;
 }
 
 void CAffichage::AFC_Erreur_ajoutSommet(const string& sID)
 {
-	cout << ERREUR_couleur << " ERREUR : impossible d'ajouter un sommet avec le nom de '" << sID << "' un sommet de ce nom existe deja !" << RESTAURER_couleur << endl << endl;
+	cout << " ERREUR : impossible d'ajouter un sommet avec le nom de '" << sID << "' un sommet de ce nom existe deja !" << endl << endl;
 }
 
 void CAffichage::AFC_Erreur_ajoutArc(const string& sDepart, const string& sArrive, const int& iErreur)
@@ -134,15 +129,15 @@ void CAffichage::AFC_Erreur_ajoutArc(const string& sDepart, const string& sArriv
 	switch (iErreur) //iErreur est une constante pres defini mis en paramètre de la fonction
 	{
 		case 1 : //le sommet de départ n'existe pas 
-			cout << ERREUR_couleur << " ERROR : le sommet <" << sDepart << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
+			cout << " ERROR : le sommet <" << sDepart << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
 			break;
 
 		case 2 : //le sommet d'arrive n'existe pas 
-			cout << ERREUR_couleur << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
+			cout << " ERROR : le sommet <" << sArrive << "> n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
 			break;
 
 		case 3 : //aucun des sommet n'existe
-			cout << ERREUR_couleur << " ERROR : les sommets <" << sDepart << "> et <" << sArrive << " n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << RESTAURER_couleur << endl << endl;
+			cout << " ERROR : les sommets <" << sDepart << "> et <" << sArrive << " n'existe pas donc on ne peut pas creer l arc <" << sDepart << "> ---> <" << sArrive << "> " << endl << endl;
 			break;
 	}
 }
@@ -200,7 +195,7 @@ const char* CAffichage::AFC_Calcul_vide_Ajout(const string& sID, const char& cMo
 
 void CAffichage::AFC_AnnoncerGraphe(const string& sNom)
 {
-	cout << graph_couleur << "+--------------------------------------------------------------------------------------------+" << endl;
+	cout << "+--------------------------------------------------------------------------------------------+" << endl;
 	cout << "|			Affichage de : " << sNom << endl;
-	cout << "+--------------------------------------------------------------------------------------------+" <<RESTAURER_couleur<< endl;
+	cout << "+--------------------------------------------------------------------------------------------+" << endl;
 }
