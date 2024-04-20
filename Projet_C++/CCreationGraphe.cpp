@@ -67,7 +67,7 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
     try
     {
         if (uiNBSommets != oGrapheOriente.GRO_GetSommets().size() || uiNBArcs != oGrapheOriente.GRO_GetArcs().size()) {
-            throw invalid_argument(ERREUR_couleur+ string("ATTENTION : Le nombre de sommets ou d'arcs indique ne correspond pas aux valeurs que vous avez rentrees")+RESTAURER_couleur);
+            throw invalid_argument("ATTENTION : Le nombre de sommets ou d'arcs indique ne correspond pas aux valeurs que vous avez rentrees");
         }
     }
     catch (const std::exception& eException)
