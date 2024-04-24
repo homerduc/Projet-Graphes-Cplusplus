@@ -76,7 +76,7 @@ void CGrapheOriente::GRO_AjouterSommet(const string& sID)
 		}
 		else 
 		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet <") + sID + string("> existe d\202ja, impossible de l'ajouter de nouveau") + RESTAURER_couleur);
+			throw invalid_argument(string("ERREUR : Le sommet <") + sID + string("> existe d\202ja, impossible de l'ajouter de nouveau"));
 		}
 	}
 	catch (const exception& message_erreur)
@@ -108,20 +108,20 @@ void CGrapheOriente::GRO_AjouterArc(const string& sDepart, const string& sArrive
 			}
 			else if (itRechercheDepart == vGROsommets.end() && itRechercheArrive != vGROsommets.end()) //le sommet de départ inexistant
 			{
-				throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet de d\202part <") + sDepart + string("> mis en param\212tre n'existe pas. Impossible de crée l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+				throw invalid_argument(string("ERREUR : Le sommet de d\202part <") + sDepart + string("> mis en param\212tre n'existe pas. Impossible de crée l'arc <") + sDepart + string("> --> <") + sArrive + string(">"));
 			}
 			else if (itRechercheDepart != vGROsommets.end() && itRechercheArrive == vGROsommets.end()) //le sommet d'arrive inexistant
 			{
-				throw invalid_argument(ERREUR_couleur + string("ERREUR : Le sommet d'arriv\202e <") + sArrive + string("> mis en param\212tre n'existe pas. Impossible de cr\202er l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+				throw invalid_argument(string("ERREUR : Le sommet d'arriv\202e <") + sArrive + string("> mis en param\212tre n'existe pas. Impossible de cr\202er l'arc <") + sDepart + string("> --> <") + sArrive + string(">"));
 			}
 			else // les deux sommets sont inexistant 
 			{
-				throw invalid_argument(ERREUR_couleur + string("ERREUR : Les sommets  <") + sDepart + string("> & <") + sArrive + string("> mis en param\212tre n'existent pas. Impossible de cr\202er l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+				throw invalid_argument(string("ERREUR : Les sommets  <") + sDepart + string("> & <") + sArrive + string("> mis en param\212tre n'existent pas. Impossible de cr\202er l'arc <") + sDepart + string("> --> <") + sArrive + string(">"));
 			}
 		}
 		else // le sommet existe deja 
 		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : L'arc  <") + sDepart + string("> --> <") + sArrive + string("> existe deja. Impossible de cr\202er une deuxi\212me fois l'arc <") + sDepart + string("> --> <") + sArrive + string(">") + RESTAURER_couleur);
+			throw invalid_argument(string("ERREUR : L'arc  <") + sDepart + string("> --> <") + sArrive + string("> existe deja. Impossible de cr\202er une deuxi\212me fois l'arc <") + sDepart + string("> --> <") + sArrive + string(">"));
 		}
 	}
 	catch (const exception& Message_Erreur)
@@ -158,7 +158,7 @@ void CGrapheOriente::GRO_SupprimerSommet(const string& sID)
 		}
 		else
 		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR.Le sommet <") + sID + "> mis en param\212tre n'existent pas. Impossible de supprimer le sommet <" + sID + ">" + RESTAURER_couleur);
+			throw invalid_argument(string("ERREUR.Le sommet <") + sID + "> mis en param\212tre n'existent pas. Impossible de supprimer le sommet <" + sID + ">");
 		}
 	}
 	catch (const exception& Message_Erreur)
@@ -187,7 +187,7 @@ void CGrapheOriente::GRO_SupprimerArc(const string& sDepart, const string& sArri
 		}
 		else
 		{
-			throw invalid_argument(ERREUR_couleur + string("ERREUR : L'arc  <") + sDepart + string("> --> <") + sArrive + string("> mis en param\212tre n'existe pas. Impossible de supprimer un arc inexistant") + RESTAURER_couleur);
+			throw invalid_argument(string("ERREUR : L'arc  <") + sDepart + string("> --> <") + sArrive + string("> mis en param\212tre n'existe pas. Impossible de supprimer un arc inexistant"));
 		}
 	}
 	catch (const exception& EXPmessage)
