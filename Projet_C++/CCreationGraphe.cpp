@@ -82,8 +82,8 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
 
 void CCreationGraphe::CRE_FonctionPrincipale()
 {
-    CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
     CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe classique");
+    CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
   
     CAffichage::AFC_AnnoncerGraphe("Graphe classique");
     CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);

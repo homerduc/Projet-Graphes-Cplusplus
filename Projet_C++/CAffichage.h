@@ -19,6 +19,8 @@
 #define DEPART_ARRIVE_inconnu 3
 #pragma endregion
 
+#define ARC_Tabultation "		"
+#define TEXT_Tabultation "	"
 
 using namespace std;
 
