@@ -19,17 +19,8 @@
 #define DEPART_ARRIVE_inconnu 3
 #pragma endregion
 
-#pragma region COULEURS
-#define CREATION_couleur "\033[38;5;37m"  // les coiuleurs ne fonctionnent pas en realise donc on les a enlever des fonctions
-#define AJOUT_couleur "\033[38;5;27m"
-#define ERREUR_couleur "\033[48;5;52m"
-#define graph_couleur "\033[38;5;76m" 
-#define SUPPR_couleur "\033[38;5;2m"
-#define RESTAURER_couleur "\033[0m"
-#define ARC_couleur "\033[38;5;166m"  
 #define ARC_Tabultation "		"
 #define TEXT_Tabultation "	"
-#pragma endregion
 
 using namespace std;
 

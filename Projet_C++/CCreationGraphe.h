@@ -19,9 +19,9 @@ class CCreationGraphe
 {
 public:
 	/**
-	 * @class CGrapheOriente
+	 * @brief Crée un objet CGrapheOriente à partir du fichier texte indiqué par l'utilisateur
 	 *
-	 * @brief Classe représentant un graphe orienté
+	 * @return Un objet CGrapheOriente
 	 */
 	static CGrapheOriente CRE_CreerGraphe();
 

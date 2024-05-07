@@ -16,6 +16,7 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
     map<string,vector<map<string,string>>> mCleListeVar = CParser::PAR_GetCleListeValeur(sChemin);
 
 
+    // On vérifie que nbsommets et nbarcs sont bel et bien des entiers
     try {
         for (const auto& mPaire : mCleVal) {
             if (mPaire.first == "NBSommets") {
@@ -46,7 +47,7 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
         }
     }
 
-    // Nous n'avons pas trouvé de moyen de factoriser le code + que cela, nous avons élaboré sur cela dans le rapport
+    // Nous n'avons pas trouvé de moyen logique de factoriser le code + que cela, justification dans le rapport
     
     // Puis nous créons les arcs
     for (const auto& mPaire : mCleListeVar) {
@@ -81,8 +82,8 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
 
 void CCreationGraphe::CRE_FonctionPrincipale()
 {
-    CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
     CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe classique");
+    CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
   
     CAffichage::AFC_AnnoncerGraphe("Graphe classique");
     CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
