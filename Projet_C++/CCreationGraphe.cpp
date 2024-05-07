@@ -86,13 +86,8 @@ void CCreationGraphe::CRE_FonctionPrincipale()
     CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
 
     CDetectionColoration* Detection = new CDetectionColoration(&oGrapheOriente);
-
-    switch (Detection->DTCDetecter(-1))
-    {
-    case 0: cout << "On ne peut pas coloré le graph" << endl; break;  
-    case 1: cout << "On peut coloré le graph" << endl; break;
-    }
-  
+    CAffichage::AFC_DemanderColorisation(Detection);
+    
     //CAffichage::AFC_AnnoncerGraphe("Graphe classique");
     //CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
 

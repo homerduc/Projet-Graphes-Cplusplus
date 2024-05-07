@@ -31,6 +31,8 @@ public:
 	 * dans la console, l'affiche, en crée une copie inversée, et affiche cette copie
 	 */
 	static void CRE_FonctionPrincipale();
+
+	
 };
 
 #endif // !CCREATIONGRAPHE_H

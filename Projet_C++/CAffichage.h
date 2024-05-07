@@ -4,6 +4,7 @@
 #include <string>
 #include<iostream>
 #include "CGraphe.h"
+#include "CDetectionColoration.h"
 
 #pragma region TAILLES AFFICHAGE
 #define TAILLE_CREATION_AJOUT 41
@@ -146,6 +147,8 @@ public:
      * @param sNom Le nom du graphe à annoncer
      */
     static void AFC_AnnoncerGraphe(const string& sNom);
+
+    static void AFC_DemanderColorisation(CDetectionColoration* Detection);
 };
 
 #endif // CAFFICHAGE_H
