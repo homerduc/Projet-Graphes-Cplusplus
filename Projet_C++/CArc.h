@@ -51,8 +51,6 @@ public:
 		sARC_SommetDepart = sSommetDepart;
 		sARC_SommetArrive = sSommetArrivee;
 	};
-
-
 #pragma endregion
 
 #pragma region ACCESSEURS
