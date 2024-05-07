@@ -6,9 +6,15 @@
 class CDetectionColoration
 {
 private:
-	bool DTCTousColores(map<string, unsigned int>& map);
+
+	map<string, unsigned int> sommetCouleur;
+	const CGrapheOriente* Graphe;
+	
 public:
-	bool DTCDetecter(const CGrapheOriente* graphe, const unsigned int& k);
+
+	CDetectionColoration(const CGrapheOriente* graphe);
+	bool DTCDetecter(const unsigned int k, unsigned int i = 0);
+	bool DTCTousColores(map<string, unsigned int>& map);
 
 };
 

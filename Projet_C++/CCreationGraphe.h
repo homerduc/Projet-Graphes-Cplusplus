@@ -7,6 +7,7 @@
 #include "CParser.h"
 #include "CAffichage.h"
 #include "CInverse.h"
+#include "CDetectionColoration.h"
 
 using namespace std;
 
