@@ -1,12 +1,12 @@
 #include "CDetectionColoration.h"
 
 
-bool CDetectionColoration::DTCTousColores(map<string, unsigned int>& Map)
+bool CDetectionColoration::DTCTousColores()
 {
-	map<string, unsigned int>::const_iterator itMap = Map.begin();
-	while (itMap != Map.end())
+	map<string, unsigned int>::const_iterator itMap = sommetCouleur.begin();
+	while (itMap != sommetCouleur.end())
 	{
-		if (Map.at((*itMap).first) == 0)
+		if (sommetCouleur.at((*itMap).first) == 0)
 		{
 			return false;
 		}
@@ -96,30 +96,38 @@ CDetectionColoration::CDetectionColoration(const CGrapheOriente* graphe)
 
 bool CDetectionColoration::DTCDetecter(const unsigned int k,unsigned int i)
 {
-	unsigned int taille_list_sommet = Graphe->GRO_GetSommets().size() - 1;
+	unsigned int taille_list_sommet = Graphe->GRO_GetSommets().size();
 	if (i == taille_list_sommet)
 	{
 		return true;
 	}
 	else
 	{
-		for (unsigned int c = 0; c < k; c++)
+		// 0 représente le non-coloriage donc c va de 1 à k inclus
+		for (unsigned int c = 1; c <= k; c++)
 		{
-			//recherche dans la liste des sommets la liste des les couleurs des voisins
+			bool couleurValide = true;
+			// On parcourt tous les arcs du sommet pour choper les voisins
 			for (auto& it : Graphe->GRO_GetSommets()[i]->SOM_GetEntrants())
 			{
+				// Si le voisin actuel a la même couleur
 				if (sommetCouleur[(*it).ARC_GetSommetDepart()] == c)
 				{
-					// ne ren faire
+					// Alors la couleur c n'est pas valide
+					couleurValide = false;
 				}
-				else
-				{
-					sommetCouleur[(*it).ARC_GetSommetDepart()] = c;
-					if (DTCDetecter( k, i + 1)) {
-						return true;
-					}
-					sommetCouleur[(*it).ARC_GetSommetDepart()] = 0;
+			}
+			// Si la couleur est valide (aucun voisin n'a la même)
+			if (couleurValide)
+			{
+				// Attribue la couleur c au sommet actuel
+				sommetCouleur[Graphe->GRO_GetSommets()[i]->SOM_GetID()] = c;
+				// Si on arrive à bien colorier le graphe entier avec ceci alors on a fini
+				if (DTCDetecter( k, i + 1)) {
+					return true;
 				}
+				// Sinon c'est que la couleur n'est pas bonne donc on backtrack
+				sommetCouleur[Graphe->GRO_GetSommets()[i]->SOM_GetID()] = 0;
 			}
 		}
 		return false;
