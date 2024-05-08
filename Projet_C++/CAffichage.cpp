@@ -173,3 +173,16 @@ void CAffichage::AFC_AnnoncerGraphe(const string& sNom)
 	cout << "|			Affichage de : " << sNom << endl;
 	cout << "+--------------------------------------------------------------------------------------------+" << endl << endl;
 }
+
+void CAffichage::AFC_DemanderColorisation(CDetectionColoration* Detection) {
+	
+	unsigned int NbCouleurs = 0;
+	cout << "conbien de couleur voulez vous mettre sur le graphe ? : ";
+	cin >> NbCouleurs;
+	
+	switch (Detection->DTCDetecter(NbCouleurs))
+	{
+	case 0: cout << "On ne peut pas coloré le graph" << endl; break;
+	case 1: cout << "On peut coloré le graph" << endl; break;
+	}
+}

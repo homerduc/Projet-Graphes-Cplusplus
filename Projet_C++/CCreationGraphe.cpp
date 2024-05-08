@@ -84,14 +84,18 @@ void CCreationGraphe::CRE_FonctionPrincipale()
 {
     CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
     CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe classique");
-  
-    CAffichage::AFC_AnnoncerGraphe("Graphe classique");
-    CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
+    CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
 
-    CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe inverse");
-    CGrapheOriente* oGrapheOrienteInverse = CInverse::INV_Inverse(oGrapheOriente); // Création du graphe orienté inversé
+    CDetectionColoration* Detection = new CDetectionColoration(&oGrapheOriente);
+    CAffichage::AFC_DemanderColorisation(Detection);
+    
+    //CAffichage::AFC_AnnoncerGraphe("Graphe classique");
+    //CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
 
-    CAffichage::AFC_AnnoncerGraphe("Graphe inverse");
-    CAffichage::AFC_Afficher_Graphe(oGrapheOrienteInverse);
-    delete oGrapheOrienteInverse;
+    //CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe inverse");
+    //CGrapheOriente* oGrapheOrienteInverse = CInverse::INV_Inverse(oGrapheOriente); // Création du graphe orienté inversé
+
+    //CAffichage::AFC_AnnoncerGraphe("Graphe inverse");
+    //CAffichage::AFC_Afficher_Graphe(oGrapheOrienteInverse);
+    //delete oGrapheOrienteInverse;
 }

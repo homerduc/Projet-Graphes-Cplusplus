@@ -7,6 +7,7 @@
 #include "CParser.h"
 #include "CAffichage.h"
 #include "CInverse.h"
+#include "CDetectionColoration.h"
 
 using namespace std;
 
@@ -30,6 +31,8 @@ public:
 	 * dans la console, l'affiche, en crée une copie inversée, et affiche cette copie
 	 */
 	static void CRE_FonctionPrincipale();
+
+	
 };
 
 #endif // !CCREATIONGRAPHE_H

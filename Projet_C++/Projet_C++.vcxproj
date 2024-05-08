@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CArc.cpp" />
     <ClCompile Include="CAffichage.cpp" />
+    <ClCompile Include="CDetectionColoration.cpp" />
     <ClCompile Include="CGraphe.cpp" />
     <ClCompile Include="CGrapheOriente.cpp" />
     <ClCompile Include="CInverse.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="CArc.h" />
     <ClInclude Include="CAffichage.h" />
+    <ClInclude Include="CDetectionColoration.h" />
     <ClInclude Include="CGraphe.h" />
     <ClInclude Include="CGrapheOriente.h" />
     <ClInclude Include="CInverse.h" />
