@@ -13,8 +13,8 @@ using namespace std;
 class CGrapheOriente
 {
 private:
-	vector<CArc*> vGROarcs; ///< Vecteur des arcs du graphe
-	vector<CSommet*> vGROsommets; ///< Vecteur des sommets du graphe
+	vector<CArc*> vGROarcs;
+	vector<CSommet*> vGROsommets;
 
 public:
 
