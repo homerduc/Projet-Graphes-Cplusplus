@@ -14,7 +14,6 @@ public:
 
 	CDetectionColoration(const CGrapheOriente* graphe);
 	bool DTCDetecter(const unsigned int k, unsigned int i = 0);
-	bool DTCTousColores();
 };
 
 #endif //CDETECTIONCOLORATION
