@@ -8,7 +8,7 @@ class CDetectionColoration
 private:
 
 	map<string, unsigned int> sommetCouleur;
-	const CGrapheOriente* Graphe;
+	CGrapheOriente Graphe;
 	
 public:
 

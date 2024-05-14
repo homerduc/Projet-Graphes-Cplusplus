@@ -3,7 +3,7 @@
 CDetectionColoration::CDetectionColoration(const CGrapheOriente& graphe)
 {
 	//initialisation de l'attribut Graphes
-	Graphe = new CGrapheOriente(graphe);
+	Graphe = CGrapheOriente(graphe);
 
 	//initialisation de la map avec le graph mis en paramètre
 	for (unsigned int i = 0; i < graphe.GRO_GetSommets().size(); i++)
@@ -14,7 +14,7 @@ CDetectionColoration::CDetectionColoration(const CGrapheOriente& graphe)
 
 bool CDetectionColoration::DTCDetecter(const unsigned int k,unsigned int i)
 {
-	unsigned int taille_list_sommet = (unsigned int)Graphe->GRO_GetSommets().size();
+	unsigned int taille_list_sommet = (unsigned int)Graphe.GRO_GetSommets().size();
 	if (i == taille_list_sommet)
 	{
 		return true;
@@ -26,7 +26,7 @@ bool CDetectionColoration::DTCDetecter(const unsigned int k,unsigned int i)
 		{
 			bool couleurValide = true;
 			// On parcourt tous les arcs du sommet pour choper les voisins
-			for (auto& it : Graphe->GRO_GetSommets()[i]->SOM_GetEntrants())
+			for (auto& it : Graphe.GRO_GetSommets()[i]->SOM_GetEntrants())
 			{
 				// Si le voisin actuel a la même couleur
 				if (sommetCouleur[(*it).ARC_GetSommetDepart()] == c)
@@ -39,13 +39,13 @@ bool CDetectionColoration::DTCDetecter(const unsigned int k,unsigned int i)
 			if (couleurValide)
 			{
 				// Attribue la couleur c au sommet actuel
-				sommetCouleur[Graphe->GRO_GetSommets()[i]->SOM_GetID()] = c;
+				sommetCouleur[Graphe.GRO_GetSommets()[i]->SOM_GetID()] = c;
 				// Si on arrive à bien colorier le graphe entier avec ceci alors on a fini
 				if (DTCDetecter( k, i + 1)) {
 					return true;
 				}
 				// Sinon c'est que la couleur n'est pas bonne donc on backtrack
-				sommetCouleur[Graphe->GRO_GetSommets()[i]->SOM_GetID()] = 0;
+				sommetCouleur[Graphe.GRO_GetSommets()[i]->SOM_GetID()] = 0;
 			}
 		}
 		return false;
