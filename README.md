@@ -1,0 +1,1 @@
+**Ceci est un projet de cours, il a des lacunes donc je ne recommande pas de l'utiliser directement pour des projets importants. Cepedant dans l'absolu il est fonctionnel donc foncez quoi allez inspirez-vous en quoi**
