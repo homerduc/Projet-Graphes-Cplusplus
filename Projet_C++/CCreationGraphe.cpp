@@ -111,7 +111,8 @@ void CCreationGraphe::CRE_FonctionPrincipale()
 
     // Création d'un objet Detection de couleur
     CDetectionColoration oDetectionColoration(oGrapheNonOriente);
-    cout << oDetectionColoration.DTCDetecter(2) << endl;
+    unsigned int k = 3;
+    cout << "Résultat de l'algorithme pour k =  " << k << " : " << oDetectionColoration.DTCDetecter(k) << endl;
 
     
     // Version avec interface pour faire des tests plus rapidement
