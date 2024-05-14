@@ -31,7 +31,7 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
         cout << e.what() << " : Entrez une valeur correcte pour le nombre de sommets et d'arcs ! " << endl;
         exit(EXIT_FAILURE);
     }
-    catch (const std::out_of_range& e) {
+    catch (const std::out_of_range&) {
         cout << "Entrez une valeur correcte pour le nombre de sommets et d'arcs ! " << endl;
         exit(EXIT_FAILURE);
     }
@@ -82,20 +82,38 @@ CGrapheOriente CCreationGraphe::CRE_CreerGraphe()
 
 void CCreationGraphe::CRE_FonctionPrincipale()
 {
+    // Sujet de Base
+    /*
     CGrapheOriente oGrapheOriente = CRE_CreerGraphe(); // Création du graphe orienté "normal"
     CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe classique");
+    CAffichage::AFC_AnnoncerGraphe("Graphe classique");
+    CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
+    CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe inverse");
+    CGrapheOriente* oGrapheOrienteInverse = CInverse::INV_Inverse(oGrapheOriente); // Création du graphe orienté inversé
+    CAffichage::AFC_AnnoncerGraphe("Graphe inverse");
+    CAffichage::AFC_Afficher_Graphe(oGrapheOrienteInverse);
+    delete oGrapheOrienteInverse;
+    */
+
+
+    // Démonstration détection coloration avec un graphe représentant un pentagone, fonctionne pour k supérieur ou égal à 3
+    CGraphe oGrapheNonOriente;
+    oGrapheNonOriente.GRO_AjouterSommet("1");
+    oGrapheNonOriente.GRO_AjouterSommet("2");
+    oGrapheNonOriente.GRO_AjouterSommet("3");
+    oGrapheNonOriente.GRO_AjouterSommet("4");
+    oGrapheNonOriente.GRO_AjouterSommet("5");
+    oGrapheNonOriente.GRA_AjouterArc("1", "2");
+    oGrapheNonOriente.GRA_AjouterArc("2", "3");
+    oGrapheNonOriente.GRA_AjouterArc("3", "4");
+    oGrapheNonOriente.GRA_AjouterArc("4", "5");
+    oGrapheNonOriente.GRA_AjouterArc("5", "1");
 
     // Création d'un objet Detection de couleur
-    CDetectionColoration* oDetectionColoration = new CDetectionColoration(&oGrapheOriente);
-    CAffichage::AFC_DemanderColorisation(oDetectionColoration);
+    CDetectionColoration oDetectionColoration(oGrapheNonOriente);
+    cout << oDetectionColoration.DTCDetecter(3) << endl;
+
     
-    //CAffichage::AFC_AnnoncerGraphe("Graphe classique");
-    //CAffichage::AFC_Afficher_Graphe(&oGrapheOriente);
-
-    //CAffichage::AFC_AnnoncerGraphe("Creation des elements du graphe inverse");
-    //CGrapheOriente* oGrapheOrienteInverse = CInverse::INV_Inverse(oGrapheOriente); // Création du graphe orienté inversé
-
-    //CAffichage::AFC_AnnoncerGraphe("Graphe inverse");
-    //CAffichage::AFC_Afficher_Graphe(oGrapheOrienteInverse);
-    //delete oGrapheOrienteInverse;
+    // Version avec interface pour faire des tests plus rapidement
+    // CAffichage::AFC_DemanderColoration(oDetectionColoration);
 }

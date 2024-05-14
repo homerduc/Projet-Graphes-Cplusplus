@@ -1,14 +1,14 @@
 #include "CDetectionColoration.h"
 
-CDetectionColoration::CDetectionColoration(const CGrapheOriente* graphe)
+CDetectionColoration::CDetectionColoration(const CGrapheOriente& graphe)
 {
 	//initialisation de l'attribut Graphes
-	Graphe = new CGrapheOriente(*graphe);
+	Graphe = new CGrapheOriente(graphe);
 
 	//initialisation de la map avec le graph mis en paramètre
-	for (unsigned int i = 0; i < graphe->GRO_GetSommets().size(); i++)
+	for (unsigned int i = 0; i < graphe.GRO_GetSommets().size(); i++)
 	{
-		sommetCouleur[graphe->GRO_GetSommets()[i]->SOM_GetID()] = 0;
+		sommetCouleur[graphe.GRO_GetSommets()[i]->SOM_GetID()] = 0;
 	}
 }
 
@@ -50,6 +50,11 @@ bool CDetectionColoration::DTCDetecter(const unsigned int k,unsigned int i)
 		}
 		return false;
 	}
+}
+
+map<string, unsigned int> CDetectionColoration::DTCGetSommetCouleur()
+{
+	return sommetCouleur;
 }
 
 

@@ -148,7 +148,7 @@ public:
      */
     static void AFC_AnnoncerGraphe(const string& sNom);
 
-    static void AFC_DemanderColorisation(CDetectionColoration* Detection);
+    static void AFC_DemanderColoration(CDetectionColoration& Detection);
 };
 
 #endif // CAFFICHAGE_H
