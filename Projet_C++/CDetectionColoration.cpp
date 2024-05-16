@@ -48,7 +48,7 @@ map<string, unsigned int> CDetectionColoration::DTCGetSommetCouleur()
 
 bool CDetectionColoration::DTCCouleurEstValide(unsigned int couleur, unsigned int i)
 {
-	// On parcourt tous les arcs du sommet pour choper les voisins
+	// On parcourt tous les arcs du sommet pour aller chercher les voisins
 	for (auto& it : Graphe->GRO_GetSommets()[i]->SOM_GetEntrants())
 	{
 		// Si le voisin actuel a la même couleur
